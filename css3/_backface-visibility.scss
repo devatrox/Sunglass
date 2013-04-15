@@ -1,0 +1,5 @@
+@mixin backface-visibility($string) {
+  -webkit-backface-visibility: $string;
+  -moz-backface-visibility: $string;
+  backface-visibility: $string;
+}

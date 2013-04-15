@@ -1,0 +1,141 @@
+$imgbase: "../images/" !default;
+
+@function black($opacity) {
+  @return rgba(black,$opacity)
+}
+@function white($opacity) {
+  @return rgba(white,$opacity)
+}
+
+@function percent($base, $percentage) {
+  @if unitless($percentage) {
+    @if unit($base) == "px" {
+      @return round($base * ($percentage / 100))
+    } @else {
+      @warn "Only px values allowed in $base!"
+    }
+  } @else {
+    @warn "Please use unitless number in $percentage!";
+  }
+}
+
+@function strip-unit($number) {
+  @return $number / ($number * 0 + 1)
+}
+
+@function add-unit($number, $unit) {
+  @return #{strip-unit($number)}$unit
+}
+
+@function file($filename) {
+  @return url(#{$imgbase}#{$filename});
+}
+
+@mixin letterpress($background, $opacity: 0.7) {
+  @if lightness($background) > 50 {
+    text-shadow: white($opacity) 0 1px 0;
+  } @else {
+    text-shadow: black($opacity) 0 -1px 0;
+  }
+}
+
+@mixin contrast($background) {
+  // define these variables in your main SASS file, if different
+  $contrast-dark: #333333 !default;
+  $contrast-light: #e7e7e7 !default;
+
+  background-color: $background;
+  @if lightness($background) > 50 {
+    color: $contrast-dark;
+  } @else {
+    color: $contrast-light;
+  }
+}
+
+// define these variables in your main SASS file, if different
+$smartphones: 640px !default;
+$tablets: 700px !default;
+$smallscreen: 1024px !default;
+
+@mixin media($media) {
+  @if $media == smartphones {
+    @media #{unquote($media)} and (max-width: $smartphones) {
+      @content;
+    }
+  }
+  @else if $media == tablets {
+    @media #{unquote($media)} and (max-width: $tablets) {
+      @content;
+    }
+  }
+  @else if $media == smallscreen {
+    @media #{unquote($media)} and (max-width: $smallscreen) {
+      @content;
+    }
+  }
+}
+
+@mixin min-resolution($value, $suffix: null, $media: "only screen") {
+  $valuedpi: 192dpi !default;
+  $valuedppx: 2dppx !default;
+  $ratio: 2 !default;
+
+  @if unitless($value) or unit($value) == dppx {
+    $valuedpi: add-unit(strip-unit($value) * 96, dpi);
+    $valuedppx: add-unit(strip-unit($value), dppx);
+    $ratio: strip-unit($value);
+  } @else {
+    @warn "Please use dppx unit in 'min-resolution' mixin!";
+  }
+
+  @if $suffix != null {
+    @media
+    #{unquote($media)} and (-webkit-min-device-pixel-ratio: $ratio) and (#{unquote($suffix)}),
+    #{unquote($media)} and (min--moz-device-pixel-ratio: $ratio) and (#{unquote($suffix)}),
+    #{unquote($media)} and (-o-min-device-pixel-ratio: #{$ratio}/2) and (#{unquote($suffix)}),
+    #{unquote($media)} and (min-device-pixel-ratio: $ratio) and (#{unquote($suffix)}),
+    #{unquote($media)} and (min-resolution: $valuedpi) and (#{unquote($suffix)}),
+    #{unquote($media)} and (min-resolution: $valuedppx) and (#{unquote($suffix)}){
+      @content;
+    }
+  } @else {
+    @media
+    #{unquote($media)} and (-webkit-min-device-pixel-ratio: $ratio),
+    #{unquote($media)} and (min--moz-device-pixel-ratio: $ratio),
+    #{unquote($media)} and (-o-min-device-pixel-ratio: #{$ratio}/2),
+    #{unquote($media)} and (min-device-pixel-ratio: $ratio),
+    #{unquote($media)} and (min-resolution: $valuedpi),
+    #{unquote($media)} and (min-resolution: $valuedppx) {
+      @content;
+    }
+  }
+}
+
+// Source: http://37signals.com/svn/posts/3271-easy-retina-ready-images-using-scss
+// slightly changed to make single values like "contain" or "cover" possible
+@mixin image-2x($image, $size) {
+  @media (min--moz-device-pixel-ratio: 1.3),
+         (-o-min-device-pixel-ratio: 2.6/2),
+         (-webkit-min-device-pixel-ratio: 1.3),
+         (min-device-pixel-ratio: 1.3),
+         (min-resolution: 1.3dppx) {
+    // on retina, use image that's scaled by 2
+    background-image: file($image);
+    background-size: $size;
+  }
+}
+
+// Source: http://nicolasgallagher.com/micro-clearfix-hack/
+%clear-after {
+  *zoom: 1;
+
+  &:before,
+  &:after {
+    content: " ";
+    display: table;
+  }
+
+  &:after {
+    clear: both;
+  }
+}

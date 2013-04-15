@@ -1,0 +1,5 @@
+@mixin appearance($string) {
+  -webkit-appearance: $string;
+  -moz-appearance: $string;
+  appearance: $string;
+}

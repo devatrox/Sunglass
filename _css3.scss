@@ -1,0 +1,44 @@
+$webkit-prefix: true !default;
+$moz-prefix: true !default;
+$ms-prefix: true !default;
+$o-prefix: true !default;
+$spec: true !default;
+$ie-filters: false !default;
+
+@mixin prefix($property, $value, $prefixes) {
+  @each $prefix in $prefixes {
+
+    @if $prefix == webkit and $webkit-prefix == true {
+      -webkit-#{$property}: $value;
+    }
+    @else if $prefix == moz and $moz-prefix == true {
+      -moz-#{$property}: $value;
+    }
+    @else if $prefix == ms and $ms-prefix == true {
+      -ms-#{$property}: $value;
+    }
+    @else if $prefix == o and $o-prefix == true {
+      -o-#{$property}: $value;
+    }
+    @else if $prefix == spec and $spec == true {
+      #{$property}: $value;
+    }
+    @else  {
+      @warn "Unrecognized prefix: #{$prefix}";
+    }
+  }
+}
+
+@import "css3/animation";
+@import "css3/appearance";
+@import "css3/backface-visibility";
+@import "css3/background";
+@import "css3/border-radius";
+@import "css3/box-shadow";
+@import "css3/calc";
+@import "css3/filter";
+@import "css3/opacity";
+@import "css3/resize";
+@import "css3/selection";
+@import "css3/transform";
+@import "css3/transition";

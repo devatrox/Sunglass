@@ -1,0 +1,71 @@
+@mixin filter($string) {
+  -webkit-filter: $string;
+  -moz-filter: $string;
+  filter: $string;
+}
+
+@mixin filter-url($resource) {
+  -webkit-filter: url($resource);
+  -moz-filter: url($resource);
+  filter: url($resource);
+}
+
+@mixin filter-blur($radius) {
+  -webkit-filter: blur($radius);
+  -moz-filter: blur($radius);
+  filter: blur($radius);
+}
+
+@mixin filter-brightness($amount) {
+  -webkit-filter: brightness($amount);
+  -moz-filter: brightness($amount);
+  filter: brightness($amount);
+}
+
+@mixin filter-contrast($amount) {
+  -webkit-filter: contrast($amount);
+  -moz-filter: contrast($amount);
+  filter: contrast($amount);
+}
+
+@mixin filter-drop-shadow($string) {
+  -webkit-filter: drop-shadow($string);
+  -moz-filter: drop-shadow($string);
+  filter: drop-shadow($string);
+}
+
+@mixin filter-grayscale($amount) {
+  -webkit-filter: grayscale($amount);
+  -moz-filter: grayscale($amount);
+  filter: grayscale($amount);
+}
+
+@mixin filter-hue-rotate($angle) {
+  -webkit-filter: hue-rotate($angle);
+  -moz-filter: hue-rotate($angle);
+  filter: hue-rotate($angle);
+}
+
+@mixin filter-invert($amount) {
+  -webkit-filter: invert($amount);
+  -moz-filter: invert($amount);
+  filter: invert($amount);
+}
+
+@mixin filter-opacity($amount) {
+  -webkit-filter: opacity($amount);
+  -moz-filter: opacity($amount);
+  filter: opacity($amount);
+}
+
+@mixin filter-saturate($amount) {
+  -webkit-filter: saturate($amount);
+  -moz-filter: saturate($amount);
+  filter: saturate($amount);
+}
+
+@mixin filter-sepia($amount) {
+  -webkit-filter: sepia($amount);
+  -moz-filter: sepia($amount);
+  filter: sepia($amount);
+}

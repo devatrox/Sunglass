@@ -1,0 +1,4 @@
+@mixin resize($direction: vertical) {
+  -moz-resize: $direction;
+  resize: $direction;
+}

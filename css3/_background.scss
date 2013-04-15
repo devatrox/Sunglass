@@ -1,0 +1,94 @@
+@mixin background-color($color, $behind: null) {
+
+  @if alpha($color) <= 0.9 {
+    @if $behind == null {
+      background-color: opacify($color, 1);
+    } @else {
+      background-color: mix(opacify($color, 1), $behind, alpha($color) * 100);
+    }
+  }
+
+  background-color: $color;
+}
+
+@mixin background-size($string) {
+  -webkit-background-size: $string;
+  -moz-background-size: $string;
+  -o-background-size: $string;
+  background-size: $string;
+}
+
+@mixin linear-gradient($from, $to, $dir: "to bottom") {
+  $gradtype: 0;
+  $legacy: null;
+  $syntax-error: false;
+
+  @if $dir == "to bottom" {
+    $legacy: top;
+  } @else if $dir == "to top" {
+    $legacy: bottom;
+    $ie-filters: false;
+  } @else if $dir == "to right" {
+    $legacy: left;
+    $gradtype: 1;
+  } @else if $dir == "to left" {
+    $legacy: right;
+    $ie-filters: false;
+  } @else if $dir == "to bottom right" {
+    $legacy: top left;
+    $ie-filters: false;
+  } @else if $dir == "to bottom left" {
+    $legacy: top right;
+    $ie-filters: false;
+  } @else if $dir == "to top right" {
+    $legacy: bottom left;
+    $ie-filters: false;
+  } @else if $dir == "to top left" {
+    $legacy: bottom right;
+    $ie-filters: false;
+  } @else if type_of($dir) == number {
+    @if unit($dir) == "deg" {
+      $legacy: $dir;
+      $ie-filters: false;
+    } @else {
+      $syntax-error: true;
+      @warn "Gradient-Syntax unit '#{unit($dir)}' not supported! Please refer to http://dev.w3.org/csswg/css3-images/#linear-gradients";
+    }
+  } @else {
+    $syntax-error: true;
+    @warn "Gradient-Syntax attribute '#{unquote($dir)}' not supported! Please refer to http://dev.w3.org/csswg/css3-images/#linear-gradients";
+  }
+
+  @if $syntax-error == false {
+    @if $ie-filters == true {
+      filter: progid:DXImageTransform.Microsoft.Gradient( GradientType=#{$gradtype}, startColorstr='#{ie-hex-str($from)}', endColorstr='#{ie-hex-str($to)}' ); // IE 7-9
+    } @else {
+      @warn "IE-Filters disabled";
+    }
+    background-image: -webkit-linear-gradient($legacy, $from 0%, $to 100%);
+    background-image: -moz-linear-gradient($legacy, $from 0%, $to 100%);
+    background-image: -o-linear-gradient($legacy, $from 0%, $to 100%);
+    background-image: linear-gradient(unquote($dir), $from 0%, $to 100%);
+  }
+}
+
+@mixin linear-gradient-custom($string) {
+  background-image: -webkit-linear-gradient($string);
+  background-image: -moz-linear-gradient($string);
+  background-image: -o-linear-gradient($string);
+  background-image: linear-gradient($string);
+}
+
+@mixin radial-gradient($from, $to, $type: ellipse farthest-corner, $origin: center) {
+  background-image: -webkit-radial-gradient($origin, $type, $from 0%, $to 100%);
+  background-image: -moz-radial-gradient($origin, $type, $from 0%, $to 100%);
+  background-image: -o-radial-gradient($origin, $type, $from 0%, $to 100%);
+  background-image: radial-gradient($type at $origin, $from 0%, $to 100%);
+}
+
+@mixin radial-gradient-custom($custom) {
+  background-image: -webkit-radial-gradient($custom);
+  background-image: -moz-radial-gradient($custom);
+  background-image: -o-radial-gradient($custom);
+  background-image: radial-gradient($custom);
+}

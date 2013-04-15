@@ -1,0 +1,189 @@
+@mixin transform($string) {
+  -webkit-transform: $string;
+  -moz-transform: $string;
+  -ms-transform: $string;
+  -o-transform: $string;
+  transform: $string;
+}
+
+@mixin transform-origin($string) {
+  -webkit-transform-origin: $string;
+  -moz-transform-origin: $string;
+  -ms-transform-origin: $string;
+  -o-transform-origin: $string;
+  transform-origin: $string;
+}
+
+@mixin transform-style($string) {
+  -webkit-transform-style: $string;
+  -moz-transform-style: $string;
+  transform-style: $string;
+}
+
+@mixin matrix($a, $c, $b, $d, $tx, $ty) {
+  -webkit-transform: matrix($a, $c, $b, $d, $tx, $ty);
+  -moz-transform: matrix($a, $c, $b, $d, $tx, $ty);
+  -ms-transform: matrix($a, $c, $b, $d, $tx, $ty);
+  -o-transform: matrix($a, $c, $b, $d, $tx, $ty);
+  transform: matrix($a, $c, $b, $d, $tx, $ty);
+}
+
+@mixin rotate($string) {
+  -webkit-transform: rotate($string);
+  -moz-transform: rotate($string);
+  -ms-transform: rotate($string);
+  -o-transform: rotate($string);
+  transform: rotate($string);
+}
+
+@mixin scale($string) {
+  -webkit-transform: scale($string);
+  -moz-transform: scale($string);
+  -ms-transform: scale($string);
+  -o-transform: scale($string);
+  transform: scale($string);
+}
+
+@mixin scaleX($string) {
+  -webkit-transform: scaleX($string);
+  -moz-transform: scaleX($string);
+  -ms-transform: scaleX($string);
+  -o-transform: scaleX($string);
+  transform: scaleX($string);
+}
+
+@mixin scaleY($string) {
+  -webkit-transform: scaleY($string);
+  -moz-transform: scaleY($string);
+  -ms-transform: scaleY($string);
+  -o-transform: scaleY($string);
+  transform: scaleY($string);
+}
+
+@mixin skew($string) {
+  -webkit-transform: skew($string);
+  -moz-transform: skew($string);
+  -ms-transform: skew($string);
+  -o-transform: skew($string);
+  transform: skew($string);
+}
+
+@mixin skewX($string) {
+  -webkit-transform: skewX($string);
+  -moz-transform: skewX($string);
+  -ms-transform: skewX($string);
+  -o-transform: skewX($string);
+  transform: skewX($string);
+}
+
+@mixin skewY($string) {
+  -webkit-transform: skewY($string);
+  -moz-transform: skewY($string);
+  -ms-transform: skewY($string);
+  -o-transform: skewY($string);
+  transform: skewY($string);
+}
+
+@mixin translate($string) {
+  -webkit-transform: translate($string);
+  -moz-transform: translate($string);
+  -ms-transform: translate($string);
+  -o-transform: translate($string);
+  transform: translate($string);
+}
+
+@mixin translateX($string) {
+  -webkit-transform: translateX($string);
+  -moz-transform: translateX($string);
+  -ms-transform: translateX($string);
+  -o-transform: translateX($string);
+  transform: translateX($string);
+}
+
+@mixin translateY($string) {
+  -webkit-transform: translateY($string);
+  -moz-transform: translateY($string);
+  -ms-transform: translateY($string);
+  -o-transform: translateY($string);
+  transform: translateY($string);
+}
+
+@mixin matrix3d($a1, $b1, $c1, $d1, $a2, $b2, $c2, $d2, $a3, $b3, $c3, $d3, $a4, $b4, $c4, $d4) {
+  -webkit-transform: matrix3d($a1, $b1, $c1, $d1, $a2, $b2, $c2, $d2, $a3, $b3, $c3, $d3, $a4, $b4, $c4, $d4);
+  -moz-transform: matrix3d($a1, $b1, $c1, $d1, $a2, $b2, $c2, $d2, $a3, $b3, $c3, $d3, $a4, $b4, $c4, $d4);
+  -ms-transform: matrix3d($a1, $b1, $c1, $d1, $a2, $b2, $c2, $d2, $a3, $b3, $c3, $d3, $a4, $b4, $c4, $d4);
+  -o-transform: matrix3d($a1, $b1, $c1, $d1, $a2, $b2, $c2, $d2, $a3, $b3, $c3, $d3, $a4, $b4, $c4, $d4);
+  transform: matrix3d($a1, $b1, $c1, $d1, $a2, $b2, $c2, $d2, $a3, $b3, $c3, $d3, $a4, $b4, $c4, $d4);
+}
+
+@mixin translate3d($string) {
+  -webkit-transform: translate3d($string);
+  -moz-transform: translate3d($string);
+  -ms-transform: translate3d($string);
+  -o-transform: translate3d($string);
+  transform: translate3d($string);
+}
+
+@mixin translateZ($string) {
+  -webkit-transform: translateZ($string);
+  -moz-transform: translateZ($string);
+  -ms-transform: translateZ($string);
+  -o-transform: translateZ($string);
+  transform: translateZ($string);
+}
+
+@mixin scale3d($string) {
+  -webkit-transform: scale3d($string);
+  -moz-transform: scale3d($string);
+  -ms-transform: scale3d($string);
+  -o-transform: scale3d($string);
+  transform: scale3d($string);
+}
+
+@mixin scaleZ($string) {
+  -webkit-transform: scaleZ($string);
+  -moz-transform: scaleZ($string);
+  -ms-transform: scaleZ($string);
+  -o-transform: scaleZ($string);
+  transform: scaleZ($string);
+}
+
+@mixin rotate3d($string) {
+  -webkit-transform: rotate3d($string);
+  -moz-transform: rotate3d($string);
+  -ms-transform: rotate3d($string);
+  -o-transform: rotate3d($string);
+  transform: rotate3d($string);
+}
+
+@mixin rotateX($string) {
+  -webkit-transform: rotateX($string);
+  -moz-transform: rotateX($string);
+  -ms-transform: rotateX($string);
+  -o-transform: rotateX($string);
+  transform: rotateX($string);
+}
+
+@mixin rotateY($string) {
+  -webkit-transform: rotateY($string);
+  -moz-transform: rotateY($string);
+  -ms-transform: rotateY($string);
+  -o-transform: rotateY($string);
+  transform: rotateY($string);
+}
+
+@mixin rotateZ($string) {
+  -webkit-transform: rotateZ($string);
+  -moz-transform: rotateZ($string);
+  -ms-transform: rotateZ($string);
+  -o-transform: rotateZ($string);
+  transform: rotateZ($string);
+}
+
+@mixin perspective($string) {
+  -webkit-transform: perspective($string);
+  -moz-transform: perspective($string);
+  -ms-transform: perspective($string);
+  -o-transform: perspective($string);
+  transform: perspective($string);
+}
