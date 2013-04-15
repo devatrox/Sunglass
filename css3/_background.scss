@@ -2,13 +2,13 @@
 
   @if alpha($color) <= 0.9 {
     @if $behind == null {
-      background-color: opacify($color, 1);
+      background: opacify($color, 1);
     } @else {
-      background-color: mix(opacify($color, 1), $behind, alpha($color) * 100);
+      background: mix(opacify($color, 1), $behind, alpha($color) * 100);
     }
   }
 
-  background-color: $color;
+  background: $color;
 }
 
 @mixin background-size($string) {
