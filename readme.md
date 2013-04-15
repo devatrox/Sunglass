@@ -26,7 +26,7 @@ Sass 3.2+
     $smartphones: 640px;
     $tablets: 700px;
     $smallscreen: 1024px;
-    @include respond-to(smartphones/tablets/smallscreen);
+    @include media(smartphones/tablets/smallscreen);
 
 ## CSS3
 
