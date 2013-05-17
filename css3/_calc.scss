@@ -1,5 +1,0 @@
-@mixin calc($property, $string) {
-  #{$property}: -webkit-calc($string);
-  #{$property}: -moz-calc($string);
-  #{$property}: calc($string);
-}

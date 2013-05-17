@@ -1,189 +1,95 @@
-@mixin transform($string) {
-  -webkit-transform: $string;
-  -moz-transform: $string;
-  -ms-transform: $string;
-  -o-transform: $string;
-  transform: $string;
+@mixin transform($string...) {
+  @include prefix(transform, $string, webkit moz ms o spec);
 }
 
-@mixin transform-origin($string) {
-  -webkit-transform-origin: $string;
-  -moz-transform-origin: $string;
-  -ms-transform-origin: $string;
-  -o-transform-origin: $string;
-  transform-origin: $string;
+@mixin transform-origin($string...) {
+  @include prefix(transform-origin, $string, webkit moz ms o spec);
 }
 
-@mixin transform-style($string) {
-  -webkit-transform-style: $string;
-  -moz-transform-style: $string;
-  transform-style: $string;
+@mixin transform-style($string...) {
+  @include prefix(transform-style, $string, webkit moz spec);
 }
 
-@mixin matrix($a, $c, $b, $d, $tx, $ty) {
-  -webkit-transform: matrix($a, $c, $b, $d, $tx, $ty);
-  -moz-transform: matrix($a, $c, $b, $d, $tx, $ty);
-  -ms-transform: matrix($a, $c, $b, $d, $tx, $ty);
-  -o-transform: matrix($a, $c, $b, $d, $tx, $ty);
-  transform: matrix($a, $c, $b, $d, $tx, $ty);
+@mixin rotate($string...) {
+  @include prefix(transform, rotate(#{$string}), webkit moz ms o spec);
 }
 
-@mixin rotate($string) {
-  -webkit-transform: rotate($string);
-  -moz-transform: rotate($string);
-  -ms-transform: rotate($string);
-  -o-transform: rotate($string);
-  transform: rotate($string);
+@mixin rotate3d($string...) {
+  @include prefix(transform, rotate3d(#{$string}), webkit moz ms o spec);
 }
 
-@mixin scale($string) {
-  -webkit-transform: scale($string);
-  -moz-transform: scale($string);
-  -ms-transform: scale($string);
-  -o-transform: scale($string);
-  transform: scale($string);
+@mixin rotateX($string...) {
+  @include prefix(transform, rotateX(#{$string}), webkit moz ms o spec);
 }
 
-@mixin scaleX($string) {
-  -webkit-transform: scaleX($string);
-  -moz-transform: scaleX($string);
-  -ms-transform: scaleX($string);
-  -o-transform: scaleX($string);
-  transform: scaleX($string);
+@mixin rotateY($string...) {
+  @include prefix(transform, rotateY(#{$string}), webkit moz ms o spec);
 }
 
-@mixin scaleY($string) {
-  -webkit-transform: scaleY($string);
-  -moz-transform: scaleY($string);
-  -ms-transform: scaleY($string);
-  -o-transform: scaleY($string);
-  transform: scaleY($string);
+@mixin rotateZ($string...) {
+  @include prefix(transform, rotateZ(#{$string}), webkit moz ms o spec);
 }
 
-@mixin skew($string) {
-  -webkit-transform: skew($string);
-  -moz-transform: skew($string);
-  -ms-transform: skew($string);
-  -o-transform: skew($string);
-  transform: skew($string);
+@mixin scale($string...) {
+  @include prefix(transform, scale(#{$string}), webkit moz ms o spec);
 }
 
-@mixin skewX($string) {
-  -webkit-transform: skewX($string);
-  -moz-transform: skewX($string);
-  -ms-transform: skewX($string);
-  -o-transform: skewX($string);
-  transform: skewX($string);
+@mixin scaleX($string...) {
+  @include prefix(transform, scaleX(#{$string}), webkit moz ms o spec);
 }
 
-@mixin skewY($string) {
-  -webkit-transform: skewY($string);
-  -moz-transform: skewY($string);
-  -ms-transform: skewY($string);
-  -o-transform: skewY($string);
-  transform: skewY($string);
+@mixin scaleY($string...) {
+  @include prefix(transform, scaleY(#{$string}), webkit moz ms o spec);
 }
 
-@mixin translate($string) {
-  -webkit-transform: translate($string);
-  -moz-transform: translate($string);
-  -ms-transform: translate($string);
-  -o-transform: translate($string);
-  transform: translate($string);
+@mixin scale3d($string...) {
+  @include prefix(transform, scale3d(#{$string}), webkit moz ms o spec);
 }
 
-@mixin translateX($string) {
-  -webkit-transform: translateX($string);
-  -moz-transform: translateX($string);
-  -ms-transform: translateX($string);
-  -o-transform: translateX($string);
-  transform: translateX($string);
+@mixin scaleZ($string...) {
+  @include prefix(transform, scaleZ(#{$string}), webkit moz ms o spec);
 }
 
-@mixin translateY($string) {
-  -webkit-transform: translateY($string);
-  -moz-transform: translateY($string);
-  -ms-transform: translateY($string);
-  -o-transform: translateY($string);
-  transform: translateY($string);
+@mixin skew($string...) {
+  @include prefix(transform, skew(#{$string}), webkit moz ms o spec);
 }
 
-@mixin matrix3d($a1, $b1, $c1, $d1, $a2, $b2, $c2, $d2, $a3, $b3, $c3, $d3, $a4, $b4, $c4, $d4) {
-  -webkit-transform: matrix3d($a1, $b1, $c1, $d1, $a2, $b2, $c2, $d2, $a3, $b3, $c3, $d3, $a4, $b4, $c4, $d4);
-  -moz-transform: matrix3d($a1, $b1, $c1, $d1, $a2, $b2, $c2, $d2, $a3, $b3, $c3, $d3, $a4, $b4, $c4, $d4);
-  -ms-transform: matrix3d($a1, $b1, $c1, $d1, $a2, $b2, $c2, $d2, $a3, $b3, $c3, $d3, $a4, $b4, $c4, $d4);
-  -o-transform: matrix3d($a1, $b1, $c1, $d1, $a2, $b2, $c2, $d2, $a3, $b3, $c3, $d3, $a4, $b4, $c4, $d4);
-  transform: matrix3d($a1, $b1, $c1, $d1, $a2, $b2, $c2, $d2, $a3, $b3, $c3, $d3, $a4, $b4, $c4, $d4);
+@mixin skewX($string...) {
+  @include prefix(transform, skewX(#{$string}), webkit moz ms o spec);
 }
 
-@mixin translate3d($string) {
-  -webkit-transform: translate3d($string);
-  -moz-transform: translate3d($string);
-  -ms-transform: translate3d($string);
-  -o-transform: translate3d($string);
-  transform: translate3d($string);
+@mixin skewY($string...) {
+  @include prefix(transform, skewY(#{$string}), webkit moz ms o spec);
 }
 
-@mixin translateZ($string) {
-  -webkit-transform: translateZ($string);
-  -moz-transform: translateZ($string);
-  -ms-transform: translateZ($string);
-  -o-transform: translateZ($string);
-  transform: translateZ($string);
+@mixin translate($string...) {
+  @include prefix(transform, translate((#{$string})), webkit moz ms o spec);
 }
 
-@mixin scale3d($string) {
-  -webkit-transform: scale3d($string);
-  -moz-transform: scale3d($string);
-  -ms-transform: scale3d($string);
-  -o-transform: scale3d($string);
-  transform: scale3d($string);
+@mixin translateX($string...) {
+  @include prefix(transform, translateX(#{$string}), webkit moz ms o spec);
 }
 
-@mixin scaleZ($string) {
-  -webkit-transform: scaleZ($string);
-  -moz-transform: scaleZ($string);
-  -ms-transform: scaleZ($string);
-  -o-transform: scaleZ($string);
-  transform: scaleZ($string);
+@mixin translateY($string...) {
+  @include prefix(transform, translateY(#{$string}), webkit moz ms o spec);
 }
 
-@mixin rotate3d($string) {
-  -webkit-transform: rotate3d($string);
-  -moz-transform: rotate3d($string);
-  -ms-transform: rotate3d($string);
-  -o-transform: rotate3d($string);
-  transform: rotate3d($string);
+@mixin translate3d($string...) {
+  @include prefix(transform, translate3d(#{$string}), webkit moz ms o spec);
 }
 
-@mixin rotateX($string) {
-  -webkit-transform: rotateX($string);
-  -moz-transform: rotateX($string);
-  -ms-transform: rotateX($string);
-  -o-transform: rotateX($string);
-  transform: rotateX($string);
+@mixin translateZ($string...) {
+  @include prefix(transform, translateZ(#{$string}), webkit moz ms o spec);
 }
 
-@mixin rotateY($string) {
-  -webkit-transform: rotateY($string);
-  -moz-transform: rotateY($string);
-  -ms-transform: rotateY($string);
-  -o-transform: rotateY($string);
-  transform: rotateY($string);
+@mixin matrix($string...) {
+  @include prefix(transform, matrix(#{$string}), webkit moz ms o spec);
 }
 
-@mixin rotateZ($string) {
-  -webkit-transform: rotateZ($string);
-  -moz-transform: rotateZ($string);
-  -ms-transform: rotateZ($string);
-  -o-transform: rotateZ($string);
-  transform: rotateZ($string);
+@mixin matrix3d($string...) {
+  @include prefix(transform, matrix3d(#{$string}), webkit moz ms o spec);
 }
 
-@mixin perspective($string) {
-  -webkit-transform: perspective($string);
-  -moz-transform: perspective($string);
-  -ms-transform: perspective($string);
-  -o-transform: perspective($string);
-  transform: perspective($string);
+@mixin perspective($string...) {
+  @include prefix(transform, perspective(#{$string}), webkit moz ms o spec);
 }

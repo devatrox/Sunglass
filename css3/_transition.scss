@@ -1,34 +1,19 @@
-@mixin transition($string) {
-  -webkit-transition: $string;
-  -moz-transition: $string;
-  -o-transition: $string;
-  transition: $string;
+@mixin transition($string...) {
+  @include prefix(transition, $string, webkit moz o spec);
 }
 
-@mixin transition-property($string) {
-  -webkit-transition-property: $string;
-  -moz-transition-property: $string;
-  -o-transition-property: $string;
-  transition-property: $string;
+@mixin transition-property($string...) {
+  @include prefix(transition-property, $string, webkit moz o spec);
 }
 
-@mixin transition-duration($string) {
-  -webkit-transition-duration: $string;
-  -moz-transition-duration: $string;
-  -o-transition-duration: $string;
-  transition-duration: $string;
+@mixin transition-duration($string...) {
+  @include prefix(transition-duration, $string, webkit moz o spec);
 }
 
-@mixin transition-delay($string) {
-  -webkit-transition-delay: $string;
-  -moz-transition-delay: $string;
-  -o-transition-delay: $string;
-  transition-delay: $string;
+@mixin transition-delay($string...) {
+  @include prefix(transition-delay, $string, webkit moz o spec);
 }
 
-@mixin transition-timing-function($string) {
-  -webkit-transition-timing-function: $string;
-  -moz-transition-timing-function: $string;
-  -o-transition-timing-function: $string;
-  transition-timing-function: $string;
+@mixin transition-timing-function($string...) {
+  @include prefix(transition-timing-function, $string, webkit moz o spec);
 }

@@ -12,6 +12,10 @@ Sass 3.2+
         @import "sunglass/helpers";
         @import "sunglass/css3";
 
+        or simply
+
+        @import "sunglass/all";
+
 ## Helpers
 
     black(0.5) -> rgba(0,0,0,0.5)
@@ -26,7 +30,7 @@ Sass 3.2+
     $smartphones: 640px;
     $tablets: 700px;
     $smallscreen: 1024px;
-    @include media(smartphones/tablets/smallscreen);
+    @include media($size, $device: screen, $minmax: max-width);
 
 ## CSS3
 
@@ -41,6 +45,7 @@ Sass 3.2+
         @content;
     }
     @include filter($string);
+    @include hyphens($string);
     @include linear-gradient($from, $to, $dir: "to bottom");
     @include linear-gradient-custom($string);
     @include opacity($string);
@@ -52,8 +57,6 @@ Sass 3.2+
     }
     @include transform($string);
     @include transition($string);
-
-    @include calc($property, $string);
 
 ## Resets
 
@@ -118,3 +121,19 @@ Sass 3.2+
 * Added background-color mixin
 * Added selection mixin
 * Merged all background related mixins into a single file
+
+### v1.9
+
+2013-05-17
+
+* Rewritten all properties to use new prefix-mixin
+* Keyframes output now much more compact
+* You can choose which prefixes are allowed by adding "$prefix-config" to your SASS files with the names separated by spaces (e.g. "webkit moz spec". remember to always add "spec" which is the prefix-free version)
+* Added hyphens mixin
+
+## ToDo:
+
+* Fine controlled IE-compatibility configuration
+* More CSS3 mixins
+* font-face
+*

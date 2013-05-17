@@ -4,5 +4,5 @@
     -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=#{$ie-number})"; // IE 8
     *filter: alpha(opacity=#{$ie-number}); // IE 5-7
   }
-  opacity: $string; // real browsers
+  @include prefix(opacity, $string, spec);
 }

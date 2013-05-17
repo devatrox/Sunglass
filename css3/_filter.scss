@@ -1,71 +1,47 @@
 @mixin filter($string) {
-  -webkit-filter: $string;
-  -moz-filter: $string;
-  filter: $string;
+  @include prefix(filter, $string, webkit moz spec);
 }
 
 @mixin filter-url($resource) {
-  -webkit-filter: url($resource);
-  -moz-filter: url($resource);
-  filter: url($resource);
+  @include prefix(filter, url(#{$resource}), webkit moz spec);
 }
 
 @mixin filter-blur($radius) {
-  -webkit-filter: blur($radius);
-  -moz-filter: blur($radius);
-  filter: blur($radius);
+  @include prefix(filter, blur(#{$radius}), webkit moz spec);
 }
 
 @mixin filter-brightness($amount) {
-  -webkit-filter: brightness($amount);
-  -moz-filter: brightness($amount);
-  filter: brightness($amount);
+  @include prefix(filter, brightness(#{$amount}), webkit moz spec);
 }
 
 @mixin filter-contrast($amount) {
-  -webkit-filter: contrast($amount);
-  -moz-filter: contrast($amount);
-  filter: contrast($amount);
+  @include prefix(filter, contrast(#{$amount}), webkit moz spec);
 }
 
 @mixin filter-drop-shadow($string) {
-  -webkit-filter: drop-shadow($string);
-  -moz-filter: drop-shadow($string);
-  filter: drop-shadow($string);
+  @include prefix(filter, drop-shadow(#{$string}), webkit moz spec);
 }
 
 @mixin filter-grayscale($amount) {
-  -webkit-filter: grayscale($amount);
-  -moz-filter: grayscale($amount);
-  filter: grayscale($amount);
+  @include prefix(filter, grayscale(#{$amount}), webkit moz spec);
 }
 
 @mixin filter-hue-rotate($angle) {
-  -webkit-filter: hue-rotate($angle);
-  -moz-filter: hue-rotate($angle);
-  filter: hue-rotate($angle);
+  @include prefix(filter, hue-rotate(#{$angle}), webkit moz spec);
 }
 
 @mixin filter-invert($amount) {
-  -webkit-filter: invert($amount);
-  -moz-filter: invert($amount);
-  filter: invert($amount);
+  @include prefix(filter, invert(#{$amount}), webkit moz spec);
 }
 
 @mixin filter-opacity($amount) {
-  -webkit-filter: opacity($amount);
-  -moz-filter: opacity($amount);
-  filter: opacity($amount);
+  @include prefix(filter, opacity(#{$amount}), webkit moz spec);
 }
 
 @mixin filter-saturate($amount) {
-  -webkit-filter: saturate($amount);
-  -moz-filter: saturate($amount);
-  filter: saturate($amount);
+  @include prefix(filter, saturate(#{$amount}), webkit moz spec);
 }
 
 @mixin filter-sepia($amount) {
-  -webkit-filter: sepia($amount);
-  -moz-filter: sepia($amount);
-  filter: sepia($amount);
+  @include prefix(filter, sepia(#{$amount}), webkit moz spec);
 }

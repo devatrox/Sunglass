@@ -1,4 +1,3 @@
 @mixin resize($direction: vertical) {
-  -moz-resize: $direction;
-  resize: $direction;
+  @include prefix(resize, $direction, moz spec);
 }
