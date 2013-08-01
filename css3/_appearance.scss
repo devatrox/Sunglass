@@ -1,3 +1,0 @@
-@mixin appearance($string) {
-  @include prefix(appearance, $string, webkit moz spec);
-}

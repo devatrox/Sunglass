@@ -1,8 +1,0 @@
-@mixin opacity($string) {
-  @if $ie-filters == true {
-    $ie-number: $string * 100;
-    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=#{$ie-number})"; // IE 8
-    *filter: alpha(opacity=#{$ie-number}); // IE 5-7
-  }
-  @include prefix(opacity, $string, spec);
-}

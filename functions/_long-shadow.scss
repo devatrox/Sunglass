@@ -1,0 +1,13 @@
+// Changing orientation is coming in a feature release
+
+@function long-shadow($color: #fff, $length: 100, $opacity: 0.1, $strength: 0) {
+  $shadow-list: null;
+
+  @for $i from 1 through $length {
+    $o: ($opacity - (($opacity - ($opacity * $strength)) * ($i * 100 / $length) / 100)) * 100%;
+
+    $shadow-list: append($shadow-list, mix(black, $color, $o) $i + px $i + px 0, comma);
+  }
+
+  @return $shadow-list
+}

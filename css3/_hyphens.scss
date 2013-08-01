@@ -1,3 +1,0 @@
-@mixin hyphens($string) {
-  @include prefix(hyphens, $string, webkit moz ms spec);
-}

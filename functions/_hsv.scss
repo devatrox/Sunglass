@@ -1,0 +1,88 @@
+// Formular provided by EasyRGB (http://www.easyrgb.com/index.php?X=MATH&H=21#text21)
+
+@function hsv($hue, $saturation, $value) {
+  $hue: ($hue * 100 / 360) / 100;
+  $saturation: $saturation / 100;
+  $value: $value / 100;
+
+  $red: null;
+  $green: null;
+  $blue: null;
+
+  $var_1: null;
+  $var_2: null;
+  $var_3: null;
+  $var_b: null;
+  $var_g: null;
+  $var_h: null;
+  $var_i: null;
+  $var_r: null;
+
+  @if ($saturation == 0) {
+    $red: $value * 255;
+    $green: $value * 255;
+    $blue: $value * 255;
+  }
+  @else {
+    $var_h: $hue * 6;
+
+    @if ( $var_h == 6 ) {
+      $var_h: 0;
+    }
+
+    $var_i: floor( $var_h );
+    $var_1: $value * ( 1 - $saturation );
+    $var_2: $value * ( 1 - $saturation * ( $var_h - $var_i ) );
+    $var_3: $value * ( 1 - $saturation * ( 1 - ( $var_h - $var_i ) ) );
+
+    @if ( $var_i == 0 ) {
+      $var_r: $value;
+      $var_g: $var_3;
+      $var_b: $var_1;
+    }
+    @else if ( $var_i == 1 ) {
+      $var_r: $var_2;
+      $var_g: $value;
+      $var_b: $var_1;
+    }
+    @else if ( $var_i == 2 ) {
+      $var_r: $var_1;
+      $var_g: $value;
+      $var_b: $var_3;
+    }
+    @else if ( $var_i == 3 ) {
+      $var_r: $var_1;
+      $var_g: $var_2;
+      $var_b: $value;
+    }
+    @else if ( $var_i == 4 ) {
+      $var_r: $var_3;
+      $var_g: $var_1;
+      $var_b: $value;
+    }
+    @else {
+      $var_r: $value;
+      $var_g: $var_1;
+      $var_b: $var_2;
+    }
+
+    $red: $var_r * 255;
+    $green: $var_g * 255;
+    $blue: $var_b * 255;
+  }
+
+  @return rgb($red, $green, $blue)
+}
+
+@function hsva($hue, $saturation, $value, $alpha) {
+  @return rgba(hsv($hue, $saturation, $value), $alpha)
+}
+
+// HSB - because Photoshop
+@function hsb($hue, $saturation, $brightness) {
+  @return hsv($hue, $saturation, $brightness)
+}
+
+@function hsba($hue, $saturation, $brightness, $alpha) {
+  @return hsva($hue, $saturation, $brightness, $alpha)
+}

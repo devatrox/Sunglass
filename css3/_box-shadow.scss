@@ -1,3 +1,0 @@
-@mixin box-shadow($string...) {
-  @include prefix(box-shadow, $string, webkit moz spec);
-}

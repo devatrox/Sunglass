@@ -1,0 +1,8 @@
+@mixin letterpress($background, $alpha: 0.7) {
+  @if lightness($background) > 50% {
+    text-shadow: rgba(white, $alpha) 0 1px 0;
+  } @else {
+    text-shadow: rgba(black, $alpha) 0 -1px 0;
+  }
+  color: readable($background);
+}

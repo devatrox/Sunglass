@@ -1,4 +1,0 @@
-@mixin overflow-wrap($string) {
-  word-wrap: $string;
-  @include prefix(overflow-wrap, $string, webkit moz o spec);
-}
