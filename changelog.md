@@ -2,7 +2,7 @@
 
 2013-08-01
 
-Starting over. Sunglass is not a CSS3 mixin library anymore. This is now a library of functions and mixins that might be helpful for some and can be used as in addition to other libraries (I recommend [Bourbon](http://bourbon.io/) or standalone.
+Starting over. Sunglass is not a CSS3 mixin library anymore. This is now a library of functions and mixins that might be helpful for some and can be used as in addition to other libraries (I recommend [Bourbon](http://bourbon.io/)) or standalone.
 
 ### v1.9.5
 
