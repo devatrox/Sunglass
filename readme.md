@@ -1,4 +1,4 @@
-# Sunglass
+![](http://cdn.devatrox.de/img/sunglass-logo.png)
 
 Mixin and functions library for Sass
 
@@ -12,6 +12,10 @@ Sass 3.2+
         @import "sunglass/sunglass";
 
 * Have fun!
+
+## Reset
+
+    @import "sunglass/reset";
 
 ## Functions
 
@@ -31,13 +35,11 @@ Sass 3.2+
 
 ## Mixins
 
+### letterpress()
+
     @include letterpress(#16a085);
 
-### Result:
+#### Result:
 
     text-shadow: rgba(0,0,0,0.7) 0 1px 0;
     color: #e7f5f2;
-
-## Reset
-
-    @import "sunglass/reset";
