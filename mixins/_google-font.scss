@@ -1,0 +1,47 @@
+@mixin google-font($family, $styles: ()) {
+
+  $url: "https://fonts.googleapis.com/css?family=";
+
+  $f: 0;
+
+  @each $word in $family {
+    $f: $f + 1;
+    $url: $url + $word;
+
+    @if $f < length($family) {
+      $url: $url + "+";
+    }
+  }
+
+  @if length($styles) == 0 {
+    @import url(#{$url});
+  }
+  @else {
+    $s: 0;
+    $url: $url + ":";
+
+    @each $style in $styles {
+      $s: $s + 1;
+      $url: $url + $style;
+
+      @if $s < length($styles) {
+        $url: $url + ",";
+      }
+    }
+    @import url(#{$url});
+  }
+}
+
+// Examples:
+
+// @include google-font(Open Sans);
+// Output:
+// @import url(//fonts.googleapis.com/css?family=Open+Sans);
+
+// @include google-font(Open Sans,(400,300,600,700));
+// Output:
+// @import url(//fonts.googleapis.com/css?family=Open+Sans:400,300,600,700);
+
+// Important!
+// - Each Family should be separated in it's own mixin
+// - Do not put anything in quotes

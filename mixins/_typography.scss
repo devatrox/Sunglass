@@ -1,0 +1,26 @@
+$base-font-size: 13px !default;
+
+@function rem-to-px($size) {
+  @return (strip-unit($size) * strip-unit($base-font-size)) + px
+}
+
+@mixin font-size($size) {
+
+  $suffix: "";
+
+  $number: nth($size, 1);
+  $striped-number: strip-unit($number);
+  $unit: unit($number);
+
+  @if (length($size) == 2) {
+    $suffix: " " + nth($size, 2);
+  }
+
+  @if unit(nth($size, 1)) == rem {
+    font-size: rem-to-px($number) + $suffix; // Fallback
+    font-size: unquote($striped-number + $unit + $suffix);
+  }
+  @else {
+    font-size: $size;
+  }
+}

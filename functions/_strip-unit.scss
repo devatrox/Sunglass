@@ -1,0 +1,3 @@
+@function strip-unit($number) {
+  @return $number / ($number * 0 + 1)
+}

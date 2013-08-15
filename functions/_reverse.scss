@@ -1,0 +1,8 @@
+@function reverse($vars) {
+  $output: null;
+
+  @each $var in $vars {
+    $output: append($output, $var * -1);
+  }
+  @return $output;
+}

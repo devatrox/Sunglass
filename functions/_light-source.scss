@@ -1,0 +1,30 @@
+@function light-source($string, $length: 1px) {
+  $output: null;
+
+  @if $string == n {
+    $output: 0px $length;
+  }
+  @if $string == ne {
+    $output: -$length $length;
+  }
+  @if $string == e {
+    $output: -$length 0px;
+  }
+  @if $string == se {
+    $output: -$length (-$length);
+  }
+  @if $string == s {
+    $output: 0px (-$length);
+  }
+  @if $string == sw {
+    $output: $length (-$length);
+  }
+  @if $string == w {
+    $output: $length 0px;
+  }
+  @if $string == nw {
+    $output: $length $length;
+  }
+
+  @return $output;
+}

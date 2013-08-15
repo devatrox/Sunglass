@@ -1,3 +1,12 @@
+### v2.5 (Robin)
+
+2013-08-14
+
+* Added font-size mixin for fallback support if using rem
+* Added google-font mixin
+* Added grid system
+* Added light-source and global-light functions
+
 ### v2.0 (Robin)
 
 2013-08-01

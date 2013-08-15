@@ -7,15 +7,21 @@ Sass 3.2+
 
 ## Install
 * Download and put the "sunglass" folder in your Sass directory
-* Import Sunglass in your Sass documents as needed
+* Import Sunglass in your Sass file
 
         @import "sunglass/sunglass";
 
 * Have fun!
 
-## Reset
+## Light & Shadow
 
-    @import "sunglass/reset";
+    $global-light: se;
+
+    global-light(2px) -> -2px -2px
+
+    light-source(nw, 2px) -> 2px 2px
+
+    long-shadow(#107360, 50px) -> #0e6756 -1px -1px 0, #0e6756 -2px -2px 0, #0e6856 -3px -3px 0, ...
 
 ## Functions
 
@@ -31,15 +37,43 @@ Sass 3.2+
     $icobase: "../icons/";
     icon("filename.png") -> url("../icons/filename.png")
 
-    long-shadow(#16a085, 100) -> #139077 1px 1px 0, #139077 2px 2px 0, #139078 3px 3px 0, ...
-
 ## Mixins
+
+### google-font()
+
+    @include google-font(Open Sans,(400,300,600,700));
+
+##### Result:
+
+    @import url(//fonts.googleapis.com/css?family=Open+Sans:400,300,600,700);
 
 ### letterpress()
 
     @include letterpress(#16a085);
 
-#### Result:
+##### Result:
 
     text-shadow: rgba(0,0,0,0.7) 0 1px 0;
     color: #e7f5f2;
+
+### font-size()
+
+    $base-font-size: 14px;
+    @include font-size(2rem);
+
+##### Result:
+
+    font-size: 28px;
+    font-size: 2rem;
+
+## html5doctor.com Reset
+
+    @import "sunglass/addons/reset";
+
+## Grid system
+
+    @import "sunglass/addons/grid";
+
+    or
+
+    @import "sunglass/addons/bootstrap-grid";

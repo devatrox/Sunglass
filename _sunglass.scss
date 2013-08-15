@@ -1,8 +1,14 @@
 @import "functions/cmyk";
 @import "functions/files";
+@import "functions/global-light";
 @import "functions/hsv";
+@import "functions/light-source";
 @import "functions/long-shadow";
 @import "functions/readable";
-@import "functions/units";
+@import "functions/reverse";
+@import "functions/strip-unit";
 
+@import "mixins/google-font";
 @import "mixins/letterpress";
+@import "mixins/sunglass";
+@import "mixins/typography";

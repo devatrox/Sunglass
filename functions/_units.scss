@@ -1,7 +1,0 @@
-@function strip-unit($number) {
-  @return $number / ($number * 0 + 1)
-}
-
-@function add-unit($number, $unit) {
-  @return #{strip-unit($number)}#{unquote($unit)}
-}

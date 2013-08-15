@@ -1,0 +1,5 @@
+$global-light: n !default;
+
+@function global-light($length: 1px) {
+  @return light-source($global-light, $length);
+}

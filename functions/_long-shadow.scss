@@ -1,13 +1,33 @@
-// Changing orientation is coming in a feature release
+// Unfortunately long shadows can't be transparent due to CSS limitations
 
-@function long-shadow($color: #fff, $length: 100, $opacity: 0.1, $strength: 0) {
+@function long-shadow($bgcolor: #fff, $length: 100px, $opacity: 0.1, $strength: 0, $light-source: $global-light) {
+  $length: strip-unit($length);
   $shadow-list: null;
+
+  $x: 1;
+  $y: 1;
+
+  @if alpha($bgcolor) < 1 {
+    @warn "No alpha allowed in #{$bgcolor}!";
+  }
+
+  @if unit($length) == "px" or unitless($length) {
+    // go on...
+  }
+  @else {
+    @warn "Invalid unit in #{$length}! Please use pixels";
+  }
 
   @for $i from 1 through $length {
     $o: ($opacity - (($opacity - ($opacity * $strength)) * ($i * 100 / $length) / 100)) * 100%;
 
-    $shadow-list: append($shadow-list, mix(black, $color, $o) $i + px $i + px 0, comma);
+    $l: light-source($light-source);
+
+    $x: nth($l, 1) * $i;
+    $y: nth($l, 2) * $i;
+
+    $shadow-list: append($shadow-list, mix(black, $bgcolor, $o) $x $y 0, comma);
   }
 
-  @return $shadow-list
+  @return $shadow-list;
 }
