@@ -1,0 +1,6 @@
+@function get-coords($angle, $length) {
+  $x: strip-unit($length) * cos($angle);
+  $y: reverse(strip-unit($length) * sin($angle));
+
+  @return $x * 1px $y * 1px;
+}

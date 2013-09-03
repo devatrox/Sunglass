@@ -1,8 +1,13 @@
-@function reverse($vars) {
-  $output: null;
+@function reverse($numbers) {
+  $output: ();
 
-  @each $var in $vars {
-    $output: append($output, $var * -1);
+  @if type-of($numbers) == "number" {
+    $output: $numbers * -1;
+  }
+  @else {
+    @each $var in $numbers {
+      $output: append($output, $var * -1);
+    }
   }
   @return $output;
 }

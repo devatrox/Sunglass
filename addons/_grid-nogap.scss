@@ -1,0 +1,5 @@
+@import "../mixins/grid-calc";
+
+$grid-nogap: 12 !default;
+
+@include grid-calc($grid, grid-nogap, 0, span-, offset-);

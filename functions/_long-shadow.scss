@@ -1,6 +1,6 @@
 // Unfortunately long shadows can't be transparent due to CSS limitations
 
-@function long-shadow($bgcolor: #fff, $length: 100px, $opacity: 0.1, $strength: 0, $light-source: $global-light) {
+@function long-shadow($bgcolor: #fff, $length: 100px, $opacity: 0.1, $strength: 0, $light: $global-light) {
   $length: strip-unit($length);
   $shadow-list: null;
 
@@ -18,10 +18,10 @@
     @warn "Invalid unit in #{$length}! Please use pixels";
   }
 
+  $l: light-source($light);
+
   @for $i from 1 through $length {
     $o: ($opacity - (($opacity - ($opacity * $strength)) * ($i * 100 / $length) / 100)) * 100%;
-
-    $l: light-source($light-source);
 
     $x: nth($l, 1) * $i;
     $y: nth($l, 2) * $i;

@@ -1,30 +1,33 @@
 @function light-source($string, $length: 1px) {
-  $output: null;
+  $output: ();
 
   @if $string == n {
-    $output: 0px $length;
+    $output: get-coords(90deg, $length);
   }
-  @if $string == ne {
-    $output: -$length $length;
+  @else if $string == ne {
+    $output: get-coords(45deg, $length);
   }
-  @if $string == e {
-    $output: -$length 0px;
+  @else if $string == e {
+    $output: get-coords(0deg, $length);
   }
-  @if $string == se {
-    $output: -$length (-$length);
+  @else if $string == se {
+    $output: get-coords(315deg, $length);
   }
-  @if $string == s {
-    $output: 0px (-$length);
+  @else if $string == s {
+    $output: get-coords(270deg, $length);
   }
-  @if $string == sw {
-    $output: $length (-$length);
+  @else if $string == sw {
+    $output: get-coords(225deg, $length);
   }
-  @if $string == w {
-    $output: $length 0px;
+  @else if $string == w {
+    $output: get-coords(180deg, $length);
   }
-  @if $string == nw {
-    $output: $length $length;
+  @else if $string == nw {
+    $output: get-coords(135deg, $length);
+  }
+  @else {
+    $output: get-coords($string, $length);
   }
 
-  @return $output;
+  @return reverse($output);
 }

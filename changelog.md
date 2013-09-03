@@ -1,4 +1,11 @@
-### v2.5 (Robin)
+### v2.6 (Exactly)
+
+2013-09-02
+
+* Added deg input for light source!
+* Added rem mixin
+
+### v2.5 (Shiny)
 
 2013-08-14
 

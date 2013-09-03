@@ -1,14 +1,20 @@
 @import "functions/cmyk";
 @import "functions/files";
+@import "functions/get-coords";
 @import "functions/global-light";
 @import "functions/hsv";
 @import "functions/light-source";
+@import "functions/local-light";
 @import "functions/long-shadow";
 @import "functions/readable";
+@import "functions/rem-to-px";
 @import "functions/reverse";
 @import "functions/strip-unit";
 
 @import "mixins/google-font";
 @import "mixins/letterpress";
+@import "mixins/rem";
 @import "mixins/sunglass";
-@import "mixins/typography";
+
+// Comment this out when using Compass
+@import "functions/sassy-math";

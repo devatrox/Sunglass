@@ -15,11 +15,13 @@ Sass 3.2+
 
 ## Light & Shadow
 
+global-light() gives you a consistent source of light for all your shadow stuff, just like you're used to in Photoshop!
+
     $global-light: se;
 
     global-light(2px) -> -2px -2px
 
-    light-source(nw, 2px) -> 2px 2px
+    local-light(nw, 2px) -> 2px 2px
 
     long-shadow(#107360, 50px) -> #0e6756 -1px -1px 0, #0e6756 -2px -2px 0, #0e6856 -3px -3px 0, ...
 
@@ -37,15 +39,17 @@ Sass 3.2+
     $icobase: "../icons/";
     icon("filename.png") -> url("../icons/filename.png")
 
+    reverse(2em -4em) -> -2em 4em
+
 ## Mixins
 
 ### google-font()
 
-    @include google-font(Open Sans,(400,300,600,700));
+    @include google-font(Open Sans,(400,300,600,700), https);
 
 ##### Result:
 
-    @import url(//fonts.googleapis.com/css?family=Open+Sans:400,300,600,700);
+    @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700);
 
 ### letterpress()
 
@@ -53,13 +57,15 @@ Sass 3.2+
 
 ##### Result:
 
+    // Will - by default - use the $global-light setting
+
     text-shadow: rgba(0,0,0,0.7) 0 1px 0;
     color: #e7f5f2;
 
-### font-size()
+### rem()
 
     $base-font-size: 14px;
-    @include font-size(2rem);
+    @include rem(font-size, 2rem);
 
 ##### Result:
 
@@ -72,8 +78,11 @@ Sass 3.2+
 
 ## Grid system
 
+    $grid: 12;
+    $gap: 4%;
     @import "sunglass/addons/grid";
 
     or
 
+    $gap: 4%;
     @import "sunglass/addons/bootstrap-grid";

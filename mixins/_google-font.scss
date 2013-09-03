@@ -1,6 +1,10 @@
-@mixin google-font($family, $styles: ()) {
+@mixin google-font($family, $styles: (), $protocol: http) {
 
-  $url: "https://fonts.googleapis.com/css?family=";
+  $url: "http://fonts.googleapis.com/css?family=";
+
+  @if $protocol == https {
+    $url: "https://fonts.googleapis.com/css?family=";
+  }
 
   $f: 0;
 
