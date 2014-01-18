@@ -25,7 +25,12 @@
     ".gitignore",
     "bower.json",
     "Gruntfile.coffee",
-    "package.json"
+    "package.json",
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "tests"
   ],
-  "homepage": "http://devatrox.github.io/Sunglass/"
+  "homepage": "http://devatrox.github.io/Sunglass/",
+  "license": "MIT"
 }
