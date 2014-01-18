@@ -1,37 +1,35 @@
-@mixin google-font($family, $styles: (), $protocol: http) {
+@mixin google-font($family, $styles: (), $protocol: null) {
 
-  $url: "http://fonts.googleapis.com/css?family=";
+  $url: "//fonts.googleapis.com/css?family=";
 
-  @if $protocol == https {
-    $url: "https://fonts.googleapis.com/css?family=";
+  @if $protocol {
+    $url: str-prepend($url, $protocol + ":");
   }
 
   $f: 0;
 
   @each $word in $family {
     $f: $f + 1;
-    $url: $url + $word;
+    $url: str-append($url, $word);
 
     @if $f < length($family) {
-      $url: $url + "+";
+      $url: str-append($url, "+");
     }
   }
 
-  @if length($styles) == 0 {
-    @import url(#{$url});
-  }
-  @else {
+  @if length($styles) != 0 {
     $s: 0;
-    $url: $url + ":";
+    $url: str-append($url, ":");
 
     @each $style in $styles {
       $s: $s + 1;
-      $url: $url + $style;
+      $url: str-append($url, #{$style});
 
       @if $s < length($styles) {
-        $url: $url + ",";
+        $url: str-append($url, ",");
       }
     }
-    @import url(#{$url});
+
   }
+  @import url("#{$url}");
 }
