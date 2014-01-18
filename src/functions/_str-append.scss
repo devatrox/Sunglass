@@ -1,0 +1,3 @@
+@function str-append($original, $insert) {
+  @return str-insert($original, $insert, str-length($original) + 1);
+}

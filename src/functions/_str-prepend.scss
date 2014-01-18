@@ -1,0 +1,3 @@
+@function str-prepend($original, $insert) {
+  @return str-insert($original, $insert, 1);
+}
