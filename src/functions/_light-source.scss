@@ -1,37 +1,24 @@
 @function light-source($string, $length: 1px) {
   $output: ();
 
-  @if $string == n {
-    $output: get-coords(90deg, $length);
+  $compass: (
+    n: 90deg,
+    ne: 45deg,
+    e: 0deg,
+    se: 315deg,
+    s: 270deg,
+    sw: 225deg,
+    w: 180deg,
+    nw: 135deg
+  );
+
+  @if type-of($string) == string {
+    $string: to-lower-case($string);
+
+    $string: map-get($compass, $string);
   }
-  @else if $string == ne {
-    $output: get-coords(45deg, $length);
-  }
-  @else if $string == e {
-    $output: get-coords(0deg, $length);
-  }
-  @else if $string == se {
-    $output: get-coords(315deg, $length);
-  }
-  @else if $string == s {
-    $output: get-coords(270deg, $length);
-  }
-  @else if $string == sw {
-    $output: get-coords(225deg, $length);
-  }
-  @else if $string == w {
-    $output: get-coords(180deg, $length);
-  }
-  @else if $string == nw {
-    $output: get-coords(135deg, $length);
-  }
-  @else {
-    $output: get-coords($string, $length);
-  }
+
+  $output: get-coords($string, $length);
 
   @return reverse($output);
-}
-
-@function light-source-inset($string, $length: 1px) {
-  @return reverse(light-source($string, $length));
 }
