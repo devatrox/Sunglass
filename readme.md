@@ -11,7 +11,7 @@ Sass 3.2+
 
     `bower install sunglass --save-dev`
 
-* Or Download the [latest release](https://github.com/devatrox/jquery.responsive-menu/releases) and put it wherever you like
+* Or Download the [latest release](https://github.com/devatrox/sunglass/releases) and put it wherever you like
 
 * Import Sunglass into your Sass file
 
