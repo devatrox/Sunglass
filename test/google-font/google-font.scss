@@ -1,0 +1,10 @@
+@import "../sunglass";
+
+$font: Open Sans Condensed;
+
+@include google-font($font, (300, 700));
+
+body {
+  font-family: "#{$font}", sans-serif;
+  text-align: center;
+}

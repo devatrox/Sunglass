@@ -1,6 +1,0 @@
-@import "../mixins/grid-calc";
-
-$grid: 12 !default;
-$gap: 3% !default;
-
-@include grid-calc($grid, grid, $gap, span-, offset-);

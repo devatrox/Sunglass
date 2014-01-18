@@ -1,5 +1,3 @@
-$base-font-size: 13px !default;
-
 @function rem-to-px($size) {
   @return (strip-unit($size) * strip-unit($base-font-size)) + px
 }

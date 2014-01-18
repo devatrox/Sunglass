@@ -1,6 +1,0 @@
-// This is actually just a CSS3 filter mixin and it only works in Chrome right now
-
-@mixin sunglass($filter: brightness(50%)) {
-  -webkit-filter: $filter;
-  filter: $filter;
-}

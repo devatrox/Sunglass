@@ -35,17 +35,3 @@
     @import url(#{$url});
   }
 }
-
-// Examples:
-
-// @include google-font(Open Sans);
-// Output:
-// @import url(//fonts.googleapis.com/css?family=Open+Sans);
-
-// @include google-font(Open Sans,(400,300,600,700));
-// Output:
-// @import url(//fonts.googleapis.com/css?family=Open+Sans:400,300,600,700);
-
-// Important!
-// - Each Family should be separated in it's own mixin
-// - Do not put anything in quotes

@@ -1,22 +1,16 @@
-// Unfortunately long shadows can't be transparent due to CSS limitations
-
 @function long-shadow($bgcolor: #fff, $length: 100px, $opacity: 0.1, $strength: 0, $light: $global-light) {
-  $length: strip-unit($length);
+
+  @if unit($length) == "px" or unitless($length) {
+    $length: strip-unit($length);
+  }
+  @else {
+    @warn "Invalid unit #{$length}! Please use pixels";
+  }
+
   $shadow-list: null;
 
   $x: 1;
   $y: 1;
-
-  @if alpha($bgcolor) < 1 {
-    @warn "No alpha allowed in #{$bgcolor}!";
-  }
-
-  @if unit($length) == "px" or unitless($length) {
-    // go on...
-  }
-  @else {
-    @warn "Invalid unit in #{$length}! Please use pixels";
-  }
 
   $l: light-source($light);
 
@@ -29,5 +23,11 @@
     $shadow-list: append($shadow-list, mix(black, $bgcolor, $o) $x $y 0, comma);
   }
 
-  @return $shadow-list;
+  @if alpha($bgcolor) < 1 {
+    @warn "No alpha allowed (#{$bgcolor})!";
+    @return null;
+  }
+  @else {
+    @return $shadow-list;
+  }
 }

@@ -1,15 +1,21 @@
 ![](http://cdn.devatrox.de/img/sunglass-logo.png)
 
-Mixin and functions library for Sass
+**A mixin and functions library for Sass**
 
 ## Requirements
 Sass 3.2+
 
-## Install
-* Download and put the "sunglass" folder in your Sass directory
-* Import Sunglass in your Sass file
+## Installation
 
-        @import "sunglass/sunglass";
+* Install with [Bower](http://bower.io/)
+
+    bower install sunglass --save-dev
+
+* Or Download the [latest release](https://github.com/devatrox/jquery.responsive-menu/releases) and put it wherever you like
+
+* Import Sunglass into your Sass file
+
+    @import "path/to/sunglass";
 
 * Have fun!
 
@@ -17,9 +23,9 @@ Sass 3.2+
 
 global-light() gives you a consistent source of light for all your shadow stuff, just like you're used to in Photoshop!
 
-    $global-light: se;
+    $global-light: 90deg !default;
 
-    global-light(2px) -> -2px -2px
+    global-light(2px) -> -2px -2px // Shorthand: gl()
 
     local-light(nw, 2px) -> 2px 2px
 
@@ -33,15 +39,22 @@ global-light() gives you a consistent source of light for all your shadow stuff,
     hsv(168,86,63) -> #16a085
     hsva(168,86,63,0.5) -> rgba(22,160,133,0.5)
 
-    $imgbase: "../images/";
+    $imgbase: "../images/" !default;
     img("filename.png") -> url("../images/filename.png")
 
-    $icobase: "../icons/";
+    $icobase: "../icons/" !default;
     icon("filename.png") -> url("../icons/filename.png")
 
     reverse(2em -4em) -> -2em 4em
 
 ## Mixins
+
+### generate-grid()
+
+    $grid: 12 !default;
+    $gap: 20px !default;
+
+    @include generate-grid($grid-class, $span-class, $offset-class, $grid: $grid, $gap: $gap);
 
 ### google-font()
 
@@ -64,25 +77,36 @@ global-light() gives you a consistent source of light for all your shadow stuff,
 
 ### rem()
 
-    $base-font-size: 14px;
-    @include rem(font-size, 2rem);
+    $base-font-size: 13px !default;
+    $rem-fallback: true !default;
+
+    @include rem(padding, 2rem);
 
 ##### Result:
 
-    font-size: 28px;
-    font-size: 2rem;
+    padding: 26px;
+    padding: 2rem;
+
+### clearfix()
+
+    selector {
+        @include clearfix;
+    }
+
+##### Result:
+
+    selector {
+        *zoom: 1;
+    }
+    selector:before,
+    selector:after {
+        content: " ";
+        display: table;
+    }
+    selector:after {
+        clear: both;
+    }
 
 ## html5doctor.com Reset
 
     @import "sunglass/addons/reset";
-
-## Grid system
-
-    $grid: 12;
-    $gap: 4%;
-    @import "sunglass/addons/grid";
-
-    or
-
-    $gap: 4%;
-    @import "sunglass/addons/bootstrap-grid";

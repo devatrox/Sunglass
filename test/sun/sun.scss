@@ -1,0 +1,21 @@
+@import "../sunglass";
+
+$global-light: sw;
+
+body {
+  text-align: center;
+  font-family: monospace;
+}
+
+header {
+  width: 30em;
+  margin: 10em auto;
+  padding: 1em;
+  font-size: 1.7em;
+  background: #911;
+  overflow: hidden;
+  border-radius: 10px;
+  color: white;
+  text-shadow: long-shadow(#911, 50px, 0.15);
+  box-shadow: inset rgba(black, 0.7) gli() 0, long-shadow();
+}

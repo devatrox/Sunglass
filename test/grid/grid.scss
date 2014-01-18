@@ -1,0 +1,23 @@
+@import "../sunglass";
+
+@import "../../src/addons/bootstrap3-grid";
+
+body {
+  font-family: sans-serif;
+  padding: 0;
+  margin: 0;
+}
+
+[class*="col"] {
+  margin-bottom: 1em;
+
+  &:after {
+    content: attr(class);
+    background: #eee;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding: 15px;
+    text-align: center;
+    display: block;
+  }
+}

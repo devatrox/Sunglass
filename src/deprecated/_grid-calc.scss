@@ -1,0 +1,49 @@
+@mixin grid-calc($grid, $grid-class, $gap, $span-class, $offset-class) {
+  @warn "This legacy grid-style will be removed in a feature release";
+
+  $span-width: (100% - ($gap * ($grid - 1))) / $grid;
+
+  .#{$grid-class} {
+    display: block;
+    width: auto;
+    *zoom: 1;
+
+    &:before,
+    &:after {
+      content: " ";
+      display: table;
+    }
+
+    &:after {
+      clear: both;
+    }
+
+    [class*="span"] {
+      display: block;
+      width: auto;
+      min-height: 30px;
+      float: left;
+      margin-left: $gap;
+
+      &:first-child, &.first {
+        margin-left: 0;
+      }
+    }
+
+    @for $i from 1 through $grid {
+      .#{$span-class}#{$i} {
+        width: ($span-width * $i) + (($i - 1) * $gap);
+      }
+    }
+
+    @for $i from 1 through ($grid - 1) {
+      .#{$offset-class}#{$i} {
+        margin-left: ($span-width * $i) + ($gap * $i) + $gap;
+
+        &:first-child, &.first {
+          margin-left: ($span-width * $i) + ($gap * $i);
+        }
+      }
+    }
+  }
+}

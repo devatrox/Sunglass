@@ -1,9 +1,16 @@
-$global-light: n !default;
-
 @function global-light($length: 1px) {
   @return light-source($global-light, $length);
 }
 
 @function global-light-inset($length: 1px) {
   @return reverse(global-light($length));
+}
+
+// Shorthands
+@function gl($length: 1px) {
+  @return global-light($length);
+}
+
+@function gli($length: 1px) {
+  @return global-light-inset($length);
 }

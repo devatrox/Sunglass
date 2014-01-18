@@ -31,3 +31,7 @@
 
   @return reverse($output);
 }
+
+@function light-source-inset($string, $length: 1px) {
+  @return reverse(light-source($string, $length));
+}

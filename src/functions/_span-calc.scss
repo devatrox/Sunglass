@@ -1,0 +1,3 @@
+@function span-calc($i, $grid: $grid) {
+  @return (100% / $grid) * $i;
+}

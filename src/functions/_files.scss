@@ -1,0 +1,7 @@
+@function img($filename) {
+  @return url(#{$base-img-path}#{$filename});
+}
+
+@function icon($filename) {
+  @return url(#{$base-icon-path}#{$filename});
+}
