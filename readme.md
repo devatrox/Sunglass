@@ -3,7 +3,7 @@
 **A mixin and functions library for Sass**
 
 ## Requirements
-Sass 3.2+
+Sass 3.3+
 
 ## Installation
 
