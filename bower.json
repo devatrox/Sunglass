@@ -1,7 +1,7 @@
 {
   "name": "Sunglass",
   "description": "A mixin and functions library for Sass",
-  "version": "2.7.0",
+  "version": "2.7.5",
   "authors": [
     "Jason Nickel <mail@devatrox.de>"
   ],
