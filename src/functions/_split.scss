@@ -1,23 +1,39 @@
-@function split($separator, $string, $limit: str-length($string)) {
+@function split($string, $separator: null, $limit: str-length($string)) {
   $list: ();
-  $l: true;
 
-  @while $l == true {
-    $pos: str-index($string, $separator);
-
-    $substring: str-slice($string, 0, $pos - 1);
-    $string: str-slice($string, $pos + 1);
-
-    $list: append($list, $substring);
-
-    @if length($list) == $limit {
-      $l: false;
-    }
-    @else if str-index($string, $separator) == 0 {
-      $list: append($list, $string);
-      $l: false;
+  @if $separator == "" {
+    @while str-length($string) > 0 {
+      $list: append($list, str-slice($string, 0, 1));
+      $string: str-slice($string, 2);
     }
   }
+  @else if $separator != null {
+    $l: true;
 
+    @while $l == true {
+
+      $pos: str-index($string, $separator);
+
+      $substr: unquote(str-slice($string, 0, $pos - 1));
+
+      @if str-contains($string, $separator) == false {
+        $list: append($list, $substr);
+        $l: false;
+      }
+      @else if length($list) == $limit {
+        $l: false;
+      }
+      @else {
+        $list: append($list, $substr);
+      }
+
+      $string: str-slice($string, $pos + str-length($separator));
+    }
+  }
+  @else {
+    $list: append($list, $string);
+  }
+
+  $list: filter($list, $separator, "");
   @return $list;
 }

@@ -1,3 +1,6 @@
-@function str-append($original, $insert) {
-  @return str-insert($original, $insert, str-length($original) + 1);
+@function str-append($string, $insert) {
+  @if type-of($string) != string {
+    $string: "";
+  }
+  @return str-insert($string, $insert, str-length($string) + 1);
 }

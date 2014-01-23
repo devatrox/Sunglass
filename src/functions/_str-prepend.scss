@@ -1,3 +1,6 @@
-@function str-prepend($original, $insert) {
-  @return str-insert($original, $insert, 1);
+@function str-prepend($string, $insert) {
+  @if type-of($string) != string {
+    $string: "";
+  }
+  @return str-insert($string, $insert, 1);
 }
