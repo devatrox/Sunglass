@@ -12,7 +12,6 @@ module.exports = (grunt) ->
           "src/_defaults.scss"
           "src/functions/*.scss"
           "src/mixins/*.scss"
-          "src/deprecated/*.scss"
         ]
         dest: "_sunglass.scss"
 
@@ -33,9 +32,9 @@ module.exports = (grunt) ->
 
         files: [
           expand: true,
-          cwd: "test/",
+          cwd: "tests/",
           src: ["**/*.scss"],
-          dest: "test/",
+          dest: "tests/",
           ext: ".css"
         ]
 
@@ -45,8 +44,8 @@ module.exports = (grunt) ->
           livereload: true
           spawn: false
         files: [
-          "test/**/*.scss"
-          "test/**/index.html"
+          "tests/**/*.scss"
+          "tests/**/index.html"
           "src/**/*.scss"
         ]
         tasks: ["sass"]
@@ -68,7 +67,7 @@ module.exports = (grunt) ->
     "copy"
   ]
 
-  grunt.registerTask "test", [
+  grunt.registerTask "default", [
     "connect"
     "watch"
   ]
