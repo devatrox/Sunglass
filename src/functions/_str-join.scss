@@ -1,0 +1,13 @@
+@function str-join($array, $separator: ",") {
+  $string: null;
+
+  @for $i from 1 through length($array) {
+    $string: str-append($string, nth($array, $i));
+
+    @if $i != length($array) {
+      $string: str-append($string, $separator);
+    }
+  }
+
+  @return $string;
+}

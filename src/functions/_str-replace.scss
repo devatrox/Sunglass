@@ -1,0 +1,3 @@
+@function str-replace($string, $substr, $newsubstr) {
+  @return str-join(split($string, $substr), $newsubstr);
+}

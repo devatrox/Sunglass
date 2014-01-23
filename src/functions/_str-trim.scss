@@ -1,0 +1,3 @@
+@function str-trim($string) {
+  @return str-join(split($string, " "), " ");
+}
