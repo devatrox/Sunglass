@@ -1,0 +1,18 @@
+@import "../../sunglass";
+
+$teststring: "   II like Apples   and Bananas    ";
+$testlist: Apples, Bananas, Oranges, Cherry, " ", " ", "";
+
+@debug "str-contains: " + str-contains($teststring, " ");
+
+@debug "str-replace: '" + str-replace($teststring, "I", "You") + "'"; // broken
+
+@debug "str-trim: '" + str-trim($teststring) + "'"; // broken
+
+@debug "str-join: '" + str-join($testlist, "/") + "'";
+
+@debug "split: (" + split($teststring, " ") + ")";
+
+@debug "filter: (" + filter($testlist, " ") + ")";
+
+@debug "compact: (" + compact($testlist) + ")";
