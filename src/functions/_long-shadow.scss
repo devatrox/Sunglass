@@ -31,3 +31,12 @@
     @return $shadow-list;
   }
 }
+
+// For when you don't need any other shadows on the element
+@mixin long-box-shadow($bgcolor: #fff, $length: 100px, $opacity: 0.1, $strength: 0, $light: $global-light) {
+  box-shadow: long-shadow($bgcolor, $length, $opacity, $strength, $light);
+}
+
+@mixin long-text-shadow($bgcolor: #fff, $length: 100px, $opacity: 0.1, $strength: 0, $light: $global-light) {
+  text-shadow: long-shadow($bgcolor, $length, $opacity, $strength, $light);
+}
