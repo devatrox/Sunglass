@@ -394,24 +394,24 @@ $sg-iter: 50;
 @mixin generate-grid($grid-class, $span-class, $offset-class, $grid: $grid, $gap: $gap) {
 
   .#{$grid-class} {
-      @include grid-container($gap);
-    }
+    @include grid-container($gap);
 
     > [class*="#{$span-class}"] {
       @include column($gap);
     }
 
     @for $i from 1 through $grid {
-      > .#{$span-class}#{$i} {
+      & > .#{$span-class}#{$i} {
         @include span($i, $grid);
       }
     }
 
     @for $i from 1 through ($grid - 1) {
-      > .#{$offset-class}#{$i} {
+      & > .#{$offset-class}#{$i} {
         @include offset($i, $grid);
       }
     }
+  }
 }
 
 @mixin google-font($family, $styles: (), $protocol: http) {
