@@ -4,18 +4,18 @@
       @include grid-container($gap);
     }
 
-    [class*="#{$span-class}"] {
+    > [class*="#{$span-class}"] {
       @include column($gap);
     }
 
     @for $i from 1 through $grid {
-      .#{$span-class}#{$i} {
+      > .#{$span-class}#{$i} {
         @include span($i, $grid);
       }
     }
 
     @for $i from 1 through ($grid - 1) {
-      .#{$offset-class}#{$i} {
+      > .#{$offset-class}#{$i} {
         @include offset($i, $grid);
       }
     }

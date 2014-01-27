@@ -1,6 +1,6 @@
 /*! 
 * Sunglass - A mixin and functions library for Sass 
-* v2.7.0 
+* v2.8.0 
 * http://devatrox.github.io/Sunglass/ 
 */
 
@@ -397,18 +397,18 @@ $sg-iter: 50;
       @include grid-container($gap);
     }
 
-    [class*="#{$span-class}"] {
+    > [class*="#{$span-class}"] {
       @include column($gap);
     }
 
     @for $i from 1 through $grid {
-      .#{$span-class}#{$i} {
+      > .#{$span-class}#{$i} {
         @include span($i, $grid);
       }
     }
 
     @for $i from 1 through ($grid - 1) {
-      .#{$offset-class}#{$i} {
+      > .#{$offset-class}#{$i} {
         @include offset($i, $grid);
       }
     }
