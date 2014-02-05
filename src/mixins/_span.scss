@@ -2,3 +2,9 @@
 
   width: span-calc($i, $grid);
 }
+
+@mixin span-media($i, $media-query, $grid: $grid) {
+  @media #{$media-query} {
+    width: span-calc($i, $grid);
+  }
+}
