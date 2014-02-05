@@ -13,7 +13,7 @@
       }
     }
 
-    @for $i from 1 through ($grid - 1) {
+    @for $i from 0 through ($grid - 1) {
       & > .#{$offset-class}#{$i} {
         @include offset($i, $grid);
       }
