@@ -1,11 +1,13 @@
+@if $add-copyright {
 /*!
- * Sunglass - A mixin and functions library for Sass
- * v3.0.0-beta.1
- * http://devatrox.github.io/Sunglass/
- */
+* Sunglass - A mixin and functions library for Sass
+* v3.0.0
+* https://github.com/devatrox/Sunglass
+*/
+}
 
-$grid: 12 !default;
-$gap: 20px !default;
+$base-grid: 12 !default;
+$base-gap: 20px !default;
 
 $global-light: 90deg !default;
 
@@ -15,9 +17,11 @@ $base-icon-path: "../icons/" !default;
 $base-font-size: 16px !default;
 $rem-fallback: true !default;
 
-// Formular provided by EasyRGB (http://www.easyrgb.com/index.php?X=MATH&H=12#text12)
+$add-copyright: true !default;
 
-@function cmy($cyan, $magenta, $yellow) {
+// Formulars provided by easyrgb.com and rapidtables.com
+
+@function _cmy($cyan, $magenta, $yellow) {
   $red: (1 - ($cyan / 100)) * 255;
   $green: (1 - ($magenta / 100)) * 255;
   $blue: (1 - ($yellow / 100)) * 255;
@@ -25,13 +29,11 @@ $rem-fallback: true !default;
   @return rgb($red, $green, $blue);
 }
 
-@function cmya($cyan, $magenta, $yellow, $alpha) {
-  @return rgba(cmy($cyan, $magenta, $yellow), $alpha);
+@function _cmya($cyan, $magenta, $yellow, $alpha) {
+  @return rgba(_cmy($cyan, $magenta, $yellow), $alpha);
 }
 
-// Formular provided by RapidTables.com (http://www.rapidtables.com/convert/color/cmyk-to-rgb.htm)
-
-@function cmyk($cyan, $magenta, $yellow, $key) {
+@function _cmyk($cyan, $magenta, $yellow, $key) {
   $red: (1 - ($key / 100)) * (1 - ($cyan / 100)) * 255;
   $green: (1 - ($key / 100)) * (1 - ($magenta / 100)) * 255;
   $blue: (1 - ($key / 100)) * (1 - ($yellow / 100)) * 255;
@@ -39,63 +41,13 @@ $rem-fallback: true !default;
   @return rgb($red, $green, $blue);
 }
 
-@function cmyka($cyan, $magenta, $yellow, $key, $alpha) {
-  @return rgba(cmyk($cyan, $magenta, $yellow, $key), $alpha);
+@function _cmyka($cyan, $magenta, $yellow, $key, $alpha) {
+  @return rgba(_cmyk($cyan, $magenta, $yellow, $key), $alpha);
 }
 
-@function img($filename) {
-  @return url(#{$base-img-path}#{$filename});
-}
+// Formular provided by easyrgb.com
 
-@function icon($filename) {
-  @return url(#{$base-icon-path}#{$filename});
-}
-
-@function filter($list, $filters...) {
-  $output: ();
-
-  @each $item in $list {
-
-    @if index($filters, $item) == false {
-      $output: append($output, $item, comma);
-    }
-
-  }
-
-  @return $output;
-}
-
-@function compact($list) {
-  @return filter($list, false, "");
-}
-
-@function get-coords($angle, $length) {
-  $x: strip-unit($length) * sg-cos($angle);
-  $y: reverse(strip-unit($length) * sg-sin($angle));
-
-  @return $x * 1px $y * 1px;
-}
-
-@function global-light($length: 1px) {
-  @return light-source($global-light, $length);
-}
-
-@function global-light-inset($length: 1px) {
-  @return reverse(global-light($length));
-}
-
-// Shorthands
-@function gl($length: 1px) {
-  @return global-light($length);
-}
-
-@function gli($length: 1px) {
-  @return global-light-inset($length);
-}
-
-// Formular provided by EasyRGB (http://www.easyrgb.com/index.php?X=MATH&H=21#text21)
-
-@function hsv($hue, $saturation, $value) {
+@function _hsv($hue, $saturation, $value) {
   $hue: ($hue * 100 / 360) / 100;
   $saturation: $saturation / 100;
   $value: $value / 100;
@@ -166,26 +118,113 @@ $rem-fallback: true !default;
     $blue: $var_b * 255;
   }
 
-  @return rgb($red, $green, $blue)
+  @return rgb($red, $green, $blue);
 }
 
-@function hsva($hue, $saturation, $value, $alpha) {
-  @return rgba(hsv($hue, $saturation, $value), $alpha)
+@function _hsva($hue, $saturation, $value, $alpha) {
+  @return rgba(_hsv($hue, $saturation, $value), $alpha);
 }
 
 // HSB - because Photoshop
-@function hsb($hue, $saturation, $brightness) {
-  @return hsv($hue, $saturation, $brightness)
+@function _hsb($hue, $saturation, $brightness) {
+  @return _hsv($hue, $saturation, $brightness);
 }
 
-@function hsba($hue, $saturation, $brightness, $alpha) {
-  @return hsva($hue, $saturation, $brightness, $alpha)
+@function _hsba($hue, $saturation, $brightness, $alpha) {
+  @return _hsva($hue, $saturation, $brightness, $alpha);
 }
 
-@function light-source($string, $length: 1px) {
+@function _random-color($palette: false) {
+  $rgb: "";
+
+  @if $palette {
+    @if type-of($palette) == string {
+      @if $palette == monochrome {
+        $rgb: if(round(random()) == 1, #000, #fff);
+      }
+      @else if $palette == grayscale or $palette == greyscale {
+        $rgb: hsl(0, 0, random(100) + 0%);
+      }
+      @else {
+        @warn "Invalid keywords (#{$palette})";
+      }
+
+    }
+    @else {
+      @warn "#{$palette} not a string";
+    }
+  }
+  @else {
+    $red: random(255);
+    $green: random(255);
+    $blue: random(255);
+
+    $rgb: rgb($red, $green, $blue);
+  }
+
+  @return $rgb;
+}
+
+// todo: pastel, gradient (hue value)
+
+@function _filter($list, $filters...) {
   $output: ();
 
-  $compass: (
+  @each $item in $list {
+
+    @if index($filters, $item) == null {
+      $output: append($output, $item, comma);
+    }
+
+  }
+
+  @return $output;
+}
+
+@function _compact($list) {
+  @return _filter($list, false, "");
+}
+
+@function _split($string, $substr: false, $limit: str-length($string)) {
+  $list: ();
+
+  @if $substr == '' {
+    @while str-length($string) > 0 {
+      $list: append($list, str-slice($string, 0, 1));
+      $string: str-slice($string, 2);
+    }
+  }
+  @else if $substr != false or $substr != null {
+    $l: true;
+    $c: _str-count($string, $substr);
+
+    @for $i from 1 through $c {
+
+      $start: str-index($string, $substr);
+      $end: $start + str-length($substr) - 1;
+
+      @if $start != 1 {
+        $list: append($list, str-slice($string, 0, $start - 1));
+        $string: str-slice($string, $end + 1, str-length($string));
+      }
+      @else {
+        $string: str-slice($string, $end + 1, str-length($string));
+      }
+    }
+    @if str-length($string) > 0 {
+      $list: append($list, str-slice($string, 0));
+    }
+  }
+  @else {
+    $list: append($list, $string);
+  }
+
+  @return $list;
+}
+
+@function _coordinates($angle, $length: 1px) {
+
+  $aliases: (
     n: 90deg,
     ne: 45deg,
     e: 0deg,
@@ -196,29 +235,242 @@ $rem-fallback: true !default;
     nw: 135deg
   );
 
-  @if type-of($string) == string {
-    $string: to-lower-case($string);
+  @if map-has-key($aliases, $angle) {
+    $angle: to-lower-case($angle);
 
-    $string: map-get($compass, $string);
+    $angle: map-get($aliases, $angle);
+  }
+  @if type-of($angle) != number {
+    @warn "#{$angle} NaN";
+  }
+  @if type-of($length) != number {
+    @warn "#{$length} NaN";
+  }
+  @if unit($length) != "px" {
+    @warn "#{$length}; Unit must be px";
   }
 
-  $output: get-coords($string, $length);
+  $x: _strip-unit($length) * _cos($angle);
+  $y: _strip-unit($length) * _sin($angle);
+  $y: _opposite($y);
 
-  @return reverse($output);
+  @return ($x + 0px) ($y + 0px);
 }
 
-@function local-light($string, $length: 1px) {
-  @return light-source($string, $length);
+@function _coords($angle, $length: 1px) {
+  @return _coordinates($angle, $length);
 }
 
-@function local-light-inset($string, $length: 1px) {
-  @return reverse(local-light($string, $length));
+@function _opposite($numbers) {
+  $output: ();
+
+  @if type-of($numbers) == number {
+    $output: $numbers * -1;
+  }
+  @else if type-of($numbers) == list {
+    @each $number in $numbers {
+      @if type-of($number) == number {
+        $output: append($output, $number * -1);
+      }
+      @else {
+        @warn "#{$number} NaN";
+      }
+    }
+  }
+  @else {
+    @warn "#{$numbers} NaN";
+  }
+
+  @return $output;
 }
 
-@function long-shadow($bgcolor: #fff, $length: 100px, $opacity: 0.1, $strength: 0, $light: $global-light) {
+@function _rem-to-px($size) {
+  @return (_strip-unit($size) * _strip-unit($base-font-size)) + 0px;
+}
+
+// SASSY MATH
+// https://github.com/Team-Sass/Sassy-math
+
+// My light functions depend on these so I stole it
+// Prefixed functions to avoid conflicts
+
+$sg-pi: 3.1415926535897932384626433832795028841971693993751;
+$sg-iter: 50;
+
+@function _exponent($base, $exponent) {
+  // reset value
+  $value: $base;
+  // positive intergers get multiplied
+  @if $exponent > 1 {
+    @for $i from 2 through $exponent {
+      $value: $value * $base; } }
+  // negitive intergers get divided. A number divided by itself is 1
+  @if $exponent < 1 {
+    @for $i from 0 through -$exponent {
+      $value: $value / $base; } }
+  // return the last value written
+  @return $value;
+}
+
+@function _factorial($number) {
+  // reset value
+  $value: 1;
+  // positive intergers get multiplied
+  @if $number > 0 {
+    @for $i from 1 through $number {
+      $value: $value * $i;
+    }
+  }
+  @return $value;
+}
+
+@function _maclaurin($start, $key, $number) {
+  $value: $start;
+  $add: 0;
+
+  @for $i from 1 through $sg-iter {
+    @if $add == 0 {
+      $value: $value - ( _exponent($number, $key) / -factorial($key) );
+      $add: 1;
+    }
+    @else {
+      $value: $value + ( _exponent($number, $key) / -factorial($key) );
+      $add: 0;
+    }
+
+    $key: $key + 2;
+  }
+
+  @return $value;
+}
+
+@function _deg-to-rad($number) {
+  @return $number * $sg-pi / 180deg;
+}
+
+@function _rad-to-deg($number) {
+  @return $number * 180deg / $sg-pi;
+}
+
+@function _sin($number, $unit: "deg") {
+ @if $unit == "deg" {
+   $number: _deg-to-rad($number);
+ }
+ @return _maclaurin($number, 3, $number);
+}
+
+@function _cos($number, $unit: "deg") {
+ @if $unit == "deg" {
+   $number: _deg-to-rad($number);
+ }
+ @return _maclaurin(1, 2, $number);
+}
+
+@function _strip-unit($number) {
+  @if type-of($number) != number {
+    @warn "#{$number} NaN";
+  }
+
+  @return $number / ($number * 0 + 1)
+}
+
+@function _str-append($string, $insert) {
+  $string: if($string == null, "", $string);
+
+  @return str-insert($string, $insert, str-length($string) + 1);
+}
+
+@function _str-contains($string, $substr, $pos: 0) {
+
+  $string: str-slice($string, $pos);
+
+  @if str-index($string, $substr) != null {
+    @return true;
+  }
+  @else {
+    @return false;
+  }
+}
+
+@function _str-count($string, $substring) {
+  $c: 0;
+
+  @for $i from 1 through str-length($string) {
+
+    $index: str-index($string, $substring);
+
+    @if $index != null {
+      $c: $c + 1;
+      $string: str-slice($string, $index + 1, str-length($string));
+    }
+  }
+
+  @return $c;
+
+}
+
+@function _str-join($list, $separator: ",") {
+  $string: "";
+
+  @for $i from 1 through length($list) {
+    $string: _str-append($string, #{nth($list, $i)});
+
+    @if $i != length($list) {
+      $string: _str-append($string, $separator);
+    }
+  }
+
+  @return $string;
+}
+
+@function _str-prepend($string, $insert) {
+  $string: if($string == null, "", $string);
+
+  @return str-insert($string, $insert, 1);
+}
+
+@function _global-light($length: 1px) {
+  @return _light-source($global-light, $length);
+}
+
+@function _global-light-inset($length: 1px) {
+  @return _opposite(_global-light($length));
+}
+
+// Shorthands
+@function _gl($length: 1px) {
+  @return _global-light($length);
+}
+
+@function _gli($length: 1px) {
+  @return _global-light-inset($length);
+}
+
+@mixin _letterpress($background, $alpha: 0.6, $light-source: $global-light) {
+  @if lightness($background) > 50% {
+    text-shadow: rgba(white, $alpha) _light-source($light-source) 0;
+  } @else {
+    text-shadow: rgba(black, $alpha) _light-source-inset($light-source) 0;
+  }
+  color: _readable($background, 10%);
+}
+
+@function _light-source($source, $length: 1px) {
+  @return _opposite(_coordinates($source, $length));
+}
+
+@function _local-light($string, $length: 1px) {
+  @return _light-source($string, $length);
+}
+
+@function _local-light-inset($string, $length: 1px) {
+  @return _opposite(_local-light($string, $length));
+}
+
+@function _long-shadow($bgcolor: #fff, $length: 100px, $opacity: 0.1, $strength: 0, $light: $global-light) {
 
   @if unit($length) == "px" or unitless($length) {
-    $length: strip-unit($length);
+    $length: _strip-unit($length);
   }
   @else {
     @warn "Invalid unit #{$length}! Please use pixels";
@@ -229,7 +481,7 @@ $rem-fallback: true !default;
   $x: 1;
   $y: 1;
 
-  $l: light-source($light);
+  $l: _light-source($light);
 
   @for $i from 1 through $length {
     $o: ($opacity - (($opacity - ($opacity * $strength)) * ($i * 100 / $length) / 100)) * 100%;
@@ -250,15 +502,84 @@ $rem-fallback: true !default;
 }
 
 // For when you don't need any other shadows on the element
-@mixin long-box-shadow($bgcolor: #fff, $length: 100px, $opacity: 0.1, $strength: 0, $light: $global-light) {
-  box-shadow: long-shadow($bgcolor, $length, $opacity, $strength, $light);
+@mixin _long-box-shadow($bgcolor: #fff, $length: 100px, $opacity: 0.1, $strength: 0, $light: $global-light) {
+  box-shadow: _long-shadow($bgcolor, $length, $opacity, $strength, $light);
 }
 
-@mixin long-text-shadow($bgcolor: #fff, $length: 100px, $opacity: 0.1, $strength: 0, $light: $global-light) {
-  text-shadow: long-shadow($bgcolor, $length, $opacity, $strength, $light);
+@mixin _long-text-shadow($bgcolor: #fff, $length: 100px, $opacity: 0.1, $strength: 0, $light: $global-light) {
+  text-shadow: _long-shadow($bgcolor, $length, $opacity, $strength, $light);
 }
 
-@function readable($background, $alpha: 10%) {
+// This is just a silly named CSS3 "filter" mixin and it only works in Webkit-based browsers as of now
+// See http://caniuse.com/#feat=css-filters for compatibility
+
+@mixin _sunglass($filter: brightness(50%)) {
+  -webkit-filter: $filter;
+  -moz-filter: $filter;
+  filter: $filter;
+}
+
+@mixin _column($span: false, $offset: false, $gap: $base-gap, $grid: $base-grid) {
+  position: relative;
+  min-height: 1px;
+  padding-right: $gap/2;
+  padding-left: $gap/2;
+  float: left;
+
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+
+  @if $offset != false {
+    @include _span($span, $grid);
+  }
+
+  @if $offset != false {
+    @include _offset($offset, $grid);
+  }
+}
+
+@mixin _first-column {
+  clear: left;
+}
+
+@mixin _generate-grid($grid-class, $span-class, $push-class: null, $grid: $base-grid, $gap: $base-gap) {
+
+  .#{$grid-class} {
+    @include _grid-container($gap);
+
+    > [class*="#{$span-class}"] {
+      @include _column(false, false, $gap);
+    }
+
+    @for $i from 1 through $grid {
+      & > .#{$span-class}#{$i} {
+        @include _span($i, $grid);
+      }
+    }
+
+    @if $push-class != null {
+      @for $i from 0 through ($grid - 1) {
+        & > .#{$push-class}#{$i} {
+          @include _offset($i, $grid);
+        }
+      }
+    }
+  }
+}
+
+@mixin _grid-container($gap: $base-gap) {
+
+  margin-right: -($gap/2);
+  margin-left: -($gap/2);
+  @include _clearfix;
+}
+
+@mixin _offset($i, $grid: $base-grid) {
+  margin-left: _span($i, $grid);
+}
+
+@function _readable($background, $alpha: 10%) {
   @if lightness($background) > 50% {
     @return mix($background, black, $alpha);
   } @else {
@@ -266,202 +587,18 @@ $rem-fallback: true !default;
   }
 }
 
-@function rem-to-px($size) {
-  @return (strip-unit($size) * strip-unit($base-font-size)) + px
-}
-
-@function reverse($numbers) {
-  $output: ();
-
-  @if type-of($numbers) == "number" {
-    $output: $numbers * -1;
-  }
-  @else {
-    @each $var in $numbers {
-      $output: append($output, $var * -1);
-    }
-  }
-  @return $output;
-}
-
-// SASSY MATH
-// https://github.com/Team-Sass/Sassy-math
-
-// My light functions depend on these so I stole it
-// Prefixed functions to avoid conflicts
-
-$sg-pi: 3.1415926535897932384626433832795028841971693993751;
-$sg-iter: 50;
-
-@function sg-exponent($base, $exponent) {
-  // reset value
-  $value: $base;
-  // positive intergers get multiplied
-  @if $exponent > 1 {
-    @for $i from 2 through $exponent {
-      $value: $value * $base; } }
-  // negitive intergers get divided. A number divided by itself is 1
-  @if $exponent < 1 {
-    @for $i from 0 through -$exponent {
-      $value: $value / $base; } }
-  // return the last value written
-  @return $value;
-}
-
-@function sg-factorial($number) {
-  // reset value
-  $value: 1;
-  // positive intergers get multiplied
-  @if $number > 0 {
-    @for $i from 1 through $number {
-      $value: $value * $i;
-    }
-  }
-  @return $value;
-}
-
-@function sg-maclaurin($start, $key, $number) {
-  $value: $start;
-  $add: 0;
-
-  @for $i from 1 through $sg-iter {
-    @if $add == 0 {
-      $value: $value - ( sg-exponent($number, $key) / sg-factorial($key) );
-      $add: 1;
-    }
-    @else {
-      $value: $value + ( sg-exponent($number, $key) / sg-factorial($key) );
-      $add: 0;
-    }
-
-    $key: $key + 2;
-  }
-
-  @return $value;
-}
-
-@function sg-deg-to-rad($number) {
-  @return $number * $sg-pi / 180deg;
-}
-
-@function sg-rad-to-deg($number) {
-  @return $number * 180deg / $sg-pi;
-}
-
-@function sg-sin($number, $unit: "deg") {
- @if $unit == "deg" {
-   $number: sg-deg-to-rad($number);
- }
- @return sg-maclaurin($number, 3, $number);
-}
-
-@function sg-cos($number, $unit: "deg") {
- @if $unit == "deg" {
-   $number: sg-deg-to-rad($number);
- }
- @return sg-maclaurin(1, 2, $number);
-}
-
-@function span-calc($i, $grid: $grid) {
+@function _span($i, $grid: $base-grid) {
   @return (100% / $grid) * $i;
 }
 
-@function split($string, $separator: null, $limit: str-length($string)) {
-  $list: ();
-
-  @if $separator == "" {
-    @while str-length($string) > 0 {
-      $list: append($list, str-slice($string, 0, 1));
-      $string: str-slice($string, 2);
-    }
-  }
-  @else if $separator != null {
-    $l: true;
-
-    @while $l == true {
-
-      $pos: str-index($string, $separator);
-
-      $substr: unquote(str-slice($string, 0, $pos - 1));
-
-      @if str-contains($string, $separator) == false {
-        $list: append($list, $substr);
-        $l: false;
-      }
-      @else if length($list) == $limit {
-        $l: false;
-      }
-      @else {
-        $list: append($list, $substr);
-      }
-
-      $string: str-slice($string, $pos + str-length($separator));
-    }
-  }
-  @else {
-    $list: append($list, $string);
-  }
-
-  $list: filter($list, $separator, "");
-  @return $list;
-}
-
-@function str-append($string, $insert) {
-  @if type-of($string) != string {
-    $string: "";
-  }
-  @return str-insert($string, $insert, str-length($string) + 1);
-}
-
-@function str-contains($string, $substr, $pos: 0) {
-
-  $string: str-slice($string, $pos);
-
-  @if str-index($string, $substr) > 0 {
-    @return true;
-  }
-  @else {
-    @return false;
-  }
-}
-
-@function str-join($array, $separator: ",") {
-  $string: null;
-
-  @for $i from 1 through length($array) {
-    $string: str-append($string, nth($array, $i));
-
-    @if $i != length($array) {
-      $string: str-append($string, $separator);
-    }
-  }
-
-  @return $string;
-}
-
-@function str-prepend($string, $insert) {
-  @if type-of($string) != string {
-    $string: "";
-  }
-  @return str-insert($string, $insert, 1);
-}
-
-@function str-replace($string, $substr, $newsubstr) {
-  @return str-join(split($string, $substr), $newsubstr);
-}
-
-@function str-trim($string) {
-  @return str-join(split($string, " "), " ");
-}
-
-@function strip-unit($number) {
-  @return $number / ($number * 0 + 1)
+@mixin _span($i, $grid: $base-grid) {
+  width: _span($i, $grid);
 }
 
 // Micro Clearfix by Nicolas Gallagher.
 // http://nicolasgallagher.com/micro-clearfix-hack/
 
-@mixin clearfix {
+@mixin _clearfix {
   *zoom: 1;
 
   &:before,
@@ -475,130 +612,50 @@ $sg-iter: 50;
   }
 }
 
-@mixin column($gap: $gap) {
-  position: relative;
-  min-height: 1px;
-  padding-right: $gap/2;
-  padding-left: $gap/2;
-  float: left;
-
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-
-  &:before, &:after {
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-  }
+@function _img($filename) {
+  @return url(#{$base-img-path}#{$filename});
 }
 
-@mixin generate-grid($grid-class, $span-class, $offset-class, $grid: $grid, $gap: $gap) {
-
-  .#{$grid-class} {
-    @include grid-container($gap);
-
-    > [class*="#{$span-class}"] {
-      @include column($gap);
-    }
-
-    @for $i from 1 through $grid {
-      & > .#{$span-class}#{$i} {
-        @include span($i, $grid);
-      }
-    }
-
-    @for $i from 1 through ($grid - 1) {
-      & > .#{$offset-class}#{$i} {
-        @include offset($i, $grid);
-      }
-    }
-  }
+@function _icon($filename) {
+  @return url(#{$base-icon-path}#{$filename});
 }
 
-@mixin google-font($family, $styles: (), $protocol: null) {
+@mixin _google-font($family, $styles: (), $protocol: null) {
 
   $url: "//fonts.googleapis.com/css?family=";
 
   @if $protocol {
-    $url: str-prepend($url, $protocol + ":");
+    $url: _str-prepend($url, $protocol + ":");
   }
 
-  $f: 0;
-
-  @each $word in $family {
-    $f: $f + 1;
-    $url: str-append($url, $word);
-
-    @if $f < length($family) {
-      $url: str-append($url, "+");
-    }
+  @if type-of($family) == string {
+    $family: _split($family, " ");
   }
+  $family: _str-join($family, "+");
+
+  $url: _str-append($url, $family);
 
   @if length($styles) != 0 {
-    $s: 0;
-    $url: str-append($url, ":");
+    $url: _str-append($url, ":");
 
-    @each $style in $styles {
-      $s: $s + 1;
-      $url: str-append($url, #{$style});
-
-      @if $s < length($styles) {
-        $url: str-append($url, ",");
-      }
-    }
-
+    $url: _str-append($url, _str-join($styles));
   }
-  @import url("#{$url}");
+  @import url(quote($url));
 }
 
-@mixin grid-container($gap: $gap) {
-
-  margin-right: -($gap/2);
-  margin-left: -($gap/2);
-  @include clearfix;
-}
-
-@mixin letterpress($background, $alpha: 0.6, $light-source: $global-light) {
-  @if lightness($background) > 50% {
-    text-shadow: rgba(white, $alpha) light-source($light-source) 0;
-  } @else {
-    text-shadow: rgba(black, $alpha) light-source-inset($light-source) 0;
-  }
-  color: readable($background, 10%);
-}
-
-@mixin offset($i, $grid: $grid) {
-  margin-left: span-calc($i, $grid);
-}
-
-@mixin rem($property, $value) {
+@mixin _rem($property, $value) {
   @if ($rem-fallback == true) {
-    #{$property}: rem-to-px($value);
+    #{$property}: _rem-to-px($value);
   }
   #{$property}: $value;
 }
 
-@mixin font-size($value) {
+@mixin _font-size($value) {
 
   @if unit($value) == rem {
-    @include rem(font-size, $value);
+    @include _rem(font-size, $value);
   }
   @else {
     font-size: $value;
   }
-}
-
-@mixin span($i, $grid: $grid) {
-
-  width: span-calc($i, $grid);
-}
-
-// This is just a silly named CSS3 "filter" mixin and it only works in Webkit-based browsers as of now
-// See http://caniuse.com/#feat=css-filters for compatibility
-
-@mixin sunglass($filter: brightness(50%)) {
-  -webkit-filter: $filter;
-  -moz-filter: $filter;
-  filter: $filter;
 }

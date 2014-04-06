@@ -1,6 +1,9 @@
-@import "../../sunglass";
+@import "../all";
 
-$global-light: sw;
+$global-light: nw;
+
+$element-background: #911;
+$element-size: 200px;
 
 body {
   text-align: center;
@@ -8,14 +11,22 @@ body {
 }
 
 header {
-  width: 30em;
+  width: $element-size;
+  height: $element-size;
+  box-sizing: border-box;
   margin: 10em auto;
-  padding: 1em;
-  font-size: 1.7em;
-  background: #911;
   overflow: hidden;
-  border-radius: 10px;
+  text-align: center;
+  background: $element-background;
+  overflow: hidden;
+  border-radius: 100%;
   color: white;
-  text-shadow: long-shadow(#911, 50px, 0.15);
-  box-shadow: inset rgba(black, 0.7) gli() 0, long-shadow();
+  @include _long-text-shadow($element-background, 50px, 0.15);
+  @include _long-box-shadow;
+
+  h1 {
+    font-size: 3em;
+    line-height: $element-size;
+    margin: 0;
+  }
 }

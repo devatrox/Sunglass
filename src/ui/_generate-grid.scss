@@ -1,0 +1,24 @@
+@mixin _generate-grid($grid-class, $span-class, $push-class: null, $grid: $base-grid, $gap: $base-gap) {
+
+  .#{$grid-class} {
+    @include _grid-container($gap);
+
+    > [class*="#{$span-class}"] {
+      @include _column(false, false, $gap);
+    }
+
+    @for $i from 1 through $grid {
+      & > .#{$span-class}#{$i} {
+        @include _span($i, $grid);
+      }
+    }
+
+    @if $push-class != null {
+      @for $i from 0 through ($grid - 1) {
+        & > .#{$push-class}#{$i} {
+          @include _offset($i, $grid);
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,22 @@
+@function _opposite($numbers) {
+  $output: ();
+
+  @if type-of($numbers) == number {
+    $output: $numbers * -1;
+  }
+  @else if type-of($numbers) == list {
+    @each $number in $numbers {
+      @if type-of($number) == number {
+        $output: append($output, $number * -1);
+      }
+      @else {
+        @warn "#{$number} NaN";
+      }
+    }
+  }
+  @else {
+    @warn "#{$numbers} NaN";
+  }
+
+  @return $output;
+}

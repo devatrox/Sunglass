@@ -1,0 +1,16 @@
+@mixin _rem($property, $value) {
+  @if ($rem-fallback == true) {
+    #{$property}: _rem-to-px($value);
+  }
+  #{$property}: $value;
+}
+
+@mixin _font-size($value) {
+
+  @if unit($value) == rem {
+    @include _rem(font-size, $value);
+  }
+  @else {
+    font-size: $value;
+  }
+}

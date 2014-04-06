@@ -1,0 +1,22 @@
+@mixin _google-font($family, $styles: (), $protocol: null) {
+
+  $url: "//fonts.googleapis.com/css?family=";
+
+  @if $protocol {
+    $url: _str-prepend($url, $protocol + ":");
+  }
+
+  @if type-of($family) == string {
+    $family: _split($family, " ");
+  }
+  $family: _str-join($family, "+");
+
+  $url: _str-append($url, $family);
+
+  @if length($styles) != 0 {
+    $url: _str-append($url, ":");
+
+    $url: _str-append($url, _str-join($styles));
+  }
+  @import url(quote($url));
+}

@@ -1,8 +1,8 @@
-@import "../../sunglass";
+@import "../all";
 
-$font: Open Sans Condensed;
+$font: "Open Sans Condensed";
 
-@include google-font($font, (300, 700));
+@include _google-font($font, 300 700);
 
 body {
   font-family: "#{$font}", sans-serif;

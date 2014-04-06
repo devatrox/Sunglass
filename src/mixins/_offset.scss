@@ -1,9 +1,0 @@
-@mixin offset($i, $grid: $grid) {
-  margin-left: span-calc($i, $grid);
-}
-
-@mixin offset-media($i, $media-query, $grid: $grid) {
-  @media #{$media-query} {
-    margin-left: span-calc($i, $grid);
-  }
-}

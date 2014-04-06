@@ -1,0 +1,17 @@
+@function _filter($list, $filters...) {
+  $output: ();
+
+  @each $item in $list {
+
+    @if index($filters, $item) == null {
+      $output: append($output, $item, comma);
+    }
+
+  }
+
+  @return $output;
+}
+
+@function _compact($list) {
+  @return _filter($list, false, "");
+}

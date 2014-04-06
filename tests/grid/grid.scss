@@ -1,6 +1,8 @@
-@import "../../sunglass";
+@import "../all";
 
-@import "../../addons/bootstrap3-grid";
+$base-gap: 10px;
+
+@include _generate-grid(grid, col-, col-push-);
 
 body {
   font-family: sans-serif;
@@ -9,7 +11,7 @@ body {
 }
 
 [class*="col"] {
-  margin-bottom: 1em;
+  margin-bottom: $base-gap;
 
   &:after {
     content: attr(class);

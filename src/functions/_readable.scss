@@ -1,7 +1,0 @@
-@function readable($background, $alpha: 10%) {
-  @if lightness($background) > 50% {
-    @return mix($background, black, $alpha);
-  } @else {
-    @return mix($background, white, $alpha);
-  }
-}

@@ -1,0 +1,7 @@
+@function _span($i, $grid: $base-grid) {
+  @return (100% / $grid) * $i;
+}
+
+@mixin _span($i, $grid: $base-grid) {
+  width: _span($i, $grid);
+}

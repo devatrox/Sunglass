@@ -1,0 +1,3 @@
+@mixin _offset($i, $grid: $base-grid) {
+  margin-left: _span($i, $grid);
+}
