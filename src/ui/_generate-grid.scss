@@ -16,7 +16,7 @@
     @if $push-class != null {
       @for $i from 0 through ($grid - 1) {
         & > .#{$push-class}#{$i} {
-          @include _offset($i, $grid);
+          @include _push($i, $grid);
         }
       }
     }
