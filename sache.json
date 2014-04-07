@@ -1,0 +1,11 @@
+{
+  "name": "Sunglass",
+  "description": "A mixin and functions library for Sass",
+  "tags": [
+    "library",
+    "mixins",
+    "functions",
+    "grids",
+    "shadow"
+  ]
+}
