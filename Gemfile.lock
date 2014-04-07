@@ -1,10 +1,11 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    sass (3.3.0.rc.3)
+    sass (3.3.3)
 
 PLATFORMS
   ruby
+  x86-mingw32
 
 DEPENDENCIES
-  sass (>= 3.3.0.rc)
+  sass (>= 3.3.0)
