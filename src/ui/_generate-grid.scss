@@ -4,7 +4,7 @@
     @include _grid-container($gap);
 
     > [class*="#{$span-class}"] {
-      @include _column(false, false, $gap);
+      @include _column(1, 0, $gap);
     }
 
     @for $i from 1 through $grid {
