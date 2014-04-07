@@ -167,13 +167,24 @@ $add-copyright: true !default;
 
 // todo: pastel, gradient (hue value)
 
+@function _shade($color, $percent){
+  @return mix(black, $color, $percent);
+}
+
+@function _tint($color, $percent){
+  @return mix(white, $color, $percent);
+}
+
 @function _filter($list, $filters...) {
   $output: ();
 
   @each $item in $list {
 
-    @if index($filters, $item) == null {
-      $output: append($output, $item, comma);
+    @if index($filters, $item) {
+      // silence
+    }
+    @else {
+      $output: append($output, $item, list-separator($list));
     }
 
   }
@@ -444,11 +455,11 @@ $sg-iter: 50;
 }
 
 // Shorthands
-@function _gl($length: 1px) {
+@function _g($length: 1px) {
   @return _global-light($length);
 }
 
-@function _gli($length: 1px) {
+@function _gi($length: 1px) {
   @return _global-light-inset($length);
 }
 
@@ -516,6 +527,14 @@ $sg-iter: 50;
   text-shadow: _long-shadow($bgcolor, $length, $opacity, $strength, $light);
 }
 
+@function _readable($background, $alpha: 10%) {
+  @if lightness($background) > 50% {
+    @return mix($background, black, $alpha);
+  } @else {
+    @return mix($background, white, $alpha);
+  }
+}
+
 // This is just a silly named CSS3 "filter" mixin and it only works in Webkit-based browsers as of now
 // See http://caniuse.com/#feat=css-filters for compatibility
 
@@ -579,14 +598,6 @@ $sg-iter: 50;
 
 @mixin _push($i, $grid: $base-grid) {
   margin-left: _span($i, $grid);
-}
-
-@function _readable($background, $alpha: 10%) {
-  @if lightness($background) > 50% {
-    @return mix($background, black, $alpha);
-  } @else {
-    @return mix($background, white, $alpha);
-  }
 }
 
 @function _span($i, $grid: $base-grid) {

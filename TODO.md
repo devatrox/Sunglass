@@ -1,6 +1,7 @@
 # Todo
 
 * Documentation!
-* flatten()
+* _flatten()
+* _convert()
 * a few more lo-dash-like functions (as possible)
-* rename reverse() to something else to avoid confusion
+* More palettes in _random-color()
