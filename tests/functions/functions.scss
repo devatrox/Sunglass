@@ -2,19 +2,19 @@
 $exact-coordinates: false;
 $base-font-size: 12px;
 
-$teststring: '   II like Apples   and Bananas     .. . ';
+$teststring: 'Is There Intelligent Life in Outer Space?';
 $testlist: Apples, Bananas, Oranges, Cherry, ' ', ' ', '', false;
 
 $opposite: _opposite(400px);
 $opposite2: _opposite(400px -350px 0);
-$random-color: _random-color(greyscale);
-$coordinates: _coordinates(45deg, 1px);
-$str-contains: _str-contains($teststring, 'I');
+$random-color: _random-color(monochrome);
+$coordinates: _coords(216deg, 10px);
+$str-contains: _str-contains($teststring, 'Intelligent Life');
 $str-join: _str-join($testlist, '+');
-$split: _split($teststring, 'I');
+$split: _split($teststring, "I");
 $filter: _filter($testlist, ' ');
 $compact: _compact($testlist);
-$str-count: _str-count($teststring, ' ');
+$str-count: _str-count($teststring, 'Wood');
 $rem-to-px: _rem-to-px(2rem);
 $strip-unit: _strip-unit(-400px);
 
@@ -24,7 +24,7 @@ $strip-unit: _strip-unit(-400px);
 
 // @debug 'opposite (2): ' + $opposite2 + ' (' + type-of($opposite2) + ')';
 
-// @debug 'rem-to-px: ' + $rem-to-px + ' (' + type-of($rem-to-px) + ')';
+@debug 'rem-to-px: ' + $rem-to-px + ' (' + type-of($rem-to-px) + ')';
 
 // @debug 'strip-unit: ' + $strip-unit + ' (' + type-of($strip-unit) + ')';
 
