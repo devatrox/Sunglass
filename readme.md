@@ -9,7 +9,7 @@ Sass 3.3+
 
 * Install with [Bower](http://bower.io/)
 
-    `bower install sunglass --save-dev`
+    `bower install sunglass#3.0.0-rc2 --save-dev`
 
 * Or Download the [latest release](https://github.com/devatrox/sunglass/releases) and put it wherever you like
 
