@@ -11,7 +11,7 @@ Sass 3.3+
 
     `bower install sunglass --save-dev`
 
-* Or Download the [latest release](releases/) and put it wherever you like
+* Or Download the [latest release](https://github.com/devatrox/Sunglass/releases) and put it wherever you like
 
 * Import Sunglass into your Sass file
 
