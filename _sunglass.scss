@@ -188,36 +188,42 @@ $add-copyright: true !default;
 @function _split($string, $substr: false, $limit: str-length($string)) {
   $list: ();
 
-  @if $substr == '' {
-    @while str-length($string) > 0 {
-      $list: append($list, str-slice($string, 0, 1));
-      $string: str-slice($string, 2);
+    @if $substr == false {
+      $list: append($list, $string);
     }
-  }
-  @else if $substr != false or $substr != null {
-    $l: true;
-    $c: _str-count($string, $substr);
+    @else if $substr == '' {
+      @while str-length($string) > 0 {
+        $list: append($list, str-slice($string, 0, 1));
+        $string: str-slice($string, 2);
+      }
+    }
+    @else if $substr != false or $substr != null {
+      @if _str-contains($string, $substr) {
+        $l: true;
+        $c: _str-count($string, $substr);
 
-    @for $i from 1 through $c {
+        @for $i from 1 through $c {
 
-      $start: str-index($string, $substr);
-      $end: $start + str-length($substr) - 1;
+          $start: str-index($string, $substr);
+          $end: $start + str-length($substr) - 1;
 
-      @if $start != 1 {
-        $list: append($list, str-slice($string, 0, $start - 1));
-        $string: str-slice($string, $end + 1, str-length($string));
+          @if $start != 1 {
+            $list: append($list, str-slice($string, 0, $start - 1));
+            $string: str-slice($string, $end + 1, str-length($string));
+          }
+          @else {
+            $string: str-slice($string, $end + 1, str-length($string));
+          }
+        }
+        @if str-length($string) > 0 {
+          $list: append($list, str-slice($string, 0));
+        }
       }
       @else {
-        $string: str-slice($string, $end + 1, str-length($string));
+        @warn '"#{$string}" does not contain "#{$substr}"!';
+        $list: append($list, $string);
       }
     }
-    @if str-length($string) > 0 {
-      $list: append($list, str-slice($string, 0));
-    }
-  }
-  @else {
-    $list: append($list, $string);
-  }
 
   @return $list;
 }
