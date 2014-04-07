@@ -1,7 +1,7 @@
 {
   "name": "Sunglass",
   "description": "A mixin and functions library for Sass",
-  "version": "2.8.1",
+  "version": "3.0.0",
   "authors": [
     "Jason Nickel <mail@devatrox.de>"
   ],
@@ -20,17 +20,17 @@
     "addons/_reset.scss"
   ],
   "ignore": [
-    "src",
     "test",
+    "tests",
     ".gitignore",
+    ".editorconfig",
     "bower.json",
-    "Gruntfile.coffee",
+    "Gruntfile.js",
     "package.json",
-    "**/.*",
     "node_modules",
     "bower_components",
-    "tests"
+    "TODO.md"
   ],
-  "homepage": "http://devatrox.github.io/Sunglass/",
+  "homepage": "https://github.com/devatrox/Sunglass",
   "license": "MIT"
 }

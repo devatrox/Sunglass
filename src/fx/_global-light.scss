@@ -1,0 +1,16 @@
+@function _global-light($length: 1px) {
+  @return _light-source($global-light, $length);
+}
+
+@function _global-light-inset($length: 1px) {
+  @return _opposite(_global-light($length));
+}
+
+// Shorthands
+@function _g($length: 1px) {
+  @return _global-light($length);
+}
+
+@function _gi($length: 1px) {
+  @return _global-light-inset($length);
+}

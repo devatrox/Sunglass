@@ -1,1 +1,1 @@
-@include grid-calc(12, row-fluid, 3%, span, offset);
+@include _generate-grid(row-fluid, span, offset, 12, 30px);

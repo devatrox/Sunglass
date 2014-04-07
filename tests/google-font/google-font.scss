@@ -1,0 +1,10 @@
+@import "../all";
+
+$font: "Open Sans Condensed";
+
+@include _google-font($font, 300 700);
+
+body {
+  font-family: "#{$font}", sans-serif;
+  text-align: center;
+}

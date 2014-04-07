@@ -1,0 +1,16 @@
+@function _str-count($string, $substring) {
+  $c: 0;
+
+  @for $i from 1 through str-length($string) {
+
+    $index: str-index($string, $substring);
+
+    @if $index != null {
+      $c: $c + 1;
+      $string: str-slice($string, $index + 1, str-length($string));
+    }
+  }
+
+  @return $c;
+
+}

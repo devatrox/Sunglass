@@ -1,7 +1,0 @@
-@function local-light($string, $length: 1px) {
-  @return light-source($string, $length);
-}
-
-@function local-light-inset($string, $length: 1px) {
-  @return reverse(local-light($string, $length));
-}

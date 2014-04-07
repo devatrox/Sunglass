@@ -1,3 +1,0 @@
-@mixin offset($i, $grid: $grid) {
-  margin-left: span-calc($i, $grid);
-}

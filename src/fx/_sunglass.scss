@@ -1,0 +1,8 @@
+// This is just a silly named CSS3 "filter" mixin and it only works in Webkit-based browsers as of now
+// See http://caniuse.com/#feat=css-filters for compatibility
+
+@mixin _sunglass($filter: brightness(50%)) {
+  -webkit-filter: $filter;
+  -moz-filter: $filter;
+  filter: $filter;
+}

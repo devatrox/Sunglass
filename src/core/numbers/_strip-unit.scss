@@ -1,0 +1,7 @@
+@function _strip-unit($number) {
+  @if type-of($number) != number {
+    @warn "#{$number} NaN";
+  }
+
+  @return $number / ($number * 0 + 1)
+}

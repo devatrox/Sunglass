@@ -1,0 +1,32 @@
+@import "../all";
+
+$global-light: nw;
+
+$element-background: #911;
+$element-size: 200px;
+
+body {
+  text-align: center;
+  font-family: monospace;
+}
+
+header {
+  width: $element-size;
+  height: $element-size;
+  box-sizing: border-box;
+  margin: 10em auto;
+  overflow: hidden;
+  text-align: center;
+  background: $element-background;
+  overflow: hidden;
+  border-radius: 100%;
+  color: white;
+  @include _long-text-shadow($element-background, 50px, 0.15);
+  @include _long-box-shadow;
+
+  h1 {
+    font-size: 3em;
+    line-height: $element-size;
+    margin: 0;
+  }
+}

@@ -1,0 +1,49 @@
+@import "../all";
+$exact-coordinates: false;
+$base-font-size: 12px;
+
+$teststring: 'Is There Intelligent Life in Outer Space?';
+$testlist: Apples, Bananas, Oranges, Cherry, ' ', ' ', '', false;
+
+$opposite: _opposite(400px);
+$opposite2: _opposite(400px -350px 0);
+$random-color: _random-color(monochrome);
+$tint: _tint(#911, 30%);
+$shade: _shade(#911, 30%);
+$coordinates: _coords(216deg, 10px);
+$str-contains: _str-contains($teststring, 'Intelligent Life');
+$str-join: _str-join($testlist, '+');
+$split: _split($teststring, ' ');
+$filter: _filter($testlist, ' ');
+$compact: _compact($testlist);
+$str-count: _str-count($teststring, 'Wood');
+$rem-to-px: _rem-to-px(2rem);
+$strip-unit: _strip-unit(-400px);
+
+// @debug 'coordinates: ' + $coordinates + ' (' + type-of($coordinates) + ')';
+
+// @debug 'opposite: ' + $opposite + ' (' + type-of($opposite) + ')';
+
+// @debug 'opposite (2): ' + $opposite2 + ' (' + type-of($opposite2) + ')';
+
+// @debug 'rem-to-px: ' + $rem-to-px + ' (' + type-of($rem-to-px) + ')';
+
+// @debug 'strip-unit: ' + $strip-unit + ' (' + type-of($strip-unit) + ')';
+
+// @debug 'split: ' + $split + ' (' + type-of($split) + ')';
+
+// @debug 'filter: ' + $filter + ' (' + type-of($filter) + ')';
+
+// @debug 'compact: ' + $compact + ' (' + type-of($compact) + ')';
+
+// @debug 'str-contains: ' + $str-contains + ' (' + type-of($str-contains) + ')';
+
+// @debug 'str-join: ' + $str-join + ' (' + type-of($str-join) + ')';
+
+// @debug 'str-count: ' + $str-count + ' (' + type-of($str-count) + ')';
+
+// @debug 'random-color: ' + $random-color + ' (' + type-of($random-color) + ')';
+
+// @debug 'tint: ' + $tint + ' (' + type-of($tint) + ')';
+
+// @debug 'shade: ' + $shade + ' (' + type-of($shade) + ')';

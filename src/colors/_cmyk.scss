@@ -1,0 +1,25 @@
+// Formulars provided by easyrgb.com and rapidtables.com
+
+@function _cmy($cyan, $magenta, $yellow) {
+  $red: (1 - ($cyan / 100)) * 255;
+  $green: (1 - ($magenta / 100)) * 255;
+  $blue: (1 - ($yellow / 100)) * 255;
+
+  @return rgb($red, $green, $blue);
+}
+
+@function _cmya($cyan, $magenta, $yellow, $alpha) {
+  @return rgba(_cmy($cyan, $magenta, $yellow), $alpha);
+}
+
+@function _cmyk($cyan, $magenta, $yellow, $key) {
+  $red: (1 - ($key / 100)) * (1 - ($cyan / 100)) * 255;
+  $green: (1 - ($key / 100)) * (1 - ($magenta / 100)) * 255;
+  $blue: (1 - ($key / 100)) * (1 - ($yellow / 100)) * 255;
+
+  @return rgb($red, $green, $blue);
+}
+
+@function _cmyka($cyan, $magenta, $yellow, $key, $alpha) {
+  @return rgba(_cmyk($cyan, $magenta, $yellow, $key), $alpha);
+}

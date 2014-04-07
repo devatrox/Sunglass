@@ -1,0 +1,6 @@
+@mixin _grid-container($gap: $base-gap) {
+
+  margin-right: -($gap/2);
+  margin-left: -($gap/2);
+  @include _clearfix;
+}

@@ -1,0 +1,11 @@
+@function _str-contains($string, $substr, $pos: 0) {
+
+  $string: str-slice($string, $pos);
+
+  @if str-index($string, $substr) != null {
+    @return true;
+  }
+  @else {
+    @return false;
+  }
+}
