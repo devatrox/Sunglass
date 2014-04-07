@@ -7,10 +7,10 @@
 }
 
 // Shorthands
-@function _gl($length: 1px) {
+@function _g($length: 1px) {
   @return _global-light($length);
 }
 
-@function _gli($length: 1px) {
+@function _gi($length: 1px) {
   @return _global-light-inset($length);
 }
