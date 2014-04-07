@@ -45,72 +45,59 @@ global-light() gives you a consistent source of light for all your shadow stuff,
     _hsv(168,86,63) -> #16a085
     _hsva(168,86,63,0.5) -> rgba(22,160,133,0.5)
 
-    $imgbase: "../images/" !default;
-    img("filename.png") -> url("../images/filename.png")
+## Grid system
 
-    $icobase: "../icons/" !default;
-    icon("filename.png") -> url("../icons/filename.png")
+    $base-grid: 12 !default;
+    $base-gap: 20px !default;
 
-## Mixins
+### Create your own semantic grids
 
-### generate-grid()
+    .container {
+        @include _grid-container;
 
-    $grid: 12 !default;
-    $gap: 20px !default;
+        .sidebar {
+            // _column has both span and push mixins optionally included
+            @include _column(3, 1);
+        }
 
-    @include generate-grid($grid-class, $span-class, $offset-class, $grid: $grid, $gap: $gap);
+        .main {
+            // but you can assign each one seperately (_column is necessary)
+            @include _column;
+            @include _span(7);
+            @include _push(1);
+        }
+    }
 
-### google-font()
+### The quick way
 
-    @include google-font(Open Sans,(400,300,600,700), https);
+    @include _generate-grid(grid-container, col-, col-push-);
+
+## Utils
+
+### Paths
+
+    $base-img-path: "../images/" !default;
+    _img("filename.png") -> url("../images/filename.png")
+
+    $base-icon-path: "../icons/" !default;
+    _icon("filename.png") -> url("../icons/filename.png")
+
+### _google-font()
+
+    @include _google-font(Open Sans,(400,300,600,700), https);
 
 ##### Result:
 
     @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700);
-
-### letterpress()
-
-    @include letterpress(#16a085);
-
-##### Result:
-
-    // Will - by default - use the $global-light setting
-
-    text-shadow: rgba(0,0,0,0.7) 0 1px 0;
-    color: #e7f5f2;
 
 ### rem()
 
     $base-font-size: 13px !default;
     $rem-fallback: true !default;
 
-    @include rem(padding, 2rem);
+    @include _rem(padding, 2rem);
 
 ##### Result:
 
     padding: 26px;
     padding: 2rem;
-
-### clearfix()
-
-    selector {
-        @include clearfix;
-    }
-
-##### Result:
-
-    selector {
-        *zoom: 1;
-    }
-    selector:before,
-    selector:after {
-        content: " ";
-        display: table;
-    }
-    selector:after {
-        clear: both;
-    }
-
-## html5doctor.com Reset
-
-    @import "sunglass/addons/reset";
