@@ -1,7 +1,5 @@
 {
   "name": "Sunglass",
-  "description": "A mixin and functions library for Sass",
-  "version": "3.0.0",
   "devDependencies": {
     "grunt": "~0.4.2",
     "grunt-contrib-concat": "~0.3.0",
