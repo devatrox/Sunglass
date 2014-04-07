@@ -525,23 +525,19 @@ $sg-iter: 50;
   filter: $filter;
 }
 
-@mixin _column($span: false, $offset: false, $gap: $base-gap, $grid: $base-grid) {
+@mixin _column($span: 1, $push: 0, $gap: $base-gap, $grid: $base-grid) {
   position: relative;
   min-height: 1px;
   padding-right: $gap/2;
   padding-left: $gap/2;
   float: left;
-
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
+  @include _span($span, $grid);
 
-  @if $offset != false {
-    @include _span($span, $grid);
-  }
-
-  @if $offset != false {
-    @include _offset($offset, $grid);
+  @if $push >= 0 {
+    @include _push($push, $grid);
   }
 }
 
@@ -555,7 +551,7 @@ $sg-iter: 50;
     @include _grid-container($gap);
 
     > [class*="#{$span-class}"] {
-      @include _column(false, false, $gap);
+      @include _column(1, 0, $gap);
     }
 
     @for $i from 1 through $grid {
@@ -567,7 +563,7 @@ $sg-iter: 50;
     @if $push-class != null {
       @for $i from 0 through ($grid - 1) {
         & > .#{$push-class}#{$i} {
-          @include _offset($i, $grid);
+          @include _push($i, $grid);
         }
       }
     }
@@ -581,7 +577,7 @@ $sg-iter: 50;
   @include _clearfix;
 }
 
-@mixin _offset($i, $grid: $base-grid) {
+@mixin _push($i, $grid: $base-grid) {
   margin-left: _span($i, $grid);
 }
 
