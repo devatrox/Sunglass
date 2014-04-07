@@ -8,10 +8,12 @@ $testlist: Apples, Bananas, Oranges, Cherry, ' ', ' ', '', false;
 $opposite: _opposite(400px);
 $opposite2: _opposite(400px -350px 0);
 $random-color: _random-color(monochrome);
+$tint: _tint(#911, 30%);
+$shade: _shade(#911, 30%);
 $coordinates: _coords(216deg, 10px);
 $str-contains: _str-contains($teststring, 'Intelligent Life');
 $str-join: _str-join($testlist, '+');
-$split: _split($teststring, "I");
+$split: _split($teststring, ' ');
 $filter: _filter($testlist, ' ');
 $compact: _compact($testlist);
 $str-count: _str-count($teststring, 'Wood');
@@ -24,7 +26,7 @@ $strip-unit: _strip-unit(-400px);
 
 // @debug 'opposite (2): ' + $opposite2 + ' (' + type-of($opposite2) + ')';
 
-@debug 'rem-to-px: ' + $rem-to-px + ' (' + type-of($rem-to-px) + ')';
+// @debug 'rem-to-px: ' + $rem-to-px + ' (' + type-of($rem-to-px) + ')';
 
 // @debug 'strip-unit: ' + $strip-unit + ' (' + type-of($strip-unit) + ')';
 
@@ -41,3 +43,7 @@ $strip-unit: _strip-unit(-400px);
 // @debug 'str-count: ' + $str-count + ' (' + type-of($str-count) + ')';
 
 // @debug 'random-color: ' + $random-color + ' (' + type-of($random-color) + ')';
+
+// @debug 'tint: ' + $tint + ' (' + type-of($tint) + ')';
+
+// @debug 'shade: ' + $shade + ' (' + type-of($shade) + ')';
