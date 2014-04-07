@@ -3,8 +3,11 @@
 
   @each $item in $list {
 
-    @if index($filters, $item) == null {
-      $output: append($output, $item, comma);
+    @if index($filters, $item) {
+      // silence
+    }
+    @else {
+      $output: append($output, $item, list-separator($list));
     }
 
   }
