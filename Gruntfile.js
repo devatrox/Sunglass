@@ -7,13 +7,11 @@ module.exports = function(grunt) {
     concat: {
       dist: {
         options: {
-          banner: "@if $add-copyright {\n" +
-                  "/*!\n" +
+          banner: "/*!\n" +
                   "* <%= bwr.name %> - <%= bwr.description %>\n" +
                   "* v<%= bwr.version %>\n" +
                   "* <%= bwr.homepage %>\n" +
-                  "*/\n" +
-                  "}\n\n"
+                  "*/\n\n"
         },
         src: ["src/core/_defaults.scss", "src/**/*.scss"],
         dest: "_sunglass.scss"

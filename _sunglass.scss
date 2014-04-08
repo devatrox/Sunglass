@@ -1,10 +1,8 @@
-@if $add-copyright {
 /*!
 * Sunglass - A mixin and functions library for Sass
-* v3.0.0
+* v3.0.1
 * https://github.com/devatrox/Sunglass
 */
-}
 
 $base-grid: 12 !default;
 $base-gap: 20px !default;
@@ -16,8 +14,6 @@ $base-icon-path: "../icons/" !default;
 
 $base-font-size: 16px !default;
 $rem-fallback: true !default;
-
-$add-copyright: true !default;
 
 // Formulars provided by easyrgb.com and rapidtables.com
 
