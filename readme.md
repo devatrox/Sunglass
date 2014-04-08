@@ -2,6 +2,11 @@
 
 **A mixin and functions library for Sass**
 
+## Note for Sunglass 2.x users
+
+As of Sunglass 3.x all function and mixin names now have an underscore in front of it. If you would like to upgrade, please check your syntax.
+I made this decision to resolve conflicts with other libraries. Feel free to email any death threads to spam@devatrox.de.
+
 ## Requirements
 Sass 3.3+
 
