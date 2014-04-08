@@ -1,7 +1,7 @@
 {
   "name": "Sunglass",
   "description": "A mixin and functions library for Sass",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "authors": [
     "Jason Nickel <mail@devatrox.de>"
   ],
@@ -29,7 +29,9 @@
     "package.json",
     "node_modules",
     "bower_components",
-    "TODO.md"
+    "TODO.md",
+    "Gemfile",
+    "Gemfile.lock"
   ],
   "homepage": "https://github.com/devatrox/Sunglass",
   "license": "MIT"
