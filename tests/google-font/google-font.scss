@@ -1,10 +1,11 @@
 @import "../all";
 
 $font: "Open Sans Condensed";
+// $font: "Montserrat";
 
 @include _google-font($font, 300 700);
 
 body {
-  font-family: "#{$font}", sans-serif;
+  font-family: quote($font), sans-serif;
   text-align: center;
 }

@@ -2,12 +2,12 @@
 $exact-coordinates: false;
 $base-font-size: 12px;
 
-$teststring: 'Is There Intelligent Life in Outer Space?';
+$teststring: 'How Much Wood Would a Woodchuck Chuck';
 $testlist: Apples, Bananas, Oranges, Cherry, ' ', ' ', '', false;
 
 $opposite: _opposite(400px);
 $opposite2: _opposite(400px -350px 0);
-$random-color: _random-color(monochrome);
+// $random-color: _random-color(monochrome);
 $tint: _tint(#911, 30%);
 $shade: _shade(#911, 30%);
 $coordinates: _coords(216deg, 10px);
