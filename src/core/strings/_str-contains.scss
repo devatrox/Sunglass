@@ -2,7 +2,7 @@
 
   $string: str-slice($string, $pos);
 
-  @if str-index($string, $substr) != null {
+  @if str-index($string, $substr) {
     @return true;
   }
   @else {

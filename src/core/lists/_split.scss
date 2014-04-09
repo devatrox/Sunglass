@@ -10,7 +10,7 @@
         $string: str-slice($string, 2);
       }
     }
-    @else if $substr != false or $substr != null {
+    @else if $substr {
       @if _str-contains($string, $substr) {
         $l: true;
         $c: _str-count($string, $substr);
