@@ -6,7 +6,7 @@
     $url: _str-prepend($url, $protocol + ":");
   }
 
-  @if type-of($family) == string {
+  @if type-of($family) == string and _str-contains($family, " ") {
     $family: _split($family, " ");
   }
   $family: _str-join($family, "+");
