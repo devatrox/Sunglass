@@ -1,4 +1,4 @@
-@mixin _letterpress($background, $alpha: 0.6, $light-source: $global-light) {
+@mixin _letterpress($background, $alpha: 0.6, $light-source: $_global-light) {
   @if lightness($background) > 50% {
     text-shadow: rgba(white, $alpha) _light-source($light-source) 0;
   } @else {

@@ -1,10 +1,13 @@
-$base-grid: 12 !default;
-$base-gap: 20px !default;
+$defaults: (
+  base-grid: 12,
+  base-gap: 20px,
+  global-light: 90deg,
+  base-img-path: "../images/",
+  base-icon-path: "../icons/",
+  base-font-size: 16px,
+  rem-fallback: true
+);
 
-$global-light: 90deg !default;
+$sunglass: () !default;
 
-$base-img-path: "../images/" !default;
-$base-icon-path: "../icons/" !default;
-
-$base-font-size: 16px !default;
-$rem-fallback: true !default;
+$settings: map-merge($defaults, $sunglass);

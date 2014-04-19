@@ -1,5 +1,5 @@
 @mixin _rem($property, $value) {
-  @if ($rem-fallback == true) {
+  @if ($_rem-fallback == true) {
     #{$property}: _rem-to-px($value);
   }
   #{$property}: $value;

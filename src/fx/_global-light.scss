@@ -1,5 +1,5 @@
 @function _global-light($length: 1px) {
-  @return _light-source($global-light, $length);
+  @return _light-source($_global-light, $length);
 }
 
 @function _global-light-inset($length: 1px) {

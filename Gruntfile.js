@@ -13,7 +13,12 @@ module.exports = function(grunt) {
                   "* <%= bwr.homepage %>\n" +
                   "*/\n\n"
         },
-        src: ["src/core/_defaults.scss", "src/**/*.scss"],
+        src: [
+          "src/core/_defaults.scss",
+          "src/core/__private/_legacy-vars.scss",
+          "src/core/__private/_internal-vars.scss",
+          "src/**/*.scss"
+        ],
         dest: "_sunglass.scss"
       }
     },
@@ -66,6 +71,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks("grunt-contrib-concat");
   grunt.loadNpmTasks("grunt-contrib-copy");
 
-  grunt.registerTask("compile", ["concat", "sass"]);
+  grunt.registerTask("build", ["concat", "sass"]);
   grunt.registerTask("default", ["watch"]);
 };

@@ -1,4 +1,4 @@
-@mixin _column($span: 1, $push: 0, $gap: $base-gap, $grid: $base-grid) {
+@mixin _column($span: 1, $push: 0, $gap: $_base-gap, $grid: $_base-grid) {
   position: relative;
   min-height: 1px;
   padding-right: $gap/2;

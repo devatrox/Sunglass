@@ -1,0 +1,21 @@
+@if (variable-exists(base-grid)) {
+  $settings: map-merge($defaults, (base-grid: $base-grid)) !global;
+}
+@if (variable-exists(base-gap)) {
+  $settings: map-merge($defaults, (base-gap: $base-gap)) !global;
+}
+@if (variable-exists(global-light)) {
+  $settings: map-merge($defaults, (global-light: $global-light)) !global;
+}
+@if (variable-exists(base-img-path)) {
+  $settings: map-merge($defaults, (base-img-path: $base-img-path)) !global;
+}
+@if (variable-exists(base-icon-path)) {
+  $settings: map-merge($defaults, (base-icon-path: $base-icon-path)) !global;
+}
+@if (variable-exists(base-font-size)) {
+  $settings: map-merge($defaults, (base-font-size: $base-font-size)) !global;
+}
+@if (variable-exists(rem-fallback)) {
+  $settings: map-merge($defaults, (rem-fallback: $rem-fallback)) !global;
+}
