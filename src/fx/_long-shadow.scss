@@ -1,4 +1,4 @@
-@function _long-shadow($bgcolor: #fff, $length: 100px, $opacity: 0.1, $strength: 0, $light: $global-light) {
+@function _long-shadow($bgcolor: #fff, $length: 100px, $opacity: 0.1, $strength: 0, $light: $_global-light) {
 
   @if unit($length) == "px" or unitless($length) {
     $length: _strip-unit($length);
@@ -33,10 +33,10 @@
 }
 
 // For when you don't need any other shadows on the element
-@mixin _long-box-shadow($bgcolor: #fff, $length: 100px, $opacity: 0.1, $strength: 0, $light: $global-light) {
+@mixin _long-box-shadow($bgcolor: #fff, $length: 100px, $opacity: 0.1, $strength: 0, $light: $_global-light) {
   box-shadow: _long-shadow($bgcolor, $length, $opacity, $strength, $light);
 }
 
-@mixin _long-text-shadow($bgcolor: #fff, $length: 100px, $opacity: 0.1, $strength: 0, $light: $global-light) {
+@mixin _long-text-shadow($bgcolor: #fff, $length: 100px, $opacity: 0.1, $strength: 0, $light: $_global-light) {
   text-shadow: _long-shadow($bgcolor, $length, $opacity, $strength, $light);
 }

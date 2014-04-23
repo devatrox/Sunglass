@@ -1,4 +1,12 @@
+$sunglass: (
+  base-gap: 30px,
+  base-font-size: 12px,
+  global-light: nw
+);
+
 @import "src/core/defaults";
+@import "src/core/__private/legacy-vars";
+@import "src/core/__private/internal-vars";
 @import "src/colors/cmyk";
 @import "src/colors/hsv";
 @import "src/colors/random-color";

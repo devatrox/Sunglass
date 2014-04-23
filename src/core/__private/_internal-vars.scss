@@ -1,0 +1,7 @@
+$_base-grid: map-get($settings, base-grid);
+$_base-gap: map-get($settings, base-gap);
+$_global-light: map-get($settings, global-light);
+$_base-img-path: map-get($settings, base-img-path);
+$_base-icon-path: map-get($settings, base-icon-path);
+$_base-font-size: map-get($settings, base-font-size);
+$_rem-fallback: map-get($settings, rem-fallback);

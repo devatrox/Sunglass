@@ -1,7 +1,7 @@
 @function _img($filename) {
-  @return url(#{$base-img-path}#{$filename});
+  @return url(#{$_base-img-path}#{$filename});
 }
 
 @function _icon($filename) {
-  @return url(#{$base-icon-path}#{$filename});
+  @return url(#{$_base-icon-path}#{$filename});
 }

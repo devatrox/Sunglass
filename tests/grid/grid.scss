@@ -1,7 +1,5 @@
 @import "../all";
 
-$base-gap: 10px;
-
 @include _generate-grid(grid, col-, col-push-);
 
 body {
@@ -11,7 +9,7 @@ body {
 }
 
 [class*="col"] {
-  margin-bottom: $base-gap;
+  margin-bottom: $_base-gap;
 
   &:after {
     content: attr(class);

@@ -4,16 +4,49 @@
 * https://github.com/devatrox/Sunglass
 */
 
-$base-grid: 12 !default;
-$base-gap: 20px !default;
+$defaults: (
+  base-grid: 12,
+  base-gap: 20px,
+  global-light: 90deg,
+  base-img-path: "../images/",
+  base-icon-path: "../icons/",
+  base-font-size: 16px,
+  rem-fallback: true
+);
 
-$global-light: 90deg !default;
+$sunglass: () !default;
 
-$base-img-path: "../images/" !default;
-$base-icon-path: "../icons/" !default;
+$settings: map-merge($defaults, $sunglass);
 
-$base-font-size: 16px !default;
-$rem-fallback: true !default;
+@if (variable-exists(base-grid)) {
+  $settings: map-merge($defaults, (base-grid: $base-grid)) !global;
+}
+@if (variable-exists(base-gap)) {
+  $settings: map-merge($defaults, (base-gap: $base-gap)) !global;
+}
+@if (variable-exists(global-light)) {
+  $settings: map-merge($defaults, (global-light: $global-light)) !global;
+}
+@if (variable-exists(base-img-path)) {
+  $settings: map-merge($defaults, (base-img-path: $base-img-path)) !global;
+}
+@if (variable-exists(base-icon-path)) {
+  $settings: map-merge($defaults, (base-icon-path: $base-icon-path)) !global;
+}
+@if (variable-exists(base-font-size)) {
+  $settings: map-merge($defaults, (base-font-size: $base-font-size)) !global;
+}
+@if (variable-exists(rem-fallback)) {
+  $settings: map-merge($defaults, (rem-fallback: $rem-fallback)) !global;
+}
+
+$_base-grid: map-get($settings, base-grid);
+$_base-gap: map-get($settings, base-gap);
+$_global-light: map-get($settings, global-light);
+$_base-img-path: map-get($settings, base-img-path);
+$_base-icon-path: map-get($settings, base-icon-path);
+$_base-font-size: map-get($settings, base-font-size);
+$_rem-fallback: map-get($settings, rem-fallback);
 
 // Formulars provided by easyrgb.com and rapidtables.com
 
@@ -298,7 +331,7 @@ $rem-fallback: true !default;
 }
 
 @function _rem-to-px($size) {
-  @return (_strip-unit($size) * _strip-unit($base-font-size)) + 0px;
+  @return (_strip-unit($size) * _strip-unit($_base-font-size)) + 0px;
 }
 
 // SASSY MATH
@@ -443,7 +476,7 @@ $sg-iter: 50;
 }
 
 @function _global-light($length: 1px) {
-  @return _light-source($global-light, $length);
+  @return _light-source($_global-light, $length);
 }
 
 @function _global-light-inset($length: 1px) {
@@ -459,7 +492,7 @@ $sg-iter: 50;
   @return _global-light-inset($length);
 }
 
-@mixin _letterpress($background, $alpha: 0.6, $light-source: $global-light) {
+@mixin _letterpress($background, $alpha: 0.6, $light-source: $_global-light) {
   @if lightness($background) > 50% {
     text-shadow: rgba(white, $alpha) _light-source($light-source) 0;
   } @else {
@@ -480,7 +513,7 @@ $sg-iter: 50;
   @return _opposite(_local-light($string, $length));
 }
 
-@function _long-shadow($bgcolor: #fff, $length: 100px, $opacity: 0.1, $strength: 0, $light: $global-light) {
+@function _long-shadow($bgcolor: #fff, $length: 100px, $opacity: 0.1, $strength: 0, $light: $_global-light) {
 
   @if unit($length) == "px" or unitless($length) {
     $length: _strip-unit($length);
@@ -515,11 +548,11 @@ $sg-iter: 50;
 }
 
 // For when you don't need any other shadows on the element
-@mixin _long-box-shadow($bgcolor: #fff, $length: 100px, $opacity: 0.1, $strength: 0, $light: $global-light) {
+@mixin _long-box-shadow($bgcolor: #fff, $length: 100px, $opacity: 0.1, $strength: 0, $light: $_global-light) {
   box-shadow: _long-shadow($bgcolor, $length, $opacity, $strength, $light);
 }
 
-@mixin _long-text-shadow($bgcolor: #fff, $length: 100px, $opacity: 0.1, $strength: 0, $light: $global-light) {
+@mixin _long-text-shadow($bgcolor: #fff, $length: 100px, $opacity: 0.1, $strength: 0, $light: $_global-light) {
   text-shadow: _long-shadow($bgcolor, $length, $opacity, $strength, $light);
 }
 
@@ -540,7 +573,7 @@ $sg-iter: 50;
   filter: $filter;
 }
 
-@mixin _column($span: 1, $push: 0, $gap: $base-gap, $grid: $base-grid) {
+@mixin _column($span: 1, $push: 0, $gap: $_base-gap, $grid: $_base-grid) {
   position: relative;
   min-height: 1px;
   padding-right: $gap/2;
@@ -560,7 +593,7 @@ $sg-iter: 50;
   clear: left;
 }
 
-@mixin _generate-grid($grid-class, $span-class, $push-class: null, $grid: $base-grid, $gap: $base-gap) {
+@mixin _generate-grid($grid-class, $span-class, $push-class: null, $grid: $_base-grid, $gap: $_base-gap) {
 
   .#{$grid-class} {
     @include _grid-container($gap);
@@ -585,22 +618,22 @@ $sg-iter: 50;
   }
 }
 
-@mixin _grid-container($gap: $base-gap) {
+@mixin _grid-container($gap: $_base-gap) {
 
   margin-right: -($gap/2);
   margin-left: -($gap/2);
   @include _clearfix;
 }
 
-@mixin _push($i, $grid: $base-grid) {
+@mixin _push($i, $grid: $_base-grid) {
   margin-left: _span($i, $grid);
 }
 
-@function _span($i, $grid: $base-grid) {
+@function _span($i, $grid: $_base-grid) {
   @return (100% / $grid) * $i;
 }
 
-@mixin _span($i, $grid: $base-grid) {
+@mixin _span($i, $grid: $_base-grid) {
   width: _span($i, $grid);
 }
 
@@ -622,11 +655,11 @@ $sg-iter: 50;
 }
 
 @function _img($filename) {
-  @return url(#{$base-img-path}#{$filename});
+  @return url(#{$_base-img-path}#{$filename});
 }
 
 @function _icon($filename) {
-  @return url(#{$base-icon-path}#{$filename});
+  @return url(#{$_base-icon-path}#{$filename});
 }
 
 @mixin _google-font($family, $styles: (), $protocol: null) {
@@ -653,7 +686,7 @@ $sg-iter: 50;
 }
 
 @mixin _rem($property, $value) {
-  @if ($rem-fallback == true) {
+  @if ($_rem-fallback == true) {
     #{$property}: _rem-to-px($value);
   }
   #{$property}: $value;

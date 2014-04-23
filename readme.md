@@ -22,5 +22,13 @@ Sass 3.3+
 
     `@import "path/to/sunglass";`
 
+* Change settings before the `@import` statement (optional)
+    ```` sass
+    $sunglass: (
+      base-gap: 30px,
+      base-font-size: 18px
+    );
+    ````
+
 
 I will create a detailed documentation later on. Until then, head over to the [makeshift docs](docs.md)
