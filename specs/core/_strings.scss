@@ -1,0 +1,35 @@
+@include describe("str-contains") {
+  @include it("should expect true if string contains substring") {
+    @include should( expect( _str-contains("How Much Wood Would a Woodchuck Chuck", "Wood") ), to( be( true )));
+    @include should( expect( _str-contains("How Much Wood Would a Woodchuck Chuck", " ") ), to( be( true )));
+  }
+
+  @include it("should expect true if string contains substring starting at position") {
+    @include should( expect( _str-contains("How Much Wood Would a Woodchuck Chuck", "Wood", 10) ), to( be( true )));
+  }
+
+  @include it("should expect false if string does not contain substring") {
+    @include should( expect( _str-contains("How Much Wood Would a Woodchuck Chuck", "Metal") ), to( be( false )));
+  }
+
+  @include it("should expect false if string does not contain substring starting at position") {
+    @include should( expect( _str-contains("How Much Wood Would a Woodchuck Chuck", "How", 4) ), to( be( false )));
+  }
+}
+
+@include describe("str-count") {
+  @include it("should expect number of substrings") {
+    @include should( expect( _str-count("How Much Wood Would a Woodchuck Chuck", "Wood") ), to( be( 2 )));
+    @include should( expect( _str-count("How Much Wood Would a Woodchuck Chuck", "W") ), to( be( 3 )));
+    @include should( expect( _str-count("How Much Wood Would a Woodchuck Chuck", " ") ), to( be( 6 )));
+    @include should( expect( _str-count("How Much Wood Would a Woodchuck Chuck", "Metal") ), to( be( 0 )));
+  }
+}
+
+@include describe("str-join") {
+  @include it("should expect list items to be joined into a string, separated by substring") {
+    @include should( expect( _str-join(Apples Bananas Oranges Cherry, "+") ), to( be( "Apples+Bananas+Oranges+Cherry" )));
+    @include should( expect( _str-join(Apples Bananas Oranges Cherry, " ") ), to( be( "Apples Bananas Oranges Cherry" )));
+    @include should( expect( _str-join(Apples Bananas Oranges Cherry, "") ), to( be( "ApplesBananasOrangesCherry" )));
+  }
+}

@@ -1,22 +1,26 @@
 @import "../all";
 
-$teststring: 'How Much Wood Would a Woodchuck Chuck';
-$testlist: Apples, Bananas, Oranges, Cherry, ' ', ' ', '', false;
+@include runner-start;
+@import "core/strings";
+@include runner-end;
 
-$opposite: _opposite(400px);
-$opposite2: _opposite(400px -350px 0);
-// $random-color: _random-color(monochrome);
-$tint: _tint(#911, 30%);
-$shade: _shade(#911, 30%);
-$coordinates: _coords(216deg, 10px);
-$str-contains: _str-contains($teststring, 'Intelligent Life');
-$str-join: _str-join($testlist, '+');
-$split: _split($teststring, ' ');
-$filter: _filter($testlist, ' ');
-$compact: _compact($testlist);
-$str-count: _str-count($teststring, 'Wood');
-$rem-to-px: _rem-to-px(2rem);
-$strip-unit: _strip-unit(-400px);
+// $teststring: 'How Much Wood Would a Woodchuck Chuck';
+// $testlist: Apples, Bananas, Oranges, Cherry, ' ', ' ', '', false;
+
+// $opposite: _opposite(400px);
+// $opposite2: _opposite(400px -350px 0);
+// // $random-color: _random-color(monochrome);
+// $tint: _tint(#911, 30%);
+// $shade: _shade(#911, 30%);
+// $coordinates: _coords(216deg, 10px);
+// $str-contains: _str-contains($teststring, 'Intelligent Life');
+// $str-join: _str-join($testlist, '+');
+// $split: _split($teststring, ' ');
+// $filter: _filter($testlist, ' ');
+// $compact: _compact($testlist);
+// $str-count: _str-count($teststring, 'Wood');
+// $rem-to-px: _rem-to-px(2rem);
+// $strip-unit: _strip-unit(-400px);
 
 // @debug 'coordinates: ' + $coordinates + ' (' + type-of($coordinates) + ')';
 

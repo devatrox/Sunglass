@@ -27,8 +27,13 @@ module.exports = function(grunt) {
       test: {
         options: {
           noCache: true,
-          loadPath: ".",
-          bundleExec: true
+          loadPath: [
+            "src",
+            "node_modules",
+            "specs"
+          ],
+          bundleExec: true,
+          style: "expanded"
         },
         files: [
           {
@@ -41,14 +46,26 @@ module.exports = function(grunt) {
       }
     },
 
+    bootcamp: {
+      test: {
+        files: {
+          src: ['tests/functions/*.css']
+        }
+      }
+    },
+
     watch: {
       options: {
         livereload: true,
         spawn: false
       },
       sass: {
-        files: ["tests/**/*.scss", "src/**/*.scss"],
-        tasks: ["sass"]
+        files: [
+          "specs/**/*.scss",
+          "tests/**/*.scss",
+          "src/**/*.scss"
+        ],
+        tasks: ["test"]
       },
       html: {
         files: ["tests/**/index.html"]
@@ -70,7 +87,9 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks("grunt-contrib-watch");
   grunt.loadNpmTasks("grunt-contrib-concat");
   grunt.loadNpmTasks("grunt-contrib-copy");
+  grunt.loadNpmTasks("bootcamp");
 
-  grunt.registerTask("build", ["concat", "sass"]);
+  grunt.registerTask("test", ["sass", "bootcamp"]);
+  grunt.registerTask("build", ["concat"]);
   grunt.registerTask("default", ["watch"]);
 };
