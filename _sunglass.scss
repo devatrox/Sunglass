@@ -1,6 +1,6 @@
 /*!
 * Sunglass - A mixin and functions library for Sass
-* v3.0.2
+* v3.0.3
 * https://github.com/devatrox/Sunglass
 */
 
@@ -430,7 +430,7 @@ $sg-iter: 50;
 
   $string: str-slice($string, $pos);
 
-  @if str-index($string, $substr) {
+  @if str-index($string, $substr) != 0 {
     @return true;
   }
   @else {
