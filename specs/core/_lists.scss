@@ -1,0 +1,29 @@
+$teststring: "How Much Wood Would a Woodchuck Chuck...";
+$testlist: "Apples", "Bananas", "Oranges", "Cherry", " ", " ", "", false;
+
+@include describe("split") {
+  @include it("should expect a string to be split by substring into a list") {
+    @include should( expect( _split($teststring, " ") ), to( be( ("How", "Much", "Wood", "Would", "a", "Woodchuck", "Chuck...") )));
+    @include should( expect( _split($teststring, "Wood") ), to( be( ("How Much ", " Would a ", "chuck Chuck...") )));
+    @include should( expect( _split($teststring, ".") ), to( be( ("How Much Wood Would a Woodchuck Chuck") )));
+    @include should( expect( _split($teststring, "") ), to( be( ("H", "o", "w", " ", "M", "u", "c", "h", " ", "W", "o", "o", "d", " ", "W", "o", "u", "l", "d", " ", "a", " ", "W", "o", "o", "d", "c", "h", "u", "c", "k", " ", "C", "h", "u", "c", "k", ".", ".", ".") )));
+  }
+  @include it("without argument should expect a string to be converted into a list containing the full string") {
+    @include should( expect( _split($teststring) ), to( be( $teststring )));
+    @include should( expect( _split($teststring) ), to( have-type-of( list )));
+  }
+}
+
+@include describe("filter") {
+  @include it("should expect a list to be filtered by expression") {
+    @include should( expect( _filter($testlist, " ") ), to( be( ("Apples", "Bananas", "Oranges", "Cherry", "", false) )));
+    @include should( expect( _filter($testlist, " ", false) ), to( be( ("Apples", "Bananas", "Oranges", "Cherry", "") )));
+    @include should( expect( _filter($testlist, "Bananas") ), to( be( ("Apples", "Oranges", "Cherry", " ", " ", "", false) )));
+  }
+}
+
+@include describe("compact") {
+  @include it("should expect a list to be filtered by '' and false") {
+    @include should( expect( _compact($testlist) ), to( be( ("Apples", "Bananas", "Oranges", "Cherry", " ", " ") )));
+  }
+}
