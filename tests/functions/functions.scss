@@ -2,6 +2,7 @@
 
 @include runner-start;
 @import "core/strings";
+@import "core/numbers";
 @include runner-end;
 
 // $teststring: 'How Much Wood Would a Woodchuck Chuck';
