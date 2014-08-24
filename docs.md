@@ -1,6 +1,8 @@
 ## Light & Shadow
 
-    $global-light: 90deg !default; // or use aliases: n, ne, e, se, s, sw, w, nw
+    $sunglass: (
+        global-light: 90deg // or use aliases: n, ne, e, se, s, sw, w, nw
+    );
 
     _global-light(2px) -> 0 2px // Shorthand: _g(2px)
     _local-light(nw, 2px) -> 2px 2px
@@ -47,8 +49,10 @@
 
 ## Grid system
 
-    $base-grid: 12 !default;
-    $base-gap: 20px !default;
+    $sunglass: (
+        base-grid: 12,
+        base-gap: 20px
+    );
 
 ### Create your own semantic grids
 
@@ -76,10 +80,14 @@
 
 ### Paths
 
-    $base-img-path: "../images/" !default;
+    $sunglass: (
+        base-img-path: "../images/"
+    );
     _img("filename.png") -> url("../images/filename.png")
 
-    $base-icon-path: "../icons/" !default;
+    $sunglass: (
+        base-icon-path: "../icons/"
+    );
     _icon("filename.png") -> url("../icons/filename.png")
 
 ### _google-font()
@@ -92,8 +100,10 @@
 
 ### rem()
 
-    $base-font-size: 13px !default;
-    $rem-fallback: true !default;
+    $sunglass: (
+        base-font-size: 13px,
+        rem-fallback: true
+    );
 
     @include _rem(padding, 2rem);
 
