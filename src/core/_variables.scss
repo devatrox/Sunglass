@@ -12,4 +12,4 @@ $sunglass: () !default;
 
 $sg-settings: ();
 
-@include sg-var-reset;
+@include __sg-var-init;

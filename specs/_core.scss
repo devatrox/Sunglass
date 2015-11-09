@@ -1,29 +1,45 @@
 @include test-module('Core') {
   @include test('var-set [mixin]') {
     @include assert('Set global variable') {
-      $expect: 33px;
       @include input {
-        @include sg-var-reset;
-        @include sg-var-set('base-gap', $expect);
+        @include __sg-var-init;
+        @include sg-var-set('base-gap', 30px);
+        --base-gap: map-get($sg-settings, 'base-gap');
+        @include sg-var-set('base-gap', 40px);
         --base-gap: map-get($sg-settings, 'base-gap');
       }
       @include expect {
-        --base-gap: $expect;
+        --base-gap: 30px;
+        --base-gap: 40px;
+      }
+    }
+  }
+
+  @include test('__var-reset [mixin]') {
+    @include assert('Reset global variables') {
+      @include input {
+        @include __sg-var-init;
+        @include sg-var-set('base-gap', 40px);
+        @include __sg-var-reset;
+        --base-gap: map-get($sg-settings, 'base-gap');
+      }
+      @include expect {
+        --base-gap: map-get($sg-defaults, 'base-gap');
       }
     }
   }
 
   @include test('var-get [function]') {
-    @include sg-var-reset;
-    $test: sg-var-get('base-gap');
-    $expect: map-get($sg-settings, 'base-gap');
+    @include __sg-var-init;
+    $test: sg-var-get('base-grid');
+    $expect: map-get($sg-defaults, 'base-grid');
     @include assert-equal($test, $expect, 'Get global variable');
   }
 
   @include test('var-print [mixin]') {
     @include assert('Print $sg-settings as CSS variables') {
       @include input {
-        @include sg-var-reset;
+        @include __sg-var-init;
         @include sg-var-print(false);
       }
       @include expect {
@@ -38,7 +54,7 @@
     }
     @include assert('Print $sg-settings as CSS variables with prefix') {
       @include input {
-        @include sg-var-reset;
+        @include __sg-var-init;
         @include sg-var-print;
       }
       @include expect {
