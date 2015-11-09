@@ -2,10 +2,18 @@
 
 **A mixin and functions library for Sass**
 
-## Note for Sunglass 2.x users
+## 4.0 branch notes
 
-As of Sunglass 3.x all function and mixin names now have an underscore in front of it. If you would like to upgrade, please check your syntax.
-I made this decision to resolve conflicts with other libraries. Feel free to email any death threads to spam@devatrox.de.
+I am rebuilding Sunglass, getting rid of stuff and make sure it works with libsass. Missing functions and mixins (like grids and shadows) from previous versions might come back in the future but probably in the form of separate repos. I want Sunglass to be a core library for advanced Sass functions.
+
+### Plans with this upcoming release
+
+- Heavy unit testing with [true](https://github.com/ericam/true) and [mocha](https://github.com/mochajs/mocha)
+- Better documentation
+- [libsass](https://github.com/sass/libsass) ready
+- Prefix everything with "sg-" but offer a way to use it without prefixes
+
+-- end of branch notes --
 
 ## Requirements
 Sass 3.3+
