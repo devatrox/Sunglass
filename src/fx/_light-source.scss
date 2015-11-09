@@ -1,3 +1,0 @@
-@function _light-source($source, $length: 1px) {
-  @return _opposite(_coordinates($source, $length));
-}

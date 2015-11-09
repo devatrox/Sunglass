@@ -1,0 +1,6 @@
+@function sg($function, $args...) {
+  $sg-function: 'sg-'#{$function};
+
+  @if function-exists($sg-function) { @return call($sg-function, $args...); }
+  @else { @warn 'Function #{$sg-function} doesnt exist'; }
+}

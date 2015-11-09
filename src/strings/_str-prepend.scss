@@ -1,0 +1,5 @@
+@function sg-str-prepend($string, $insert) {
+  $string: if($string == null, '', $string);
+
+  @return #{$insert}#{$string};
+}

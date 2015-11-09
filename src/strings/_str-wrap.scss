@@ -1,0 +1,5 @@
+@function sg-str-wrap($string, $prepend, $append) {
+  $string: if($string == null, '', $string);
+
+  @return #{$prepend}#{$string}#{$append};
+}

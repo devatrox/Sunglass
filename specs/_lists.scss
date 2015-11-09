@@ -1,0 +1,52 @@
+@include test-module('Lists') {
+
+  @include test('join [function]') {
+    $base: ('a', 'b', 'c');
+
+    @include assert-equal(sg-join($base), 'a,b,c');
+
+    @include assert-equal(sg-join($base, '+'), 'a+b+c');
+
+    @include assert-equal(sg-join($base, ' '), 'a b c');
+
+    @include assert-equal(sg-join($base, ''), 'abc');
+  }
+
+  @include test('each [function]') {
+    $base: ('a', 'b', 'c');
+
+    @include assert-equal(sg-each('to-upper-case', $base), ('A', 'B', 'C'));
+
+    @include assert-equal(sg-each('str-insert', $base, 'x', 1), ('xa', 'xb', 'xc'));
+
+    @include assert-equal(sg-each('type-of', $base), (string, string, string));
+
+    @include assert-equal(sg-each('append', ($base, $base), 'd'), (('a', 'b', 'c', 'd'), ('a', 'b', 'c', 'd')));
+  }
+
+  @include test('filter [function]') {
+    $base: ('a', 'b', 'c', ' ', false);
+
+    @include assert-equal(sg-filter($base, ' '), ('a', 'b', 'c', false));
+
+    @include assert-equal(sg-filter($base, false), ('a', 'b', 'c', ' '));
+
+    @include assert-equal(sg-filter($base, 'b'), ('a', 'c', ' ', false));
+
+    @include assert-equal(sg-filter($base, 'b', 'a'), ('c', ' ', false));
+  }
+
+  // @include test('split [function]') {
+  //   $base: 'a b c';
+
+  //   @include assert-equal(sg-split($base), ($base));
+
+  //   @include assert-true(type-of(sg-split($base)), list);
+
+  //   @include assert-equal(sg-split($base, ' '), ('a', 'b', 'c'));
+
+  //   @include assert-equal(sg-split($base, 'b'), ('a ', ' c'));
+
+  //   @include assert-equal(sg-split($base, ''), ('a', ' ', 'b', ' ', 'c'));
+  // }
+}

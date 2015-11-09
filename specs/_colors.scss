@@ -1,0 +1,22 @@
+@include test-module('Colors') {
+
+  @include test('shade [function]') {
+
+    @include assert-equal(sg-shade(white, 40%), #999);
+
+    @include assert-equal(sg-shade(white, 100%), black);
+  }
+
+  @include test('tint [function]') {
+
+    @include assert-equal(sg-tint(black, 40%), #666);
+
+    @include assert-equal(sg-tint(black, 100%), white);
+  }
+
+  @include test('random-color [function]') {
+
+    @include assert-equal(type-of(sg-random-color()), color);
+  }
+}
+

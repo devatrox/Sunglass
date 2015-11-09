@@ -1,0 +1,13 @@
+@function sg-join($list, $separator: ",") {
+  $string: "";
+
+  @for $i from 1 through length($list) {
+    $string: sg-str-append($string, #{nth($list, $i)});
+
+    @if $i != length($list) {
+      $string: sg-str-append($string, $separator);
+    }
+  }
+
+  @return $string;
+}

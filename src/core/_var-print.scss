@@ -1,0 +1,8 @@
+@mixin sg-var-print($prefixed: true) {
+  $prefix: '--';
+  @if $prefixed { $prefix: '--sg-'; }
+
+  @each $key, $value in $sg-settings {
+    #{$prefix}#{$key}: $value;
+  }
+}

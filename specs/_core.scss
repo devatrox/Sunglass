@@ -1,0 +1,55 @@
+@include test-module('Core') {
+  @include test('var-set [mixin]') {
+    @include assert('Set global variable') {
+      $expect: 33px;
+      @include input {
+        @include sg-var-reset;
+        @include sg-var-set('base-gap', $expect);
+        --base-gap: map-get($sg-settings, 'base-gap');
+      }
+      @include expect {
+        --base-gap: $expect;
+      }
+    }
+  }
+
+  @include test('var-get [function]') {
+    @include sg-var-reset;
+    $test: sg-var-get('base-gap');
+    $expect: map-get($sg-settings, 'base-gap');
+    @include assert-equal($test, $expect, 'Get global variable');
+  }
+
+  @include test('var-print [mixin]') {
+    @include assert('Print $sg-settings as CSS variables') {
+      @include input {
+        @include sg-var-reset;
+        @include sg-var-print(false);
+      }
+      @include expect {
+        --base-grid: map-get($sg-settings, 'base-grid');
+        --base-gap: map-get($sg-settings, 'base-gap');
+        --global-light: map-get($sg-settings, 'global-light');
+        --base-img-path: map-get($sg-settings, 'base-img-path');
+        --base-icon-path: map-get($sg-settings, 'base-icon-path');
+        --base-font-size: map-get($sg-settings, 'base-font-size');
+        --rem-fallback: map-get($sg-settings, 'rem-fallback');
+      }
+    }
+    @include assert('Print $sg-settings as CSS variables with prefix') {
+      @include input {
+        @include sg-var-reset;
+        @include sg-var-print;
+      }
+      @include expect {
+        --sg-base-grid: map-get($sg-settings, 'base-grid');
+        --sg-base-gap: map-get($sg-settings, 'base-gap');
+        --sg-global-light: map-get($sg-settings, 'global-light');
+        --sg-base-img-path: map-get($sg-settings, 'base-img-path');
+        --sg-base-icon-path: map-get($sg-settings, 'base-icon-path');
+        --sg-base-font-size: map-get($sg-settings, 'base-font-size');
+        --sg-rem-fallback: map-get($sg-settings, 'rem-fallback');
+      }
+    }
+  }
+}

@@ -1,0 +1,3 @@
+@mixin sg-var-reset {
+  @include sg-var-merge(($sg-defaults, $sunglass));
+}

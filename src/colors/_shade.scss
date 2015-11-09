@@ -1,3 +1,3 @@
-@function _shade($color, $percent){
+@function sg-shade($color, $percent){
   @return mix(black, $color, $percent);
 }

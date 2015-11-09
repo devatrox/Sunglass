@@ -1,0 +1,5 @@
+@function sg-str-append($string, $insert) {
+  $string: if($string == null, '', $string);
+
+  @return #{$string}#{$insert};
+}

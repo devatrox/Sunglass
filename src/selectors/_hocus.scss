@@ -1,0 +1,6 @@
+@mixin sg-hocus {
+  &:focus,
+  &:hover {
+    @content;
+  }
+}

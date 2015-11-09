@@ -1,3 +1,0 @@
-@mixin _push($i, $grid: $_base-grid) {
-  margin-left: _span($i, $grid);
-}

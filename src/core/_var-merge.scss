@@ -1,0 +1,8 @@
+// @access public
+// @group core
+// @param {List} $maps - One Map or list of Maps
+@mixin sg-var-merge($maps...) {
+  @each $map in $maps {
+    $sg-settings: map-merge($sg-settings, $map) !global;
+  }
+}

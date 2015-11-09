@@ -1,0 +1,3 @@
+@function sg-var-get($key) {
+  @return map-get($sg-settings, $key);
+}

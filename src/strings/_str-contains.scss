@@ -1,0 +1,7 @@
+@function sg-str-contains($string, $substr, $start: 0) {
+
+  $string: str-slice($string, $start);
+
+  @if str-index($string, $substr) != null { @return true; }
+  @else { @return false; }
+}

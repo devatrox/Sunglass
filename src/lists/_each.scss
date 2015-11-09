@@ -1,0 +1,14 @@
+@function sg-each($function, $list, $args...) {
+  $separator: list-separator($list);
+  $newlist: ();
+
+  @if type-of($list) != list { @warn "#{$list} is not a list"; }
+  @if function-exists($function) == false { @warn "Function #{$function} doesn't exist"; }
+
+  @each $item in $list {
+    $item: call($function, $item, $args);
+    $newlist: append($newlist, $item, $separator);
+  }
+
+  @return $newlist;
+}

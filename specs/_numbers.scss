@@ -1,0 +1,31 @@
+@include test-module('Numbers') {
+
+  @include test('strip-unit [function]') {
+
+    @include assert-equal(sg-strip-unit(1px), 1);
+
+    @include assert-equal(sg-strip-unit(1.5px), 1.5);
+
+    @include assert-equal(sg-strip-unit(1), 1);
+
+    @include assert-equal(sg-strip-unit(1%), 1);
+
+    @include assert-equal(type-of(sg-strip-unit(1px)), number);
+  }
+
+  @include test('inverse [function]') {
+
+    @include assert-equal(sg-inverse(1), -1);
+
+    @include assert-equal(sg-inverse(-1), 1);
+
+    @include assert-equal(sg-inverse(0), 0);
+
+    @include assert-equal(sg-inverse((1 -1)), (-1 1));
+
+    @include assert-equal(type-of(sg-inverse(1)), number);
+
+    @include assert-equal(type-of(sg-inverse(1 -1)), list);
+  }
+}
+

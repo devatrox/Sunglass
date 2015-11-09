@@ -1,0 +1,3 @@
+@mixin sg-var-set($key, $value) {
+  $sg-settings: map-merge($sg-settings, ($key: $value)) !global;
+}

@@ -1,0 +1,39 @@
+@include test-module('Selectors') {
+
+  // Untestable
+
+  // @include test('not [mixin]') {
+  //   @include assert('Add :not() attribute(s) to &') {
+  //     @include input {
+  //       a {
+  //         @include sg-not('.active, .btn') {
+  //           color: red;
+  //         }
+  //       }
+  //     }
+  //     @include expect {
+  //       a:not(.active) {
+  //         color: red;
+  //       }
+  //     }
+  //   }
+  // }
+
+  // @include test('hocus [mixin]') {
+  //   @include assert('Add :not() attribute(s) to &') {
+  //     @include input {
+  //       a {
+  //         @include sg-hocus {
+  //           color: red;
+  //         }
+  //       }
+  //     }
+  //     @include expect {
+  //       a:focus,
+  //       a:hover {
+  //         color: red;
+  //       }
+  //     }
+  //   }
+  // }
+}
