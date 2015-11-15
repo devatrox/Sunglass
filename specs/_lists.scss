@@ -36,6 +36,12 @@
     @include assert-equal(sg-filter($base, 'b', 'a'), ('c', ' ', false));
   }
 
+  @include test('remove [function]') {
+    $base: ('a', 'b', 'c');
+
+    @include assert-equal(sg-remove($base, 'b'), ('a', 'c'));
+  }
+
   // @include test('split [function]') {
   //   $base: 'a b c';
 

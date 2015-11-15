@@ -1,0 +1,12 @@
+@function sg-remove($list, $remove) {
+  $separator: list-separator($list);
+  $newlist: ();
+
+  @each $item in $list {
+    @if $item != $remove {
+      $newlist: append($newlist, $item, $separator);
+    }
+  }
+
+  @return $newlist;
+}
