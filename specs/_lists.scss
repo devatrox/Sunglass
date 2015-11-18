@@ -25,21 +25,17 @@
   }
 
   @include test('filter [function]') {
-    $base: ('a', 'b', 'c', ' ', false);
+    $base: ('a', 'b', 'c', ' ', '', false);
 
-    @include assert-equal(sg-filter($base, ' '), ('a', 'b', 'c', false));
+    @include assert-equal(sg-filter($base, ' '), ('a', 'b', 'c', '', false));
 
-    @include assert-equal(sg-filter($base, false), ('a', 'b', 'c', ' '));
+    @include assert-equal(sg-filter($base, false), ('a', 'b', 'c', ' ', ''));
 
-    @include assert-equal(sg-filter($base, 'b'), ('a', 'c', ' ', false));
+    @include assert-equal(sg-filter($base, 'b'), ('a', 'c', ' ', '', false));
 
-    @include assert-equal(sg-filter($base, 'b', 'a'), ('c', ' ', false));
-  }
+    @include assert-equal(sg-filter($base, 'b', 'a'), ('c', ' ', '', false));
 
-  @include test('remove [function]') {
-    $base: ('a', 'b', 'c');
-
-    @include assert-equal(sg-remove($base, 'b'), ('a', 'c'));
+    @include assert-equal(sg-compact($base), ('a', 'b', 'c', ' '));
   }
 
   // @include test('split [function]') {
