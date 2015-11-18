@@ -16,5 +16,5 @@
 }
 
 @function sg-compact($list) {
-  @return sg-filter($list, false, "");
+  @return sg-filter($list, false, '');
 }
