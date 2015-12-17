@@ -1,13 +1,29 @@
 {
-  "name": "Sunglass",
+  "name": "sunglass",
+  "description": "A mixin and functions library for Sass",
+  "version": "3.0.5",
+  "authors": [
+    "Jason Nickel <mail@devatrox.de>"
+  ],
   "scripts": {
     "test": "./node_modules/.bin/mocha"
   },
+  "keywords": [
+    "eyeglass-module",
+    "sass"
+  ],
+  "main": "index.js",
   "devDependencies": {
     "grunt": "^0.4.5",
     "load-grunt-tasks": "^3.3.0",
     "mocha": "^2.3.3",
     "path": "^0.12.7",
     "sass-true": "^2.0.3"
-  }
+  },
+  "eyeglass": {
+    "sassDir": "dist",
+    "needs": "^0.6.0"
+  },
+  "homepage": "https://github.com/devatrox/Sunglass",
+  "license": "MIT"
 }
