@@ -16,26 +16,11 @@ module.exports = function(grunt) {
                   '*/\n\n'
         },
         src: [
-          'src/core/_defaults.scss',
-          'src/core/__private/_legacy-vars.scss',
-          'src/core/__private/_internal-vars.scss',
+          'src/core/_variables.scss',
           'src/**/*.scss'
         ],
-        dest: '_sunglass.scss'
+        dest: 'dist/sunglass.scss'
       }
-    },
-
-    watch: {
-      options: {
-        spawn: false
-      },
-      test: {
-        files: [
-          'test/**/*.scss',
-          'src/**/*.scss',
-        ],
-        tasks: ['test']
-      },
     },
   });
 };
