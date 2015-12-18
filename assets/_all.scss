@@ -1,0 +1,26 @@
+@import 'noconflict';
+
+// Strings
+@function str-append($string, $insert) {
+  @return sg-str-append($string, $insert);
+}
+
+@function str-concat($strings...) {
+  @return sg-str-concat($strings);
+}
+
+@function str-contains($string, $substr, $start: 0) {
+  @return sg-str-contains($string, $substr, $start);
+}
+
+@function str-count($string, $substring) {
+  @return sg-str-count($string, $substring);
+}
+
+@function str-prepend($string, $insert) {
+  @return sg-str-prepend($string, $insert);
+}
+
+@function str-wrap($string, $prepend, $append) {
+  @return sg-str-wrap($string, $prepend, $append);
+}

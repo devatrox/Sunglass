@@ -4,7 +4,6 @@
 @import 'core/var-reset';
 @import 'core/var-init';
 @import 'core/var-print';
-@import 'core/sg';
 @import 'core/variables';
 
 @import 'strings/str-append';
@@ -20,9 +19,6 @@
 @import 'lists/each';
 // @import 'lists/split';
 @import 'lists/filter';
-
-@import 'selectors/hocus';
-@import 'selectors/not';
 
 @import 'colors/tint';
 @import 'colors/shade';
