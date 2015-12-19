@@ -1,38 +1,39 @@
-@function _coordinates($angle, $length: 1px) {
-
-  $aliases: (
-    n: 90deg,
-    ne: 45deg,
-    e: 0deg,
-    se: 315deg,
-    s: 270deg,
-    sw: 225deg,
-    w: 180deg,
-    nw: 135deg
-  );
-
-  @if map-has-key($aliases, $angle) {
-    $angle: to-lower-case($angle);
-
-    $angle: map-get($aliases, $angle);
+@function sg-polar-to-cartesian($distance, $angle) {
+  @if function-exists('cos') == false {
+    @error 'function "cos()" does not exist!';
   }
+
+  @if function-exists('sin') == false {
+    @error 'function "sin()" does not exist!';
+  }
+
   @if type-of($angle) != number {
-    @warn "#{$angle} NaN";
+    @error '#{$angle} NaN';
   }
-  @if type-of($length) != number {
-    @warn "#{$length} NaN";
+  @if type-of($distance) != number {
+    @error '#{$distance} NaN';
   }
-  @if unit($length) != "px" {
-    @warn "#{$length}; Unit must be px";
+  @if unit($distance) != 'px' {
+    @error '#{$distance}; Unit must be px';
   }
 
-  $x: _strip-unit($length) * _cos($angle);
-  $y: _strip-unit($length) * _sin($angle);
-  $y: _opposite($y);
+  $x: sg-strip-unit($distance) * cos($angle);
+  $x: if($x == 0, 0, ($x + 0px));
 
-  @return ($x + 0px) ($y + 0px);
+  $y: sg-strip-unit($distance) * sin($angle);
+  $y: if($y == 0, 0, ($y + 0px));
+
+  @return $x $y;
 }
 
-@function _coords($angle, $length: 1px) {
-  @return _coordinates($angle, $length);
+@function sg-coordinates($distance, $angle) {
+  $coords: sg-polar-to-cartesian($distance, $angle);
+  // invert the Y-sign because CSS works different
+  $coords: nth($coords, 1) sg-inverse(nth($coords, 2));
+
+  @return $coords;
+}
+
+@function sg-coords($distance, $angle) {
+  @return sg-coordinates($distance, $angle);
 }

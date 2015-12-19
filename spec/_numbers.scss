@@ -27,5 +27,23 @@
 
     @include assert-equal(type-of(sg-inverse(1 -1)), list);
   }
-}
 
+  @include test('coordinates [function]') {
+
+    @include assert-equal(sg-coordinates(1px, 0deg), (1px 0));
+
+    @include assert-equal(sg-coordinates(1px, 90deg), (0 -1px));
+
+    @include assert-equal(sg-coordinates(1px, 180deg), (-1px 0));
+
+    @include assert-equal(sg-coordinates(1px, 270deg), (0 1px));
+
+    @include assert-equal(sg-coordinates(5px, 90deg), (0 -5px));
+
+    @include assert-equal(sg-coordinates(1px, 164deg), (-0.96126169593832px -0.275637355817px));
+
+    @include assert-equal(type-of(sg-coordinates(1px, 90deg)), list);
+
+    @include assert-equal(sg-each('type-of', sg-coordinates(1px, 90deg)), (number number));
+  }
+}
