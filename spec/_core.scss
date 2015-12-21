@@ -2,70 +2,29 @@
   @include test('var-set [mixin]') {
     @include assert('Set global variable') {
       @include input {
-        @include __sg-var-init;
-        @include sg-var-set('base-gap', 30px);
-        --base-gap: map-get($sg-settings, 'base-gap');
-        @include sg-var-set('base-gap', 40px);
-        --base-gap: map-get($sg-settings, 'base-gap');
-      }
-      @include expect {
-        --base-gap: 30px;
-        --base-gap: 40px;
-      }
-    }
-  }
+        @include sg-var-set('key', 'value');
 
-  @include test('__var-reset [mixin]') {
-    @include assert('Reset global variables') {
-      @include input {
-        @include __sg-var-init;
-        @include sg-var-set('base-gap', 40px);
-        @include __sg-var-reset;
-        --base-gap: map-get($sg-settings, 'base-gap');
+        --key: map-get($sg-settings, 'key');
       }
       @include expect {
-        --base-gap: map-get($sg-defaults, 'base-gap');
+        --key: 'value';
       }
     }
   }
 
   @include test('var-get [function]') {
-    @include __sg-var-init;
-    $test: sg-var-get('base-grid');
-    $expect: map-get($sg-defaults, 'base-grid');
+    @include sg-var-set('key', 'value');
+
+    $test: sg-var-get('key');
+    $expect: 'value';
     @include assert-equal($test, $expect, 'Get global variable');
   }
 
-  @include test('var-print [mixin]') {
-    @include assert('Print $sg-settings as CSS variables') {
-      @include input {
-        @include __sg-var-init;
-        @include sg-var-print(false);
-      }
-      @include expect {
-        --base-grid: map-get($sg-settings, 'base-grid');
-        --base-gap: map-get($sg-settings, 'base-gap');
-        --global-light: map-get($sg-settings, 'global-light');
-        --base-img-path: map-get($sg-settings, 'base-img-path');
-        --base-icon-path: map-get($sg-settings, 'base-icon-path');
-        --base-font-size: map-get($sg-settings, 'base-font-size');
-        --rem-fallback: map-get($sg-settings, 'rem-fallback');
-      }
-    }
-    @include assert('Print $sg-settings as CSS variables with prefix') {
-      @include input {
-        @include __sg-var-init;
-        @include sg-var-print;
-      }
-      @include expect {
-        --sg-base-grid: map-get($sg-settings, 'base-grid');
-        --sg-base-gap: map-get($sg-settings, 'base-gap');
-        --sg-global-light: map-get($sg-settings, 'global-light');
-        --sg-base-img-path: map-get($sg-settings, 'base-img-path');
-        --sg-base-icon-path: map-get($sg-settings, 'base-icon-path');
-        --sg-base-font-size: map-get($sg-settings, 'base-font-size');
-        --sg-rem-fallback: map-get($sg-settings, 'rem-fallback');
-      }
-    }
+  @include test('var-add-unit [function]') {
+    @include sg-var-add-unit('m', 0m);
+
+    $test: map-get($sg-units, 'm');
+    $expect: 0m;
+    @include assert-equal($test, $expect, 'Get global variable');
   }
 }
