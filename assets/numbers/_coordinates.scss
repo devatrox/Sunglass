@@ -13,11 +13,12 @@
     @error '$distance NaN';
   }
   @if unit($angle) == 'deg' {
-    @if function-exists('deg-to-rad') == false {
+    @if function-exists('deg-to-rad') {
+      $angle: deg-to-rad($angle);
+    }
+    @else {
       @error 'Could not find deg-to-rad()! Please make sure all dependencies are met. See https://github.com/devatrox/Sunglass/ for more info.';
     }
-
-    $angle: deg-to-rad($angle);
   }
   @if unit($angle) != 'rad' {
     @error '$angle unit must be "deg" or "rad"';
