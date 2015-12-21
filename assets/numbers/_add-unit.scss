@@ -1,0 +1,13 @@
+@function sg-add-unit($number, $unit) {
+
+  @if unitless($number) == false {
+    @error '$number must be unitless';
+  }
+
+  @if $unit == '' {
+    @return $number;
+  }
+  @else {
+    @return $number + map-get($sg-units, $unit);
+  }
+}

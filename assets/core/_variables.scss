@@ -12,4 +12,33 @@ $sunglass: () !default;
 
 $sg-settings: ();
 
+$sg-units: (
+  'em': 0em,
+  'ex': 0ex,
+  'ch': 0ch,
+  'rem': 0rem,
+  'vh': 0vh,
+  'vw': 0vw,
+  'vmin': 0vmin,
+  'vmax': 0vmax,
+  'px': 0px,
+  'mm': 0mm,
+  'cm': 0cm,
+  'in': 0in,
+  'pt': 0pt,
+  'pc': 0pc,
+  '%': 0%,
+  'deg': 0deg,
+  'grad': 0grad,
+  'rad': 0rad,
+  'turn': 0turn,
+  'Hz': 0Hz,
+  'kHz': 0kHz,
+  'dpi': 0dpi,
+  'dpcm': 0dpcm,
+  'dppx': 0dppx,
+  's': 0s,
+  'ms': 0ms
+);
+
 @include __sg-var-init;
