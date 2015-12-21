@@ -7,7 +7,7 @@
         --key: map-get($sg-settings, 'key');
       }
       @include expect {
-        --key: 'value';
+        --key: "value";
       }
     }
   }
@@ -16,14 +16,14 @@
     @include sg-var-set('key', 'value');
 
     $test: sg-var-get('key');
-    $expect: 'value';
+    $expect: "value";
     @include assert-equal($test, $expect, 'Get global variable');
   }
 
   @include test('var-add-unit [function]') {
     @include sg-var-add-unit('m', 0m);
 
-    $test: map-get($sg-units, 'm');
+    $test: map-get($sg-valid-units, 'm');
     $expect: 0m;
     @include assert-equal($test, $expect, 'Get global variable');
   }
