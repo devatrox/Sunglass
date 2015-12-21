@@ -1,9 +1,8 @@
 @import 'core/var-merge';
 @import 'core/var-set';
 @import 'core/var-get';
-@import 'core/var-reset';
 @import 'core/var-init';
-@import 'core/var-print';
+@import 'core/var-add-unit';
 @import 'core/variables';
 
 @import 'strings/str-append';
@@ -12,6 +11,7 @@
 @import 'strings/str-prepend';
 @import 'strings/str-wrap';
 
+@import 'numbers/add-unit';
 @import 'numbers/strip-unit';
 @import 'numbers/inverse';
 @import 'numbers/coordinates';
