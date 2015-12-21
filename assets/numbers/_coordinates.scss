@@ -1,27 +1,33 @@
 @function sg-polar-to-cartesian($distance, $angle) {
-  @if function-exists('cos') == false {
-    @error 'function "cos()" does not exist!';
-  }
-
   @if function-exists('sin') == false {
-    @error 'function "sin()" does not exist!';
+    @error 'Could not find sin()! Please make sure all dependencies are met. See https://github.com/devatrox/Sunglass/ for more info.';
+  }
+  @if function-exists('cos') == false {
+    @error 'Could not find cos()! Please make sure all dependencies are met. See https://github.com/devatrox/Sunglass/ for more info.';
   }
 
   @if type-of($angle) != number {
-    @error '#{$angle} NaN';
+    @error '$angle NaN';
   }
   @if type-of($distance) != number {
-    @error '#{$distance} NaN';
+    @error '$distance NaN';
   }
-  @if unit($distance) != 'px' {
-    @error '#{$distance}; Unit must be px';
+  @if unit($angle) == 'deg' {
+    @if function-exists('deg-to-rad') == false {
+      @error 'Could not find deg-to-rad()! Please make sure all dependencies are met. See https://github.com/devatrox/Sunglass/ for more info.';
+    }
+
+    $angle: deg-to-rad($angle);
+  }
+  @if unit($angle) != 'rad' {
+    @error '$angle unit must be "deg" or "rad"';
   }
 
   $x: sg-strip-unit($distance) * cos($angle);
-  $x: if($x == 0, 0, ($x + 0px));
+  $x: if($x == 0, $x, sg-add-unit($x, unit($distance)));
 
   $y: sg-strip-unit($distance) * sin($angle);
-  $y: if($y == 0, 0, ($y + 0px));
+  $y: if($y == 0, $y, sg-add-unit($y, unit($distance)));
 
   @return $x $y;
 }
