@@ -8,6 +8,6 @@
     @return $number;
   }
   @else {
-    @return $number + map-get($sg-units, $unit);
+    @return $number + map-get($sg-valid-units, $unit);
   }
 }
