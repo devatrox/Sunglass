@@ -31,4 +31,4 @@ $sg-valid-units: (
   'ms': 0ms
 );
 
-@include __sg-var-init;
+// @include sg-var-merge($sunglass);
