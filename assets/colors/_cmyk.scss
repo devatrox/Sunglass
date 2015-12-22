@@ -1,25 +1,26 @@
-// Formulars provided by easyrgb.com and rapidtables.com
+// Formulars provided by easyrgb.com
 
-@function _cmy($cyan, $magenta, $yellow) {
-  $red: (1 - ($cyan / 100)) * 255;
-  $green: (1 - ($magenta / 100)) * 255;
-  $blue: (1 - ($yellow / 100)) * 255;
+@function sg-cmyk($cyan, $magenta, $yellow, $key: 0) {
+  $test: sg-each('unitless', ($cyan, $magenta, $yellow, $key));
+  @if sg-contains($test, false) {
+    @error 'All parameters must be a unitless number';
+  }
 
-  @return rgb($red, $green, $blue);
-}
-
-@function _cmya($cyan, $magenta, $yellow, $alpha) {
-  @return rgba(_cmy($cyan, $magenta, $yellow), $alpha);
-}
-
-@function _cmyk($cyan, $magenta, $yellow, $key) {
-  $red: (1 - ($key / 100)) * (1 - ($cyan / 100)) * 255;
-  $green: (1 - ($key / 100)) * (1 - ($magenta / 100)) * 255;
-  $blue: (1 - ($key / 100)) * (1 - ($yellow / 100)) * 255;
+  $red: (1 - $key) * (1 - $cyan) * 255;
+  $green: (1 - $key) * (1 - $magenta) * 255;
+  $blue: (1 - $key) * (1 - $yellow) * 255;
 
   @return rgb($red, $green, $blue);
 }
 
-@function _cmyka($cyan, $magenta, $yellow, $key, $alpha) {
-  @return rgba(_cmyk($cyan, $magenta, $yellow, $key), $alpha);
+@function sg-cmy($cyan, $magenta, $yellow) {
+  @return sg-cmyk($cyan, $magenta, $yellow);
+}
+
+@function sg-cmya($cyan, $magenta, $yellow, $alpha) {
+  @return rgba(sg-cmy($cyan, $magenta, $yellow), $alpha);
+}
+
+@function sg-cmyka($cyan, $magenta, $yellow, $key, $alpha) {
+  @return rgba(sg-cmyk($cyan, $magenta, $yellow, $key), $alpha);
 }

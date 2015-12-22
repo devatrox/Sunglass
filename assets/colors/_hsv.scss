@@ -1,9 +1,10 @@
 // Formular provided by easyrgb.com
 
-@function _hsv($hue, $saturation, $value) {
+@function sg-hsv($hue, $saturation, $value) {
+
   $hue: ($hue * 100 / 360) / 100;
-  $saturation: $saturation / 100;
-  $value: $value / 100;
+  $saturation: sg-strip-unit($saturation) / 100;
+  $value: sg-strip-unit($value) / 100;
 
   $red: null;
   $green: null;
@@ -74,15 +75,15 @@
   @return rgb($red, $green, $blue);
 }
 
-@function _hsva($hue, $saturation, $value, $alpha) {
-  @return rgba(_hsv($hue, $saturation, $value), $alpha);
+@function sg-hsva($hue, $saturation, $value, $alpha) {
+  @return rgba(sg-hsv($hue, $saturation, $value), $alpha);
 }
 
 // HSB - because Photoshop
-@function _hsb($hue, $saturation, $brightness) {
-  @return _hsv($hue, $saturation, $brightness);
+@function sg-hsb($hue, $saturation, $brightness) {
+  @return sg-hsv($hue, $saturation, $brightness);
 }
 
-@function _hsba($hue, $saturation, $brightness, $alpha) {
-  @return _hsva($hue, $saturation, $brightness, $alpha);
+@function sg-hsba($hue, $saturation, $brightness, $alpha) {
+  @return sg-hsva($hue, $saturation, $brightness, $alpha);
 }
