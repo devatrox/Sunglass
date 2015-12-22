@@ -31,4 +31,4 @@ $sg-valid-units: (
   'ms': 0ms
 );
 
-// @include sg-var-merge($sunglass);
+$sg-settings: map-merge($sg-settings, $sunglass) !global;
