@@ -1,12 +1,103 @@
 @import 'noconflict';
 
-// Strings
-@function str-append($string, $insert) {
-  @return sg-str-append($string, $insert);
+// Colors
+
+@function cmy($cyan, $magenta, $yellow) {
+  @return sg-cmy($cyan, $magenta, $yellow);
 }
 
-@function str-concat($strings...) {
-  @return sg-str-concat($strings);
+@function cmya($cyan, $magenta, $yellow, $alpha) {
+  @return sg-cmya($cyan, $magenta, $yellow, $alpha);
+}
+
+@function cmyk($cyan, $magenta, $yellow, $key) {
+  @return sg-cmyk($cyan, $magenta, $yellow, $key);
+}
+
+@function cmyka($cyan, $magenta, $yellow, $key, $alpha) {
+  @return sg-cmyka($cyan, $magenta, $yellow, $key, $alpha);
+}
+
+@function hsv($hue, $saturation, $value) {
+  @return sg-hsv($hue, $saturation, $value);
+}
+
+@function hsva($hue, $saturation, $value, $alpha) {
+  @return sg-hsva($hue, $saturation, $value, $alpha);
+}
+
+@function hsb($hue, $saturation, $brightness) {
+  @return sg-hsb($hue, $saturation, $brightness);
+}
+
+@function hsba($hue, $saturation, $brightness, $alpha) {
+  @return sg-hsba($hue, $saturation, $brightness, $alpha);
+}
+
+@function random-color() {
+  @return sg-random-color();
+}
+
+@function shade($color, $percent) {
+  @return sg-shade($color, $percent);
+}
+
+@function tint($color, $percent) {
+  @return sg-tint($color, $percent);
+}
+
+// Lists
+
+@function contains($list, $test) {
+  @return sg-contains($list, $test);
+}
+
+@function each($function, $list, $args...) {
+  @return sg-each($function, $list, $args);
+}
+
+@function filter($list, $filters...) {
+  @return sg-filter($list, $filters);
+}
+
+@function compact($list) {
+  @return sg-compact($list);
+}
+
+@function join($list, $separator: ',') {
+  @return sg-join($list, $separator);
+}
+
+// Numbers
+
+@function add-unit($number, $unit) {
+  @return sg-add-unit($number, $unit);
+}
+
+@function polar-to-cartesian($distance, $angle) {
+  @return sg-polar-to-cartesian($distance, $angle);
+}
+
+@function coordinates($distance, $angle) {
+  @return sg-coordinates($distance, $angle);
+}
+
+@function coords($distance, $angle) {
+  @return sg-coords($distance, $angle);
+}
+
+@function inverse($numbers) {
+  @return sg-inverse($numbers);
+}
+
+@function strip-unit($number) {
+  @return sg-strip-unit($number);
+}
+
+// Strings
+
+@function str-append($string, $insert) {
+  @return sg-str-append($string, $insert);
 }
 
 @function str-contains($string, $substr, $start: 0) {
