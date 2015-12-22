@@ -1,0 +1,8 @@
+@function sg-contains($list, $test) {
+  @if index($list, $test) {
+    @return true;
+  }
+  @else {
+    @return false;
+  }
+}
