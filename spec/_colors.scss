@@ -2,21 +2,63 @@
 
   @include test('shade [function]') {
 
-    @include assert-equal(sg-shade(white, 40%), #999);
+    @include assert-equal(shade(#fff, 40%), #999);
 
-    @include assert-equal(sg-shade(white, 100%), black);
+    @include assert-equal(shade(#fff, 100%), #000);
+
+    @include assert-equal(type-of(shade(#fff, 40%)), color);
   }
 
   @include test('tint [function]') {
 
-    @include assert-equal(sg-tint(black, 40%), #666);
+    @include assert-equal(tint(#000, 40%), #666);
 
-    @include assert-equal(sg-tint(black, 100%), white);
+    @include assert-equal(tint(#000, 100%), #fff);
+
+    @include assert-equal(type-of(tint(#000, 40%)), color);
   }
 
   @include test('random-color [function]') {
 
-    @include assert-equal(type-of(sg-random-color()), color);
+    @include assert-equal(type-of(random-color()), color);
+  }
+
+  @include test('cmy [function]') {
+
+    @include assert-equal(cmy(1, .4, .4), rgb(0,153,153));
+
+    @include assert-equal(cmy(1, 1, 1), black);
+
+    @include assert-equal(cmy(0, 0, 0), white);
+
+    @include assert-equal(cmy(0, 1, 1), red);
+
+    @include assert-equal(type-of(cmy(1, .4, .4)), color);
+  }
+
+  @include test('cmyk [function]') {
+
+    // @include assert-equal(cmyk(1, .4, .4, .2), rgb(0,122,122));
+
+    @include assert-equal(cmyk(0, 0, 0, 1), black);
+
+    @include assert-equal(cmyk(0, 0, 0, 0), white);
+
+    @include assert-equal(cmyk(0, 1, 1, 0), red);
+
+    @include assert-equal(type-of(cmyk(1, .4, .4, .2)), color);
+  }
+
+  @include test('hsv [function]') {
+
+    @include assert-equal(hsv(0, 0, 0), black);
+
+    @include assert-equal(hsv(0, 0, 100%), white);
+
+    @include assert-equal(hsv(240, 100%, 100%), blue);
+
+    // @include assert-equal(hsv(0, 0, 50%), gray);
+
+    @include assert-equal(type-of(hsv(0, 0, 100%)), color);
   }
 }
-

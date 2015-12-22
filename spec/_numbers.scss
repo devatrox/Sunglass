@@ -2,71 +2,90 @@
 
   @include test('add-unit [function]') {
 
-    @include assert-equal(sg-add-unit(1, 'px'), 1px);
+    @include assert-equal(add-unit(1, 'px'), 1px);
 
-    @include assert-equal(sg-add-unit(1.5, 'px'), 1.5px);
+    @include assert-equal(add-unit(1.5, 'px'), 1.5px);
 
-    @include assert-equal(sg-add-unit(1, '%'), 1%);
+    @include assert-equal(add-unit(1, '%'), 1%);
 
-    @include assert-equal(sg-add-unit(0, '%'), 0%);
+    @include assert-equal(add-unit(0, '%'), 0%);
 
-    @include assert-equal(type-of(sg-add-unit(1, '%')), number);
+    @include assert-equal(type-of(add-unit(1, '%')), number);
 
-    @include assert-equal(type-of(sg-add-unit(1, 'px')), number);
+    @include assert-equal(type-of(add-unit(1, 'px')), number);
 
-    @include assert-equal(unit(sg-add-unit(1, '%')), '%');
+    @include assert-equal(unit(add-unit(1, '%')), '%');
 
-    @include assert-equal(unit(sg-add-unit(1, 'px')), 'px');
+    @include assert-equal(unit(add-unit(1, 'px')), 'px');
   }
 
   @include test('strip-unit [function]') {
 
-    @include assert-equal(sg-strip-unit(1px), 1);
+    @include assert-equal(strip-unit(1px), 1);
 
-    @include assert-equal(sg-strip-unit(1.5px), 1.5);
+    @include assert-equal(strip-unit(1.5px), 1.5);
 
-    @include assert-equal(sg-strip-unit(1), 1);
+    @include assert-equal(strip-unit(1), 1);
 
-    @include assert-equal(sg-strip-unit(1%), 1);
+    @include assert-equal(strip-unit(1%), 1);
 
-    @include assert-equal(type-of(sg-strip-unit(1px)), number);
+    @include assert-equal(type-of(strip-unit(1px)), number);
 
-    @include assert-true(unitless(sg-strip-unit(1px)));
+    @include assert-true(unitless(strip-unit(1px)));
   }
 
   @include test('inverse [function]') {
 
-    @include assert-equal(sg-inverse(1), -1);
+    @include assert-equal(inverse(1), -1);
 
-    @include assert-equal(sg-inverse(-1), 1);
+    @include assert-equal(inverse(-1), 1);
 
-    @include assert-equal(sg-inverse(0), 0);
+    @include assert-equal(inverse(0), 0);
 
-    @include assert-equal(sg-inverse((1 -1)), (-1 1));
+    @include assert-equal(inverse((1 -1)), (-1 1));
 
-    @include assert-equal(type-of(sg-inverse(1)), number);
+    @include assert-equal(type-of(inverse(1)), number);
 
-    @include assert-equal(type-of(sg-inverse(1 -1)), list);
+    @include assert-equal(type-of(inverse(1 -1)), list);
 
-    @include assert-equal(sg-each('type-of', sg-inverse(1 -1)), (number number));
+    @include assert-equal(each('type-of', inverse(1 -1)), (number number));
+  }
+
+  @include test('polar-to-cartesian [function]') {
+
+    @include assert-equal(polar-to-cartesian(1px, 0deg), (1px 0));
+
+    @include assert-equal(polar-to-cartesian(1em, 90deg), (0 1em));
+
+    @include assert-equal(polar-to-cartesian(1px, 180deg), (-1px 0));
+
+    @include assert-equal(polar-to-cartesian(1px, 270deg), (0 -1px));
+
+    @include assert-equal(polar-to-cartesian(5px, 90deg), (0 5px));
+
+    @include assert-equal(polar-to-cartesian(1px, 164deg), (-0.96126169593832px 0.275637355817px));
+
+    @include assert-equal(type-of(polar-to-cartesian(1px, 90deg)), list);
+
+    @include assert-equal(each('type-of', polar-to-cartesian(1px, 90deg)), (number number));
   }
 
   @include test('coordinates [function]') {
 
-    @include assert-equal(sg-coordinates(1px, 0deg), (1px 0));
+    @include assert-equal(coordinates(1px, 0deg), (1px 0));
 
-    @include assert-equal(sg-coordinates(1em, 90deg), (0 -1em));
+    @include assert-equal(coordinates(1em, 90deg), (0 -1em));
 
-    @include assert-equal(sg-coordinates(1px, 180deg), (-1px 0));
+    @include assert-equal(coordinates(1px, 180deg), (-1px 0));
 
-    @include assert-equal(sg-coordinates(1px, 270deg), (0 1px));
+    @include assert-equal(coordinates(1px, 270deg), (0 1px));
 
-    @include assert-equal(sg-coordinates(5px, 90deg), (0 -5px));
+    @include assert-equal(coordinates(5px, 90deg), (0 -5px));
 
-    @include assert-equal(sg-coordinates(1px, 164deg), (-0.96126169593832px -0.275637355817px));
+    @include assert-equal(coordinates(1px, 164deg), (-0.96126169593832px -0.275637355817px));
 
-    @include assert-equal(type-of(sg-coordinates(1px, 90deg)), list);
+    @include assert-equal(type-of(coordinates(1px, 90deg)), list);
 
-    @include assert-equal(sg-each('type-of', sg-coordinates(1px, 90deg)), (number number));
+    @include assert-equal(each('type-of', coordinates(1px, 90deg)), (number number));
   }
 }

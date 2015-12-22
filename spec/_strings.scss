@@ -3,54 +3,58 @@
   @include test('str-append [function]') {
     $base: 'a';
 
-    @include assert-equal(sg-str-append($base, 'b'), 'ab');
-    @include assert-equal(sg-str-append($base, 1), 'a1');
+    @include assert-equal(str-append($base, 'b'), 'ab');
+
+    @include assert-equal(str-append($base, 1), 'a1');
+
+    @include assert-equal(type-of(str-append($base, 'b')), string);
   }
 
   @include test('str-prepend [function]') {
     $base: 'b';
-    $add: 'a';
-    $test: sg-str-prepend($base, $add);
-    $expect: 'ab';
 
-    @include assert-equal($test, $expect);
+    @include assert-equal(str-prepend($base, 'a'), 'ab');
+
+    @include assert-equal(type-of(str-prepend($base, 'a')), string);
   }
 
   @include test('str-wrap [function]') {
     $base: 'b';
-    $add: 'a';
-    $add2: 'c';
-    $test: sg-str-wrap($base, $add, $add2);
-    $expect: 'abc';
 
-    @include assert-equal($test, $expect);
+    @include assert-equal(str-wrap($base, 'a', 'c'), 'abc');
+
+    @include assert-equal(type-of(str-wrap($base, 'a', 'c')), string);
   }
 
   @include test('str-contains [function]') {
     $base: 'abc def';
 
-    @include assert-true(sg-str-contains($base, 'b'));
+    @include assert-true(str-contains($base, 'b'));
 
-    @include assert-true(sg-str-contains($base, ' '));
+    @include assert-true(str-contains($base, ' '));
 
-    @include assert-false(sg-str-contains($base, 'g'));
+    @include assert-false(str-contains($base, 'g'));
 
-    @include assert-true(sg-str-contains($base, 'def'));
+    @include assert-true(str-contains($base, 'def'));
 
-    @include assert-true(sg-str-contains($base, 'e', 6));
+    @include assert-true(str-contains($base, 'e', 6));
 
-    @include assert-false(sg-str-contains($base, 'a', 3));
+    @include assert-false(str-contains($base, 'a', 3));
+
+    @include assert-equal(type-of(str-contains($base, 'a', 3)), bool);
   }
 
   @include test('str-count [function]') {
     $base: 'abc def abc';
 
-    @include assert-equal(sg-str-count($base, 'a'), 2);
+    @include assert-equal(str-count($base, 'a'), 2);
 
-    @include assert-equal(sg-str-count($base, 'd'), 1);
+    @include assert-equal(str-count($base, 'd'), 1);
 
-    @include assert-equal(sg-str-count($base, ' '), 2);
+    @include assert-equal(str-count($base, ' '), 2);
 
-    @include assert-equal(sg-str-count($base, 'g'), 0);
+    @include assert-equal(str-count($base, 'g'), 0);
+
+    @include assert-equal(type-of(str-count($base, 'a')), number);
   }
 }
