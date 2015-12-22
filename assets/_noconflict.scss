@@ -1,8 +1,7 @@
-@import 'core/var-merge';
+@import 'core/variables';
 @import 'core/var-set';
 @import 'core/var-get';
 @import 'core/var-add-unit';
-@import 'core/variables';
 
 @import 'strings/str-append';
 @import 'strings/str-contains';
@@ -15,6 +14,7 @@
 @import 'numbers/inverse';
 @import 'numbers/coordinates';
 
+@import 'lists/contains';
 @import 'lists/join';
 @import 'lists/each';
 // @import 'lists/split';
@@ -23,3 +23,5 @@
 @import 'colors/tint';
 @import 'colors/shade';
 @import 'colors/random-color';
+@import 'colors/cmyk';
+@import 'colors/hsv';
