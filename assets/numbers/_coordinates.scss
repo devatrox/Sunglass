@@ -35,7 +35,7 @@
 
 @function sg-coordinates($distance, $angle) {
   $coords: sg-polar-to-cartesian($distance, $angle);
-  // invert the Y-sign because CSS works different
+  // invert the Y-axis because CSS works different
   $coords: nth($coords, 1) sg-inverse(nth($coords, 2));
 
   @return $coords;
