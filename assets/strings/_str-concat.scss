@@ -1,8 +1,0 @@
-@function sg-str-concat($strings...) {
-  $result: '';
-
-  @each $string in $strings {
-    $result: str-insert($result, $string, str-length($result) + 1);
-  }
-  @return $result;
-}
