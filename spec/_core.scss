@@ -2,13 +2,13 @@
   @include test('sg-var-set [mixin]') {
     @include sg-var-set('test1', 'something');
 
-    @include assert-equal(map-get($sg-settings, 'test1'), "something");
+    @include assert-equal(map-get($sg-settings, 'test1'), 'something');
   }
 
   @include test('sg-var-get [function]') {
     @include sg-var-set('test2', 'something');
 
-    @include assert-equal(sg-var-get('test2'), "something");
+    @include assert-equal(sg-var-get('test2'), 'something');
   }
 
   @include test('sg-var-add-unit [function]') {
