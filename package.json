@@ -6,7 +6,8 @@
     "Jason Nickel <mail@devatrox.de>"
   ],
   "scripts": {
-    "test": "./node_modules/.bin/mocha"
+    "test": "./node_modules/.bin/mocha",
+    "docs": "./node_modules/.bin/sassdoc assets/"
   },
   "keywords": [
     "eyeglass-module",
@@ -17,8 +18,14 @@
     "mathsass": "^0.9.5",
     "mocha": "^2.3.3",
     "path": "^0.12.7",
-    "sass-true": "^2.0.3"
+    "sass-true": "^2.0.3",
+    "sassdoc": "^2.1.18"
   },
+  "ignore": [
+    "test",
+    "spec",
+    "sassdoc"
+  ],
   "eyeglass": {
     "sassDir": "assets",
     "needs": "^0.6.0"
