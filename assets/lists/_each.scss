@@ -1,3 +1,17 @@
+////
+/// @group Lists
+/// @author Jason Nickel
+////
+
+/// Run a function on each item in a list
+/// @name each()
+///
+/// @param {String} $function - Name of the function
+/// @param {List} $list - The list to be used
+/// @param {Args} $value - Arguments for the function
+///
+/// @return {List}
+
 @function sg-each($function, $list, $args...) {
   $separator: list-separator($list);
   $newlist: ();

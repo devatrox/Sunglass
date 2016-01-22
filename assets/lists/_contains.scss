@@ -1,3 +1,16 @@
+////
+/// @group Lists
+/// @author Jason Nickel
+////
+
+/// Check if item exists in a list
+/// @name contains()
+///
+/// @param {List} $list - The list to be used
+/// @param {Any} $test
+///
+/// @return {Boolean}
+
 @function sg-contains($list, $test) {
   @if index($list, $test) {
     @return true;

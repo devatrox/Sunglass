@@ -1,3 +1,15 @@
+////
+/// @group Numbers
+/// @author Jason Nickel
+////
+
+/// Run a function on each item in a list
+/// @name strip-unit()
+///
+/// @param {Number} $number
+///
+/// @return {Number}
+
 @function sg-strip-unit($number) {
   @if type-of($number) != number {
     @warn "#{$number} NaN";

@@ -1,4 +1,21 @@
-// Formulars provided by easyrgb.com
+////
+/// @group Colors
+/// @author Jason Nickel
+////
+
+/// Convert CMYK to RGB
+/// @name cmyk()
+///
+/// @param {Number} $cyan - 0 to 1
+/// @param {Number} $magenta - 0 to 1
+/// @param {Number} $yellow - 0 to 1
+/// @param {Number} $key - 0 to 1
+///
+/// @return {Color}
+///
+/// @require each()
+/// @require contains()
+/// @link http://easyrgb.com/index.php?X=MATH&H=12#text12
 
 @function sg-cmyk($cyan, $magenta, $yellow, $key: 0) {
   $test: sg-each('unitless', ($cyan, $magenta, $yellow, $key));
