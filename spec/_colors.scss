@@ -61,4 +61,17 @@
 
     @include assert-equal(type-of(hsv(0, 0, 100%)), color);
   }
+
+  @include test('hsva [function]') {
+  
+    @include assert-equal(hsva(0, 0, 0, .5), rgba(0,0,0,.5));
+
+    @include assert-equal(hsva(0, 0, 100%, .5), rgba(255,255,255,.5));
+
+    @include assert-equal(hsva(240, 100%, 100%, .5), rgba(0,0,255,.5));
+
+    // @include assert-equal(hsv(0, 0, 50%), gray);
+
+    @include assert-equal(type-of(hsva(0, 0, 100%, .5)), color);
+  }
 }
