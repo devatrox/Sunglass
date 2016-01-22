@@ -4,7 +4,7 @@
 ////
 
 /// Convert HSV to RGB
-/// @name hsv()
+/// @name hsv
 ///
 /// @param {Number} $hue - 0 to 360
 /// @param {Number} $saturation - 0% to 100%
@@ -12,7 +12,7 @@
 ///
 /// @return {Color}
 ///
-/// @require strip-unit()
+/// @require strip-unit
 /// @link http://easyrgb.com/index.php?X=MATH&H=21#text21
 
 @function sg-hsv($hue, $saturation, $value) {

@@ -3,12 +3,16 @@
 /// @author Jason Nickel
 ////
 
-/// Run a function on each item in a list
-/// @name strip-unit()
+/// Remove the unit of a number
+/// @name strip-unit
 ///
 /// @param {Number} $number
 ///
 /// @return {Number}
+///
+/// @example
+///  strip-unit(1px)
+///  // 1
 
 @function sg-strip-unit($number) {
   @if type-of($number) != number {

@@ -4,12 +4,16 @@
 ////
 
 /// Check if item exists in a list
-/// @name contains()
+/// @name contains
 ///
 /// @param {List} $list - The list to be used
-/// @param {Any} $test
+/// @param {Anything} $test
 ///
 /// @return {Boolean}
+///
+/// @example
+///  contains(('a', 'b', 'c'), 'b')
+///  // true
 
 @function sg-contains($list, $test) {
   @if index($list, $test) {
