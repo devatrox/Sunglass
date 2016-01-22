@@ -38,6 +38,22 @@
     @include assert-equal(compact($base), ('a', 'b', 'c', ' '));
   }
 
+  @include test('contains [function]') {
+    $base: ('a', 'b', 'c', ' ', '', false, ('d', 'e'));
+
+    @include assert-equal(contains($base, ' '), true);
+
+    @include assert-equal(contains($base, false), true);
+
+    @include assert-equal(contains($base, 'b'), true);
+
+    @include assert-equal(contains($base, ''), true);
+
+    @include assert-equal(contains($base, ('d', 'e')), true);
+
+    @include assert-equal(contains($base, 'd'), false);
+  }
+
   // @include test('split [function]') {
   //   $base: 'a b c';
 
