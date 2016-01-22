@@ -1,5 +1,0 @@
-@function _str-append($string, $insert) {
-  $string: if($string == null, "", $string);
-
-  @return str-insert($string, $insert, str-length($string) + 1);
-}
