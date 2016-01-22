@@ -17,6 +17,10 @@
     @include assert-equal(unit(add-unit(1, '%')), '%');
 
     @include assert-equal(unit(add-unit(1, 'px')), 'px');
+
+    @include assert-false(unitless(add-unit(1, 'px')));
+
+    @include assert-false(unitless(add-unit(1, '%')));
   }
 
   @include test('strip-unit [function]') {
