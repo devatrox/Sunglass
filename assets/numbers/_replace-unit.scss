@@ -1,0 +1,24 @@
+////
+/// @group Numbers
+////
+
+/// Replace unit with another unit
+/// @name replace-unit
+///
+/// @param {Number} $number
+/// @param {String} $unit
+///
+/// @return {Number}
+///
+/// @require add-unit
+/// @require strip-unit
+///
+/// @example
+///  replace-unit(1px, 'em')
+///  // 1em
+
+@function sg-replace-unit($number, $unit) {
+  $output: sg-add-unit(sg-strip-unit($number), $unit);
+
+  @return $output;
+}
