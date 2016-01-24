@@ -1,6 +1,5 @@
 ////
 /// @group Colors
-/// @author Jason Nickel
 ////
 
 /// Convert HSV to RGB
@@ -13,8 +12,13 @@
 /// @return {Color}
 ///
 /// @require strip-unit
-/// @link http://easyrgb.com/index.php?X=MATH&H=21#text21
+///
+/// @example
+///  hsv(240, 100%, 100%)
+///  // #00f
 
+/// @name sg-hsv
+/// @alias hsv
 @function sg-hsv($hue, $saturation, $value) {
 
   $hue: ($hue * 100 / 360) / 100;
@@ -90,15 +94,28 @@
   @return rgb($red, $green, $blue);
 }
 
+/// @name hsva
+
+/// @name sg-hsva
+/// @alias hsva
 @function sg-hsva($hue, $saturation, $value, $alpha) {
   @return rgba(sg-hsv($hue, $saturation, $value), $alpha);
 }
 
-// HSB - because Photoshop
+/// @name hsb
+/// @alias hsv
+
+/// @name sg-hsb
+/// @alias hsb
 @function sg-hsb($hue, $saturation, $brightness) {
   @return sg-hsv($hue, $saturation, $brightness);
 }
 
+/// @name hsba
+/// @alias hsba
+
+/// @name sg-hsba
+/// @alias hsba
 @function sg-hsba($hue, $saturation, $brightness, $alpha) {
   @return sg-hsva($hue, $saturation, $brightness, $alpha);
 }

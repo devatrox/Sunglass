@@ -1,9 +1,28 @@
+////
+/// @group Settings
+////
+
+/// The App version
+/// ---
+/// @type string
+/// @access private
 $sg-version: '4.0.0';
 
+/// Global settings map
+/// ---
+/// @type map
 $sunglass: () !default;
 
+/// Private settings map
+/// ---
+/// @type map
+/// @access private
 $sg-settings: ();
 
+/// Global units map
+/// @name valid-units
+/// ---
+/// @type map
 $sg-valid-units: (
   'em': 0em,
   'ex': 0ex,

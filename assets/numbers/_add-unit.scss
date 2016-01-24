@@ -1,3 +1,19 @@
+////
+/// @group Numbers
+////
+
+/// Add unit to a number
+/// @name add-unit
+///
+/// @param {Number} $number
+/// @param {String} $unit
+///
+/// @return {Number}
+///
+/// @example
+///  add-unit(1, 'px')
+///  // 1px
+
 @function sg-add-unit($number, $unit) {
 
   @if unitless($number) == false {
