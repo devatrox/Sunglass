@@ -1,6 +1,5 @@
 ////
-/// @group Colors
-/// @author Jason Nickel
+/// @group colors
 ////
 
 /// Convert CMYK to RGB
@@ -15,7 +14,10 @@
 ///
 /// @require each
 /// @require contains
-/// @link http://easyrgb.com/index.php?X=MATH&H=12#text12
+///
+/// @example
+///  cmyk(0, 1, 1, 0)
+///  // #f00
 
 @function sg-cmyk($cyan, $magenta, $yellow, $key: 0) {
   $test: sg-each('unitless', ($cyan, $magenta, $yellow, $key));
@@ -28,16 +30,4 @@
   $blue: (1 - $key) * (1 - $yellow) * 255;
 
   @return rgb($red, $green, $blue);
-}
-
-@function sg-cmy($cyan, $magenta, $yellow) {
-  @return sg-cmyk($cyan, $magenta, $yellow);
-}
-
-@function sg-cmya($cyan, $magenta, $yellow, $alpha) {
-  @return rgba(sg-cmy($cyan, $magenta, $yellow), $alpha);
-}
-
-@function sg-cmyka($cyan, $magenta, $yellow, $key, $alpha) {
-  @return rgba(sg-cmyk($cyan, $magenta, $yellow, $key), $alpha);
 }

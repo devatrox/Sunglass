@@ -1,5 +1,5 @@
 ////
-/// @group Colors
+/// @group colors
 ////
 
 /// Convert HSV to RGB
@@ -16,9 +16,6 @@
 /// @example
 ///  hsv(240, 100%, 100%)
 ///  // #00f
-
-/// @name sg-hsv
-/// @alias hsv
 @function sg-hsv($hue, $saturation, $value) {
 
   $hue: ($hue * 100 / 360) / 100;
@@ -94,28 +91,8 @@
   @return rgb($red, $green, $blue);
 }
 
-/// @name hsva
-
-/// @name sg-hsva
-/// @alias hsva
-@function sg-hsva($hue, $saturation, $value, $alpha) {
-  @return rgba(sg-hsv($hue, $saturation, $value), $alpha);
-}
-
 /// @name hsb
 /// @alias hsv
-
-/// @name sg-hsb
-/// @alias hsb
-@function sg-hsb($hue, $saturation, $brightness) {
-  @return sg-hsv($hue, $saturation, $brightness);
-}
-
-/// @name hsba
-/// @alias hsba
-
-/// @name sg-hsba
-/// @alias hsba
-@function sg-hsba($hue, $saturation, $brightness, $alpha) {
-  @return sg-hsva($hue, $saturation, $brightness, $alpha);
+@function sg-hsb($hue, $saturation, $value) {
+  @return sg-hsv($hue, $saturation, $value);
 }

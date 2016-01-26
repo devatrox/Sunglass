@@ -1,3 +1,11 @@
+////
+/// @group colors
+////
+
+/// Return a random color
+/// @name random-color
+///
+/// @return {Color}
 @function sg-random-color() {
   $red: random(255);
   $green: random(255);

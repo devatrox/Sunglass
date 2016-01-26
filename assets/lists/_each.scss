@@ -1,6 +1,5 @@
 ////
-/// @group Lists
-/// @author Jason Nickel
+/// @group lists
 ////
 
 /// Run a function on each item in a list
@@ -8,13 +7,14 @@
 ///
 /// @param {String} $function - Name of the function
 /// @param {List} $list - The list to be used
-/// @param {Args} $value - Arguments for the function
+/// @param {Arguments} $args... - Arguments for the function
 ///
 /// @return {List}
 ///
 /// @example
-///  each('unit', (1px, 10%, 100vh))
-///  // (px, %, vh)
+///  $list: ('a', 'b', 'c');
+///  each('str-insert', $list, 'x', 1)
+///  // ('xa', 'xb', 'xc')
 
 @function sg-each($function, $list, $args...) {
   $separator: list-separator($list);

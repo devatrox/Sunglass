@@ -1,3 +1,18 @@
+////
+/// @group colors
+////
+
+/// Darken a color
+/// @name shade
+///
+/// @param {Color} $color
+/// @param {Number} $percent - 0% to 100%
+///
+/// @return {Color}
+///
+/// @example
+///  shade(#fff, 40%)
+///  // #999
 @function sg-shade($color, $percent) {
   @return mix(black, $color, $percent);
 }

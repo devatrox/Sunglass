@@ -1,3 +1,18 @@
+////
+/// @group colors
+////
+
+/// Lighten a color
+/// @name tint
+///
+/// @param {Color} $color
+/// @param {Number} $percent - 0% to 100%
+///
+/// @return {Color}
+///
+/// @example
+///  tint(#000, 40%)
+///  // #666
 @function sg-tint($color, $percent) {
   @return mix(white, $color, $percent);
 }
