@@ -23,19 +23,6 @@
     @include assert-equal(type-of(random-color()), color);
   }
 
-  @include test('cmy [function]') {
-
-    @include assert-equal(cmy(1, .4, .4), rgb(0,153,153));
-
-    @include assert-equal(cmy(1, 1, 1), black);
-
-    @include assert-equal(cmy(0, 0, 0), white);
-
-    @include assert-equal(cmy(0, 1, 1), red);
-
-    @include assert-equal(type-of(cmy(1, .4, .4)), color);
-  }
-
   @include test('cmyk [function]') {
 
     // @include assert-equal(cmyk(1, .4, .4, .2), rgb(0,122,122));
@@ -60,18 +47,5 @@
     // @include assert-equal(hsv(0, 0, 50%), gray);
 
     @include assert-equal(type-of(hsv(0, 0, 100%)), color);
-  }
-
-  @include test('hsva [function]') {
-  
-    @include assert-equal(hsva(0, 0, 0, .5), rgba(0,0,0,.5));
-
-    @include assert-equal(hsva(0, 0, 100%, .5), rgba(255,255,255,.5));
-
-    @include assert-equal(hsva(240, 100%, 100%, .5), rgba(0,0,255,.5));
-
-    // @include assert-equal(hsv(0, 0, 50%), gray);
-
-    @include assert-equal(type-of(hsva(0, 0, 100%, .5)), color);
   }
 }
