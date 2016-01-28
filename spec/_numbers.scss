@@ -46,13 +46,7 @@
 
     @include assert-equal(inverse(0), 0);
 
-    @include assert-equal(inverse((1 -1)), (-1 1));
-
     @include assert-equal(type-of(inverse(1)), number);
-
-    @include assert-equal(type-of(inverse(1 -1)), list);
-
-    @include assert-equal(each('type-of', inverse(1 -1)), (number number));
   }
 
   @include test('polar-to-cartesian [function]') {
