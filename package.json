@@ -30,6 +30,10 @@
     "sassDir": "assets",
     "needs": "^0.6.0"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/devatrox/Sunglass.git"
+  },
   "homepage": "https://github.com/devatrox/Sunglass",
   "license": "MIT"
 }
