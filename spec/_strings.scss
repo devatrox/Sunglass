@@ -1,29 +1,15 @@
 @include test-module('Strings') {
 
-  @include test('str-append [function]') {
+  @include test('str-concat [function]') {
     $base: 'a';
 
-    @include assert-equal(str-append($base, 'b'), 'ab');
+    @include assert-equal(str-concat($base, 'b'), 'ab');
 
-    @include assert-equal(str-append($base, 1), 'a1');
+    @include assert-equal(str-concat($base, 1), 'a1');
 
-    @include assert-equal(type-of(str-append($base, 'b')), string);
-  }
+    @include assert-equal(str-concat($base, 'b', 'c'), 'abc');
 
-  @include test('str-prepend [function]') {
-    $base: 'b';
-
-    @include assert-equal(str-prepend($base, 'a'), 'ab');
-
-    @include assert-equal(type-of(str-prepend($base, 'a')), string);
-  }
-
-  @include test('str-wrap [function]') {
-    $base: 'b';
-
-    @include assert-equal(str-wrap($base, 'a', 'c'), 'abc');
-
-    @include assert-equal(type-of(str-wrap($base, 'a', 'c')), string);
+    @include assert-equal(type-of(str-concat($base, 'b')), string);
   }
 
   @include test('str-contains [function]') {

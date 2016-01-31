@@ -1,0 +1,21 @@
+////
+/// @group strings
+////
+
+/// Returns true if the value is present in the list.
+/// @name concat
+///
+/// @param {List} $list
+/// @param {Anything} $value
+///
+/// @return {Boolean}
+///
+/// @todo Add optional recursive search
+///
+/// @example
+///  contains(('a', 'b', 'c'), 'b')
+///  // true
+
+@function sg-str-concat($strings...) {
+  @return sg-join($strings, '');
+}

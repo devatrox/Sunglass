@@ -3,11 +3,9 @@
 @import 'core/var-get';
 @import 'core/var-add-unit';
 
-@import 'strings/str-append';
+@import 'strings/str-concat';
 @import 'strings/str-contains';
 @import 'strings/str-count';
-@import 'strings/str-prepend';
-@import 'strings/str-wrap';
 
 @import 'numbers/add-unit';
 @import 'numbers/strip-unit';

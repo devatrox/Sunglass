@@ -1,11 +1,28 @@
+////
+/// @group lists
+////
+
+/// Join all items of a list into a string
+/// @name join
+///
+/// @param {List} $list
+/// @param {String} $separator [',']
+///
+/// @return {String}
+///
+/// @example
+///  $list: ('a', 'b', 'c', 'd');
+///  join($list, '+')
+///  // a+b+c+d
+
 @function sg-join($list, $separator: ',') {
   $string: '';
 
   @for $i from 1 through length($list) {
-    $string: sg-str-append($string, #{nth($list, $i)});
+    $string: sg-str-concat($string, #{nth($list, $i)});
 
     @if $i != length($list) {
-      $string: sg-str-append($string, $separator);
+      $string: sg-str-concat($string, $separator);
     }
   }
 
