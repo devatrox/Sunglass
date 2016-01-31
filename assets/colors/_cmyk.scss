@@ -20,7 +20,7 @@
 ///  // #f00
 
 @function sg-cmyk($cyan, $magenta, $yellow, $key: 0) {
-  $test: sg-each('unitless', ($cyan, $magenta, $yellow, $key));
+  $test: sg-each(($cyan, $magenta, $yellow, $key), 'unitless');
   @if sg-contains($test, false) {
     @error 'All parameters must be a unitless number';
   }

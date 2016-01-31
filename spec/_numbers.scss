@@ -65,7 +65,7 @@
 
     @include assert-equal(type-of(polar-to-cartesian(1px, 90deg)), list);
 
-    @include assert-equal(each('type-of', polar-to-cartesian(1px, 90deg)), (number number));
+    @include assert-equal(each(polar-to-cartesian(1px, 90deg), 'type-of'), (number number));
   }
 
   @include test('coordinates [function]') {
@@ -84,6 +84,6 @@
 
     @include assert-equal(type-of(coordinates(1px, 90deg)), list);
 
-    @include assert-equal(each('type-of', coordinates(1px, 90deg)), (number number));
+    @include assert-equal(each(coordinates(1px, 90deg), 'type-of'), (number number));
   }
 }

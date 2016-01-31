@@ -15,13 +15,13 @@
   @include test('each [function]') {
     $base: ('a', 'b', 'c');
 
-    @include assert-equal(each('to-upper-case', $base), ('A', 'B', 'C'));
+    @include assert-equal(each($base, 'to-upper-case'), ('A', 'B', 'C'));
 
-    @include assert-equal(each('str-insert', $base, 'x', 1), ('xa', 'xb', 'xc'));
+    @include assert-equal(each($base, 'str-insert', 'x', 1), ('xa', 'xb', 'xc'));
 
-    @include assert-equal(each('type-of', $base), (string, string, string));
+    @include assert-equal(each($base, 'type-of'), (string, string, string));
 
-    @include assert-equal(each('append', ($base, $base), 'd'), (('a', 'b', 'c', 'd'), ('a', 'b', 'c', 'd')));
+    @include assert-equal(each(($base, $base), 'append', 'd'), (('a', 'b', 'c', 'd'), ('a', 'b', 'c', 'd')));
   }
 
   @include test('filter [function]') {

@@ -2,21 +2,21 @@
 /// @group lists
 ////
 
-/// Run a function on each item in a list
+/// Creates a new list with the results of calling a provided function on every element in this list.
 /// @name each
 ///
-/// @param {String} $function - Name of the function
-/// @param {List} $list - The list to be used
-/// @param {Arguments} $args... - Arguments for the function
+/// @param {List} $list
+/// @param {String} $function
+/// @param {Arguments} $args...
 ///
 /// @return {List}
 ///
 /// @example
 ///  $list: ('a', 'b', 'c');
-///  each('str-insert', $list, 'x', 1)
+///  each($list, 'str-insert', 'x', 1)
 ///  // ('xa', 'xb', 'xc')
 
-@function sg-each($function, $list, $args...) {
+@function sg-each($list, $function, $args...) {
   $separator: list-separator($list);
   $newlist: ();
 
