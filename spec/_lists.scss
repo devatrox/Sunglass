@@ -10,6 +10,8 @@
     @include assert-equal(join($base, ' '), 'a b c');
 
     @include assert-equal(join($base, ''), 'abc');
+
+    @include assert-equal(type-of(join($base, '+')), string);
   }
 
   @include test('each [function]') {
