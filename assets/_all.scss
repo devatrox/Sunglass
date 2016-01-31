@@ -36,8 +36,8 @@
   @return sg-each($function, $list, $args);
 }
 
-@function filter($list, $filters...) {
-  @return sg-filter($list, $filters);
+@function without($list, $values...) {
+  @return sg-without($list, $values);
 }
 
 @function compact($list) {

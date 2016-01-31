@@ -1,0 +1,51 @@
+////
+/// @group lists
+////
+
+/// Returns a copy of a list with values removed
+/// @name without
+///
+/// @param {List} $list
+/// @param {Anything} $values...
+///
+/// @return {List}
+///
+/// @example
+///  $list: ('a', 'b', 'c', 'd');
+///  without($list, 'b', 'a')
+///  // ('c', 'd')
+
+@function sg-without($list, $values...) {
+  $output: ();
+
+  @each $item in $list {
+
+    @if index($values, $item) {
+      // silence
+    }
+    @else {
+      $output: append($output, $item, list-separator($list));
+    }
+
+  }
+
+  @return $output;
+}
+
+/// Returns a copy of a list with falsy values removed ('' and false)
+/// @name compact
+///
+/// @param {List} $list
+///
+/// @return {List}
+///
+/// @require without
+///
+/// @example
+///  $list: ('a', 'b', '', 'c', false, 'd');
+///  compact($list)
+///  // ('a', 'b', 'c', 'd')
+
+@function sg-compact($list) {
+  @return sg-without($list, false, '');
+}
