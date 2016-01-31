@@ -1,5 +1,7 @@
 ![](http://cdn.devatrox.de/img/sunglass-logo.png)
 
+[![Build Status](https://travis-ci.org/devatrox/Sunglass.png)](https://travis-ci.org/devatrox/Sunglass) [![devDependency Status](https://david-dm.org/devatrox/Sunglass/dev-status.png)](https://david-dm.org/devatrox/Sunglass#info=devDependencies)
+
 **A mixin and functions library for Sass**
 
 ## 4.0 branch notes
