@@ -55,18 +55,4 @@
 
     @include assert-equal(contains($base, 'd'), false);
   }
-
-  // @include test('split [function]') {
-  //   $base: 'a b c';
-
-  //   @include assert-equal(split($base), ($base));
-
-  //   @include assert-true(type-of(split($base)), list);
-
-  //   @include assert-equal(split($base, ' '), ('a', 'b', 'c'));
-
-  //   @include assert-equal(split($base, 'b'), ('a ', ' c'));
-
-  //   @include assert-equal(split($base, ''), ('a', ' ', 'b', ' ', 'c'));
-  // }
 }
