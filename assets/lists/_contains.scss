@@ -2,11 +2,11 @@
 /// @group lists
 ////
 
-/// Check if item exists in a list
+/// Returns true if the value is present in the list.
 /// @name contains
 ///
-/// @param {List} $list - The list to be used
-/// @param {Anything} $test
+/// @param {List} $list
+/// @param {Anything} $value
 ///
 /// @return {Boolean}
 ///
@@ -16,11 +16,17 @@
 ///  contains(('a', 'b', 'c'), 'b')
 ///  // true
 
-@function sg-contains($list, $test) {
-  @if index($list, $test) {
+@function sg-contains($list, $value) {
+  @if index($list, $value) {
     @return true;
   }
   @else {
     @return false;
   }
+}
+
+/// @name includes
+/// @alias contains
+@function sg-includes($list, $value) {
+  @return sg-contains($list, $value);
 }

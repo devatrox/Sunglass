@@ -1,3 +1,28 @@
+////
+/// @group Numbers
+////
+
+/// Return cartesian coordinates
+/// @name polar-to-cartesian
+///
+/// @param {Number} $distance
+/// @param {Number} $angle
+///
+/// @return {List}
+///
+/// @require strip-unit
+/// @require add-unit
+/// @require {function} Math::deg-to-rad
+/// @require {function} Math::cos
+/// @require {function} Math::sin
+///
+/// @link https://github.com/terkel/mathsass mathsass
+/// @link https://github.com/at-import/Sassy-math Sassy-math
+///
+/// @example
+///  polar-to-cartesian(5px, 90deg)
+///  // 0 5px
+
 @function sg-polar-to-cartesian($distance, $angle) {
   @if function-exists('sin') == false {
     @error 'Could not find sin()! Please make sure all dependencies are met. See https://github.com/devatrox/Sunglass/ for more info.';
@@ -33,6 +58,21 @@
   @return $x $y;
 }
 
+/// Return cartesian coordinates in CSS-format (by inverting the Y-axis)
+/// @name coordinates
+///
+/// @param {Number} $distance
+/// @param {Number} $angle
+///
+/// @return {List}
+///
+/// @require polar-to-cartesian
+/// @require inverse
+///
+/// @example
+///  coordinates(5px, 90deg)
+///  // 0 -5px
+
 @function sg-coordinates($distance, $angle) {
   $coords: sg-polar-to-cartesian($distance, $angle);
   // invert the Y-axis because CSS works different
@@ -41,6 +81,9 @@
   @return $coords;
 }
 
+
+/// @name coords
+/// @alias coordinates
 @function sg-coords($distance, $angle) {
   @return sg-coordinates($distance, $angle);
 }
