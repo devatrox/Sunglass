@@ -24,16 +24,16 @@
     @include assert-equal(each(($base, $base), 'append', 'd'), (('a', 'b', 'c', 'd'), ('a', 'b', 'c', 'd')));
   }
 
-  @include test('filter [function]') {
+  @include test('without [function]') {
     $base: ('a', 'b', 'c', ' ', '', false);
 
-    @include assert-equal(filter($base, ' '), ('a', 'b', 'c', '', false));
+    @include assert-equal(without($base, ' '), ('a', 'b', 'c', '', false));
 
-    @include assert-equal(filter($base, false), ('a', 'b', 'c', ' ', ''));
+    @include assert-equal(without($base, false), ('a', 'b', 'c', ' ', ''));
 
-    @include assert-equal(filter($base, 'b'), ('a', 'c', ' ', '', false));
+    @include assert-equal(without($base, 'b'), ('a', 'c', ' ', '', false));
 
-    @include assert-equal(filter($base, 'b', 'a'), ('c', ' ', '', false));
+    @include assert-equal(without($base, 'b', 'a'), ('c', ' ', '', false));
 
     @include assert-equal(compact($base), ('a', 'b', 'c', ' '));
   }
