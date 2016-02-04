@@ -32,6 +32,12 @@
   @return $output;
 }
 
+/// @name difference
+/// @alias without
+@function sg-difference($list, $values...) {
+  @return sg-without($list, $values);
+}
+
 /// Returns a copy of a list with falsy values removed ('' and false)
 /// @name compact
 ///
