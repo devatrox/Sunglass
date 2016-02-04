@@ -24,6 +24,8 @@
     @include assert-equal(each($base, 'type-of'), (string, string, string));
 
     @include assert-equal(each(($base, $base), 'append', 'd'), (('a', 'b', 'c', 'd'), ('a', 'b', 'c', 'd')));
+
+    @include assert-equal(type-of(each($base, 'to-upper-case')), list);
   }
 
   @include test('without [function]') {
@@ -38,6 +40,8 @@
     @include assert-equal(without($base, 'b', 'a'), ('c', ' ', '', false));
 
     @include assert-equal(compact($base), ('a', 'b', 'c', ' '));
+
+    @include assert-equal(type-of(without($base, 'b', 'a')), list);
   }
 
   @include test('contains [function]') {
@@ -54,5 +58,7 @@
     @include assert-equal(contains($base, ('d', 'e')), true);
 
     @include assert-equal(contains($base, 'd'), false);
+
+    @include assert-equal(type-of(contains($base, 'b')), bool);
   }
 }
