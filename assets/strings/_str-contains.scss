@@ -5,12 +5,11 @@
 /// Returns true if the value is present in the string.
 /// @name str-contains
 ///
-/// @param {List} $list
-/// @param {Anything} $value
+/// @param {String} $string
+/// @param {String} $substr
+/// @param {Number} $start [0]
 ///
 /// @return {Boolean}
-///
-/// @require join
 ///
 /// @todo Add optional recursive search
 ///

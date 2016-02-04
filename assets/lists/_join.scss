@@ -12,7 +12,7 @@
 ///
 /// @example
 ///  $list: ('a', 'b', 'c', 'd');
-///  join($list, '+')
+///  str-join($list, '+')
 ///  // a+b+c+d
 
 @function sg-str-join($list, $separator: ',') {

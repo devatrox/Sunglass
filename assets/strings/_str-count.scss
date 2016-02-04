@@ -1,3 +1,19 @@
+////
+/// @group strings
+////
+
+/// Returns the number of substrings in the string.
+/// @name str-count
+///
+/// @param {String} $string
+/// @param {String} $substr
+///
+/// @return {Number}
+///
+/// @example
+///  str-count('abcabc', 'b')
+///  // 2
+
 @function sg-str-count($string, $substring) {
   $counter: 0;
 
