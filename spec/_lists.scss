@@ -1,17 +1,17 @@
 @include test-module('Lists') {
 
-  @include test('join [function]') {
+  @include test('str-join [function]') {
     $base: ('a', 'b', 'c');
 
-    @include assert-equal(join($base), 'a,b,c');
+    @include assert-equal(str-join($base), 'a,b,c');
 
-    @include assert-equal(join($base, '+'), 'a+b+c');
+    @include assert-equal(str-join($base, '+'), 'a+b+c');
 
-    @include assert-equal(join($base, ' '), 'a b c');
+    @include assert-equal(str-join($base, ' '), 'a b c');
 
-    @include assert-equal(join($base, ''), 'abc');
+    @include assert-equal(str-join($base, ''), 'abc');
 
-    @include assert-equal(type-of(join($base, '+')), string);
+    @include assert-equal(type-of(str-join($base, '+')), string);
   }
 
   @include test('each [function]') {

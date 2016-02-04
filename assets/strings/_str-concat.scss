@@ -17,5 +17,5 @@
 ///  // true
 
 @function sg-str-concat($strings...) {
-  @return sg-join($strings, '');
+  @return sg-str-join($strings, '');
 }

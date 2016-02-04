@@ -44,8 +44,8 @@
   @return sg-compact($list);
 }
 
-@function join($list, $separator: ',') {
-  @return sg-join($list, $separator);
+@function str-join($list, $separator: ',') {
+  @return sg-str-join($list, $separator);
 }
 
 // Numbers

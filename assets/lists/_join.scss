@@ -3,7 +3,7 @@
 ////
 
 /// Join all items of a list into a string
-/// @name join
+/// @name str-join
 ///
 /// @param {List} $list
 /// @param {String} $separator [',']
@@ -15,7 +15,7 @@
 ///  join($list, '+')
 ///  // a+b+c+d
 
-@function sg-join($list, $separator: ',') {
+@function sg-str-join($list, $separator: ',') {
   $string: '';
 
   @for $i from 1 through length($list) {
