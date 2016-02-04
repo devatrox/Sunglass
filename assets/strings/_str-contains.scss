@@ -1,3 +1,23 @@
+////
+/// @group strings
+////
+
+/// Returns true if the value is present in the string.
+/// @name str-contains
+///
+/// @param {List} $list
+/// @param {Anything} $value
+///
+/// @return {Boolean}
+///
+/// @require join
+///
+/// @todo Add optional recursive search
+///
+/// @example
+///  str-contains('abc', 'b')
+///  // true
+
 @function sg-str-contains($string, $substr, $start: 0) {
 
   $string: str-slice($string, $start);

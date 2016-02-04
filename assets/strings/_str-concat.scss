@@ -2,19 +2,20 @@
 /// @group strings
 ////
 
-/// Returns true if the value is present in the list.
-/// @name concat
+/// Combines the text of two or more strings and returns a new string.
+/// @name str-concat
 ///
-/// @param {List} $list
-/// @param {Anything} $value
+/// @param {Strings} $strings...
 ///
 /// @return {Boolean}
+///
+/// @require str-join
 ///
 /// @todo Add optional recursive search
 ///
 /// @example
-///  contains(('a', 'b', 'c'), 'b')
-///  // true
+///  str-concat('a', 'b', 'c')
+///  // abc
 
 @function sg-str-concat($strings...) {
   @return sg-str-join($strings, '');
