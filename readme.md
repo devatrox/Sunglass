@@ -2,10 +2,9 @@
 
 **A mixin and functions library for Sass**
 
-## Note for Sunglass 2.x users
+## Note
 
-As of Sunglass 3.x all function and mixin names now have an underscore in front of it. If you would like to upgrade, please check your syntax.
-I made this decision to resolve conflicts with other libraries. Feel free to email any death threads to spam@devatrox.de.
+The current version does not work in Node-Sass, sorry! I'm working on [4.0](https://github.com/devatrox/Sunglass/tree/4.0) which is a complete overhaul and should be coming out in the next few weeks.
 
 ## Requirements
 Sass 3.3+
