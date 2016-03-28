@@ -2,12 +2,12 @@
 
 **A mixin and functions library for Sass**
 
-## Note
+# DEPRECATED
 
-The current version does not work in Node-Sass, sorry! I'm working on [4.0](https://github.com/devatrox/Sunglass/tree/4.0) which is a complete overhaul and should be coming out in the next few weeks.
+Since the 4.0 branch turned out to be very different to master and missing a lot of things that might be precious to some people I decided to move it out into a new repository, named [sunglass-core](https://github.com/devatrox/sunglass-core) (very creative I know). It is much more stable and focused on functions mainly. My plan is to bring back some of the old stuff (like the grid) back as optional plugins. Sorry for any inconveinence.
 
 ## Requirements
-Sass 3.3+
+RubySass 3.3+
 
 ## Installation
 
